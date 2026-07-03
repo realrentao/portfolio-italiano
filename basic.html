@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>设计留学作品集 · 意语词汇（基础版）</title>
+<meta name="description" content="从零开始，能开口介绍作品集 - 赴意大利留学生设计作品集意语词汇教程">
+<style>
+:root {
+  /* 浅色主题 */
+  --bg-primary: #f5f6f8;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #eef0f4;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f2f6;
+  --bg-elevated: #f8f9fb;
+  --text-primary: #1a1d2e;
+  --text-secondary: #4a5170;
+  --text-muted: #7a82a0;
+  --text-dim: #9aa0b8;
+  --border-color: #d8dce4;
+  --border-soft: #e6e9f0;
+
+  /* 意大利国旗色 */
+  --italia-green: #009246;
+  --italia-white: #f4f5f0;
+  --italia-red: #ce2b37;
+
+  /* 通用语义色 */
+  --ok: #059669;
+  --warn: #d97706;
+  --danger: #dc2626;
+  --info: #2563eb;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 32px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Georgia", "Times New Roman", "Songti SC", serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, Monaco, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ==================== CSS 意大利国旗图标 ==================== */
+/* Windows 不支持国旗 emoji 彩色显示，用 CSS 绘制 */
+.it-flag {
+  display: inline-flex;
+  width: 1.2em;
+  height: 0.9em;
+  border-radius: 2px;
+  overflow: hidden;
+  vertical-align: -0.1em;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+.it-flag::before,
+.it-flag::after {
+  content: "";
+  display: block;
+  height: 100%;
+}
+.it-flag { background: var(--italia-white); }
+.it-flag::before { width: 33.333%; background: var(--italia-green); }
+.it-flag::after { width: 33.333%; background: var(--italia-red); margin-left: auto; }
+/* 大号国旗 */
+.it-flag-lg {
+  width: 2.2em;
+  height: 1.6em;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.15);
+}
+.it-flag-xl {
+  width: 3.5em;
+  height: 2.6em;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.18);
+}
+
+a { color: inherit; text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent, var(--italia-green)); }
+
+/* ==================== 顶部导航 ==================== */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02) inset, 0 2px 12px rgba(0,0,0,0.05);
+}
+.topbar-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.topbar-home {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.tb-flag { font-size: 22px; }
+.tb-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent, var(--italia-green));
+}
+.topbar-version-switch {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+  background: var(--bg-secondary);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+}
+.version-switch-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.version-switch-btn:hover {
+  color: var(--btn-accent, var(--text-primary));
+  background: var(--bg-tertiary);
+}
+.version-switch-btn.active {
+  color: var(--btn-accent);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 1px var(--btn-accent), 0 0 16px var(--btn-glow);
+}
+.vsw-icon { font-size: 14px; }
+
+.topbar-toc-toggle {
+  display: none;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  cursor: pointer;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==================== 页面布局 ==================== */
+.page-main {
+  padding-top: 70px;
+}
+.main-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px 24px 60px;
+}
+.main-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ==================== 侧边目录 ==================== */
+.toc-sidebar {
+  position: sticky;
+  top: 86px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  padding: 20px 16px 20px 0;
+  border-right: 1px solid var(--border-soft);
+  font-size: 13px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+.toc-sidebar::-webkit-scrollbar { width: 6px; }
+.toc-sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+.toc-title {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.toc-item {
+  display: block;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  border-left: 2px solid transparent;
+  margin-bottom: 2px;
+  line-height: 1.45;
+  transition: all 0.15s;
+}
+.toc-item:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-left-color: var(--accent, var(--italia-green));
+}
+.toc-item.toc-level-1 {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+.toc-item.toc-level-1:first-child { margin-top: 0; }
+.toc-item.toc-level-2 {
+  padding-left: 22px;
+  font-size: 12.5px;
+}
+.toc-item.toc-level-3 {
+  padding-left: 34px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.toc-item.active {
+  color: var(--accent, var(--italia-green));
+  background: var(--accent-soft, rgba(0,146,70,0.1));
+  border-left-color: var(--accent, var(--italia-green));
+}
+
+/* ==================== 主内容区 ==================== */
+.main-grid > *:not(.toc-sidebar) {
+  grid-column: 2;
+  min-width: 0; /* allow content to shrink */
+}
+
+/* ==================== Hero ==================== */
+.hero {
+  position: relative;
+  padding: 28px 28px;
+  margin-bottom: 20px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.hero-bg-flag {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg,
+    var(--italia-green) 0%,
+    var(--italia-green) 33.33%,
+    var(--italia-white) 33.33%,
+    var(--italia-white) 66.66%,
+    var(--italia-red) 66.66%,
+    var(--italia-red) 100%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(ellipse at center, var(--accent-soft) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.hero-icon {
+  font-size: 56px;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 20px var(--glow));
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 11px;
+}
+.hero-version, .hero-level, .hero-time {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--accent);
+}
+.hero-level, .hero-time {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+  font-weight: 500;
+}
+.hero-title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.hero-version-tag {
+  display: inline-block;
+  padding: 2px 12px;
+  background: var(--accent);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  font-size: 22px;
+  font-weight: 700;
+  margin-left: 6px;
+  vertical-align: middle;
+  box-shadow: 0 4px 16px var(--glow);
+}
+.hero-tagline {
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.hero-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  max-width: 720px;
+}
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+.hl-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--glow);
+}
+
+/* ==================== 统计条 ==================== */
+.stats-bar {
+  display: flex;
+  gap: 0;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--accent);
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 12px;
+  border-right: 1px solid var(--border-soft);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ==================== 标题 ==================== */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 32px 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 80px; height: 2px;
+  background: var(--accent, var(--italia-green));
+  box-shadow: 0 0 12px var(--glow);
+}
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid var(--accent);
+  flex-shrink: 0;
+}
+.section-title-text { flex: 1; }
+
+.subsection-title {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.subsection-title::before {
+  content: "";
+  display: inline-block;
+  width: 4px; height: 22px;
+  background: var(--accent, var(--italia-green));
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--glow);
+}
+
+.subsubsection-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 16px 0 10px;
+  color: var(--text-primary);
+  padding-left: 12px;
+  border-left: 3px solid var(--border-color);
+}
+.h4-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 12px 0 8px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==================== 段落 ==================== */
+.paragraph {
+  margin: 8px 0;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ==================== 表格 ==================== */
+.table-wrap {
+  margin: 12px 0 16px;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+.table-wrap::-webkit-scrollbar { height: 6px; }
+.table-wrap::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.data-table th {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.data-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+.data-table td.it-cell {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ==================== 意语可点击播放 ==================== */
+.it-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  padding: 2px 6px;
+  margin: 0 -2px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.it-text:hover {
+  background: var(--accent-soft, rgba(0,146,70,0.1));
+}
+.it-text.it-text-block {
+  display: inline-block;
+  width: 100%;
+}
+.it-word {
+  color: var(--text-primary);
+  font-style: italic;
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+.it-cell .it-word {
+  font-style: normal;
+  font-family: var(--font-sans);
+}
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  border: none;
+  background: transparent;
+  color: var(--accent, var(--italia-green));
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s;
+  opacity: 0.7;
+  padding: 0;
+  flex-shrink: 0;
+}
+.it-text:hover .play-btn { opacity: 1; }
+.play-btn:hover {
+  background: var(--accent, var(--italia-green));
+  color: #ffffff;
+  transform: scale(1.1);
+}
+.play-btn.playing {
+  background: var(--accent, var(--italia-green));
+  color: #ffffff;
+  opacity: 1;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.play-btn-block {
+  margin-left: 8px;
+  width: 26px; height: 26px;
+  font-size: 14px;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--glow, rgba(0,146,70,0.5)); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.it-text.playing {
+  background: var(--accent-soft, rgba(0,146,70,0.15));
+  box-shadow: 0 0 0 1px var(--accent, var(--italia-green));
+}
+
+/* ==================== 引用块 ==================== */
+.quote-block {
+  margin: 12px 0 16px;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border-left: 3px solid var(--text-muted);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.quote-block.quote-italian {
+  border-left-color: var(--accent, var(--italia-green));
+  background: linear-gradient(90deg, var(--accent-soft, rgba(0,146,70,0.08)) 0%, var(--bg-card) 100%);
+}
+
+/* ==================== 列表 ==================== */
+.list-block {
+  margin: 8px 0 14px;
+  padding-left: 24px;
+  color: var(--text-secondary);
+}
+.list-block li {
+  margin: 4px 0;
+  line-height: 1.7;
+}
+.list-block.list-ordered {
+  list-style: decimal;
+}
+.list-block:not(.list-ordered) {
+  list-style: none;
+  padding-left: 0;
+}
+.list-block:not(.list-ordered) li {
+  position: relative;
+  padding-left: 22px;
+}
+.list-block:not(.list-ordered) li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent, var(--italia-green));
+  font-weight: 700;
+}
+
+/* ==================== 代码块 ==================== */
+.code-block {
+  margin: 12px 0 16px;
+  padding: 16px 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre;
+}
+.inline-code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 2px 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  color: var(--accent, var(--italia-green));
+}
+
+/* ==================== 分隔线 ==================== */
+.divider {
+  height: 1px;
+  margin: 24px 0;
+  background: linear-gradient(90deg, transparent, var(--border-color) 20%, var(--border-color) 80%, transparent);
+  position: relative;
+}
+.divider::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-primary);
+  padding: 0 12px;
+  width: 24px;
+  height: 16px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--border-color);
+  background:
+    linear-gradient(to right,
+      var(--italia-green) 0%, var(--italia-green) 33.33%,
+      var(--italia-white) 33.33%, var(--italia-white) 66.66%,
+      var(--italia-red) 66.66%, var(--italia-red) 100%);
+}
+}
+
+/* ==================== 底部导航 ==================== */
+.bottom-nav {
+  max-width: 1600px;
+  margin: 60px auto 0;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid var(--border-color);
+}
+.bn-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+.bn-home:hover {
+  background: var(--bg-elevated);
+  border-color: var(--accent, var(--italia-green));
+  color: var(--accent, var(--italia-green));
+}
+.bn-icon { font-size: 18px; }
+.bn-others {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.bn-other {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.bn-other::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--btn-accent, var(--italia-green));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s;
+}
+.bn-other:hover {
+  background: var(--bg-elevated);
+  border-color: var(--btn-accent, var(--italia-green));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.bn-other:hover::before { transform: scaleY(1); }
+.bno-icon { font-size: 24px; }
+.bno-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 15px;
+}
+.bno-arrow {
+  color: var(--btn-accent, var(--italia-green));
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+.bn-other:hover .bno-arrow { transform: translateX(4px); }
+
+/* ==================== 返回顶部 ==================== */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--accent, var(--italia-green));
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s;
+  z-index: 90;
+  box-shadow: var(--shadow-md);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.back-to-top:hover {
+  background: var(--accent, var(--italia-green));
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px var(--glow, rgba(0,146,70,0.4));
+}
+
+/* ==================== 音频播放提示 ==================== */
+.audio-player-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent, var(--italia-green));
+  border-radius: 999px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+  z-index: 100;
+  box-shadow: 0 8px 32px var(--glow, rgba(0,146,70,0.4));
+  transition: all 0.3s;
+}
+.audio-player-toast[hidden] {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(20px);
+}
+.toast-icon {
+  font-size: 16px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ==================== 响应式 ==================== */
+@media (max-width: 1024px) {
+  .main-container {
+    padding: 12px 14px 40px;
+  }
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+  .toc-sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: none;
+    background: var(--bg-primary);
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px;
+    z-index: 95;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    overflow-y: auto;
+  }
+  .toc-sidebar.open { transform: translateX(0); }
+  .topbar-toc-toggle { display: inline-flex; }
+  .topbar-version-switch { display: none; }
+  .main-grid > *:not(.toc-sidebar) {
+    grid-column: 1;
+  }
+}
+@media (max-width: 720px) {
+  .main-container { padding: 10px 12px 32px; }
+  .topbar-inner { padding: 8px 14px; gap: 8px; }
+  .tb-title { display: none; }
+  .hero { padding: 20px 16px; margin-bottom: 14px; }
+  .hero-content { flex-direction: column; gap: 8px; }
+  .hero-icon { font-size: 36px; }
+  .hero-title { font-size: 20px; }
+  .hero-version-tag { font-size: 14px; padding: 2px 6px; }
+  .stats-bar { flex-wrap: wrap; padding: 10px; margin-bottom: 16px; }
+  .stat-item { min-width: 33.33%; border-right: none; }
+  .section-title { font-size: 18px; gap: 8px; margin: 22px 0 10px; padding-bottom: 8px; }
+  .section-number { width: 28px; height: 28px; font-size: 12px; }
+  .subsection-title { font-size: 16px; margin: 16px 0 8px; }
+  .subsubsection-title { font-size: 15px; margin: 12px 0 8px; }
+  .h4-title { font-size: 14px; margin: 10px 0 6px; }
+  .paragraph { margin: 6px 0; }
+  .table-wrap { margin: 8px 0 12px; }
+  .quote-block { margin: 8px 0 12px; padding: 12px 14px; }
+  .list-block { margin: 6px 0 10px; }
+  .list-block li { margin: 3px 0; }
+  .code-block { margin: 8px 0 12px; padding: 12px 14px; font-size: 12px; }
+  .divider { margin: 16px 0; }
+  .data-table { font-size: 13px; }
+  .data-table th, .data-table td { padding: 7px 8px; }
+  .bottom-nav { padding: 16px 14px; gap: 10px; margin-top: 32px; }
+  .bn-others { grid-template-columns: 1fr; gap: 8px; }
+}
+</style>
+<style>
+:root {
+  --accent: #10b981;
+  --accent-soft: rgba(16, 185, 129, 0.15);
+  --glow: rgba(16, 185, 129, 0.35);
+}
+body[data-version="basic"] .hero-icon {
+  filter: drop-shadow(0 4px 24px rgba(16, 185, 129, 0.35));
+}
+body[data-version="basic"] .hero-version-tag {
+  background: #10b981;
+  box-shadow: 0 0 32px rgba(16, 185, 129, 0.35);
+}
+/* 让特色色在元素上生效 */
+body[data-version="basic"] .section-title::after { background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.35); }
+body[data-version="basic"] .subsection-title::before { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.35); }
+body[data-version="basic"] .stats-bar { border-left-color: #10b981; }
+body[data-version="basic"] .stat-num { color: #10b981; }
+body[data-version="basic"] .quote-block.quote-italian {
+  border-left-color: #10b981;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.15) 0%, var(--bg-card) 100%);
+}
+body[data-version="basic"] .play-btn { color: #10b981; }
+body[data-version="basic"] .play-btn:hover {
+  background: #10b981;
+  color: #ffffff;
+}
+body[data-version="basic"] .play-btn.playing {
+  background: #10b981;
+  color: #ffffff;
+}
+body[data-version="basic"] .it-text:hover { background: rgba(16, 185, 129, 0.15); }
+body[data-version="basic"] .it-text.playing {
+  background: rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 0 1px #10b981;
+}
+body[data-version="basic"] .toc-item:hover {
+  border-left-color: #10b981;
+}
+body[data-version="basic"] .toc-item.active {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  border-left-color: #10b981;
+}
+body[data-version="basic"] .section-number {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border-color: #10b981;
+}
+body[data-version="basic"] .list-block:not(.list-ordered) li::before {
+  color: #10b981;
+}
+body[data-version="basic"] .back-to-top {
+  color: #10b981;
+  border-color: #10b981;
+}
+body[data-version="basic"] .back-to-top:hover {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+}
+body[data-version="basic"] .audio-player-toast {
+  border-color: #10b981;
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.35);
+}
+body[data-version="basic"] .inline-code { color: #10b981; }
+body[data-version="basic"] .version-switch-btn.active {
+  color: #10b981;
+  box-shadow: 0 0 0 1px #10b981, 0 0 16px rgba(16, 185, 129, 0.35);
+}
+body[data-version="basic"] .hl-dot {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.35);
+}
+body[data-version="basic"] .hero-version, body[data-version="basic"] .hero-level, body[data-version="basic"] .hero-time {
+  /* keep default */
+}
+body[data-version="basic"] .hero-version {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border-color: #10b981;
+}
+</style>
+</head>
+<body data-version="basic" data-accent="#10b981">
+
+    <header class="topbar" style="--accent: #10b981;">
+      <div class="topbar-inner">
+        <a href="index.html" class="topbar-home" aria-label="返回导航页">
+          <span class="it-flag it-flag-lg"></span>
+          <span class="tb-title">设计留学 · 意语词汇</span>
+        </a>
+        <nav class="topbar-version-switch"><a href="basic.html" class="version-switch-btn active" style="--btn-accent: #10b981; --btn-glow: rgba(16, 185, 129, 0.35)"><span class="vsw-icon">🌱</span><span class="vsw-name">基础版</span></a><a href="enhanced.html" class="version-switch-btn " style="--btn-accent: #f59e0b; --btn-glow: rgba(245, 158, 11, 0.35)"><span class="vsw-icon">🚀</span><span class="vsw-name">加强版</span></a><a href="flagship.html" class="version-switch-btn " style="--btn-accent: #a855f7; --btn-glow: rgba(168, 85, 247, 0.35)"><span class="vsw-icon">👑</span><span class="vsw-name">旗舰版</span></a></nav>
+        <button class="topbar-toc-toggle" id="tocToggle" aria-label="切换目录">
+          <span class="toc-icon">☰</span>
+          <span class="toc-label">目录</span>
+        </button>
+      </div>
+    </header>
+    
+<main class="page-main">
+  <div class="main-container">
+    
+    <section class="hero" style="--accent: #10b981; --accent-soft: rgba(16, 185, 129, 0.15); --glow: rgba(16, 185, 129, 0.35);">
+      <div class="hero-bg-flag"></div>
+      <div class="hero-content">
+        <div class="hero-icon">🌱</div>
+        <div class="hero-text">
+          <div class="hero-eyebrow">
+            <span class="hero-version">VOCABOLARIO · Fondamenti</span>
+            <span class="hero-level">水平 A1-A2</span>
+            <span class="hero-time">学习周期 30 天</span>
+          </div>
+          <h1 class="hero-title">设计留学作品集 · 意语词汇 <span class="hero-version-tag">基础版</span></h1>
+          <p class="hero-tagline">从零开始，能开口介绍作品集</p>
+          <p class="hero-desc">面向 A1-A2 水平同学。掌握作品集介绍必备词汇、设计流程三件套、面试高频句型，30 天张嘴就能说。</p>
+          <div class="hero-highlights">
+            <span class="hl-chip"><span class="hl-dot"></span>基础词汇 50+</span><span class="hl-chip"><span class="hl-dot"></span>万能句型 10+</span><span class="hl-chip"><span class="hl-dot"></span>30 天学习路径</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <div class="stats-bar" style="--accent: #10b981;">
+      <div class="stat-item">
+        <span class="stat-num">96</span>
+        <span class="stat-label">意语片段</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">点击</span>
+        <span class="stat-label">🔊 即可播放</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">A-Z</span>
+        <span class="stat-label">支持搜索</span>
+      </div>
+    </div>
+    
+    <div class="main-grid">
+      <nav class="toc-sidebar" id="tocSidebar"><div class="toc-title">目录</div><a href="#sec-2" class="toc-item toc-level-1">一、作品集基础词汇（必背）🎯</a><a href="#sec-3" class="toc-item toc-level-1">二、设计流程三件套（从构思到成品）📋</a><a href="#sec-4" class="toc-item toc-level-2">🔹 Step 1: 灵感与调研 Ricerca e ispirazione</a><a href="#sec-5" class="toc-item toc-level-2">🔹 Step 2: 创作过程 Il processo creativo</a><a href="#sec-6" class="toc-item toc-level-2">🔹 Step 3: 最终成果 Il risultato finale</a><a href="#sec-7" class="toc-item toc-level-1">三、描述风格与美学 🎨</a><a href="#sec-8" class="toc-item toc-level-1">四、材质与颜色 🌈</a><a href="#sec-9" class="toc-item toc-level-2">常用材质 Materiali</a><a href="#sec-10" class="toc-item toc-level-2">颜色词汇 Colori</a><a href="#sec-11" class="toc-item toc-level-1">五、面试/介绍作品集·高频句型 🎤</a><a href="#sec-12" class="toc-item toc-level-2">开场白</a><a href="#sec-13" class="toc-item toc-level-2">讲解项目</a><a href="#sec-14" class="toc-item toc-level-2">结尾收束</a><a href="#sec-15" class="toc-item toc-level-1">六、专属学习方案 📚</a><a href="#sec-16" class="toc-item toc-level-2">🎯 先从「一句话介绍一个项目」开始</a><a href="#sec-17" class="toc-item toc-level-2">🎯 搞一个双语作品集标注</a><a href="#sec-18" class="toc-item toc-level-2">🎯 重点关注</a><a href="#sec-19" class="toc-item toc-level-2">🎯 30天学习路径</a></nav><blockquote class="quote-block"><strong>适用对象</strong>：准备去意大利留学设计、需要用意语介绍作品集的你<strong>目标</strong>：能开口介绍每个项目！</blockquote>
+<div class="divider"></div>
+<h1 id="sec-2" class="section-title"><span class="section-number">01</span><span class="section-title-text">一、作品集基础词汇（必背）🎯</span></h1>
+<p class="paragraph">这部分<strong>刻进DNA里</strong>，面试/自我介绍张嘴就来：</p>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th><th>说明</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_9fcfbe6c"><strong>il portfolio</strong><button class="play-btn play-btn-block" data-audio="basic_9fcfbe6c" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>作品集</td><td>意语里读作 /porˈtfɔːljo/</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_b6dcbd5a"><strong>il progetto</strong><button class="play-btn play-btn-block" data-audio="basic_b6dcbd5a" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>项目/设计</td><td>作品集里每个项目都叫这个</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_08ec8071"><strong>la presentazione</strong><button class="play-btn play-btn-block" data-audio="basic_08ec8071" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>介绍/陈述</td><td><span class="it-text" data-audio="basic_83e7795e"><span class="it-word">La presentazione del mio portfolio</span><button class="play-btn" data-audio="basic_83e7795e" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_dd555ee0"><strong>il concept</strong><button class="play-btn play-btn-block" data-audio="basic_dd555ee0" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>概念</td><td>读作 /ˈkɔntʃɛpt/</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_7bd1019e"><strong>il bozzetto</strong><button class="play-btn play-btn-block" data-audio="basic_7bd1019e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>草图/初稿</td><td>展示设计过程绝佳词汇</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_52ecae60"><strong>il disegno</strong><button class="play-btn play-btn-block" data-audio="basic_52ecae60" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>绘图/设计图</td><td><span class="it-text" data-audio="basic_11409db3"><span class="it-word">Disegno industriale</span><button class="play-btn" data-audio="basic_11409db3" aria-label="播放" title="点击播放">🔊</button></span> = 工业设计</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_d3be8266"><strong>la mostra</strong><button class="play-btn play-btn-block" data-audio="basic_d3be8266" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>展览</td><td><span class="it-text" data-audio="basic_5d522ce0"><span class="it-word">Ho fatto una mostra...</span><button class="play-btn" data-audio="basic_5d522ce0" aria-label="播放" title="点击播放">🔊</button></span> 我办过展</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_861bf829"><strong>il tema</strong><button class="play-btn play-btn-block" data-audio="basic_861bf829" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>主题</td><td>每个项目的核心主题</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_5b728a58"><strong>l&#x27;ispirazione</strong><button class="play-btn play-btn-block" data-audio="basic_5b728a58" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>灵感</td><td>面试高频词！</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_9bfccd86"><strong>lo schizzo</strong><button class="play-btn play-btn-block" data-audio="basic_9bfccd86" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>速写/草稿</td><td>比 bozzetto 更随意的手稿</td></tr></tbody></table></div>
+<div class="divider"></div>
+<h1 id="sec-3" class="section-title"><span class="section-number">02</span><span class="section-title-text">二、设计流程三件套（从构思到成品）📋</span></h1>
+<p class="paragraph">介绍作品集项目时，<strong>按照流程讲</strong>最清晰！</p>
+<h2 id="sec-4" class="subsection-title">🔹 Step 1: 灵感与调研 <span class="it-text" data-audio="basic_58780d60"><span class="it-word">Ricerca e ispirazione</span><button class="play-btn" data-audio="basic_58780d60" aria-label="播放" title="点击播放">🔊</button></span></h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>词汇</th><th>中文</th><th>例句</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_cbd5aad1"><strong>la ricerca</strong><button class="play-btn play-btn-block" data-audio="basic_cbd5aad1" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>调研</td><td class="it-cell"><span class="it-text" data-audio="basic_72e7fb28"><span class="it-word">Ho fatto una ricerca su...</span><button class="play-btn" data-audio="basic_72e7fb28" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_5b728a58"><strong>l&#x27;ispirazione</strong><button class="play-btn play-btn-block" data-audio="basic_5b728a58" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>灵感</td><td class="it-cell"><span class="it-text" data-audio="basic_be5a12f8"><span class="it-word">Ho trovato ispirazione nella natura</span><button class="play-btn" data-audio="basic_be5a12f8" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_3d415e1b"><strong>la reference</strong><button class="play-btn play-btn-block" data-audio="basic_3d415e1b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>参考</td><td class="it-cell"><span class="it-text" data-audio="basic_27ef261b"><span class="it-word">Ho usato come reference...</span><button class="play-btn" data-audio="basic_27ef261b" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_03c2e14c"><strong>il moodboard</strong><button class="play-btn play-btn-block" data-audio="basic_03c2e14c" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>情绪板</td><td class="it-cell"><span class="it-text" data-audio="basic_2aa78692"><span class="it-word">Ho creato un moodboard per definire lo stile</span><button class="play-btn" data-audio="basic_2aa78692" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_2535ce09"><strong>l&#x27;osservazione</strong><button class="play-btn play-btn-block" data-audio="basic_2535ce09" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>观察</td><td class="it-cell"><span class="it-text" data-audio="basic_a9120fbb"><span class="it-word">L&#x27;osservazione della vita quotidiana</span><button class="play-btn" data-audio="basic_a9120fbb" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_4c6705ca"><strong>la cultura</strong><button class="play-btn play-btn-block" data-audio="basic_4c6705ca" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>文化</td><td class="it-cell"><span class="it-text" data-audio="basic_998f6265"><span class="it-word">La cultura cinese ha influenzato il mio progetto</span><button class="play-btn" data-audio="basic_998f6265" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
+<p class="paragraph"><strong>💬 万能句：</strong></p>
+<blockquote class="quote-block quote-italian"><span class="it-text" data-audio="basic_611d0211"><span class="it-word">La mia ispirazione viene dalla cultura tradizionale cinese / dalla natura / dall&#x27;architettura contemporanea.</span><button class="play-btn" data-audio="basic_611d0211" aria-label="播放" title="点击播放">🔊</button></span>（我的灵感来自中国传统文化/大自然/当代建筑。）</blockquote>
+<h2 id="sec-5" class="subsection-title">🔹 Step 2: 创作过程 <span class="it-text" data-audio="basic_8ddb5351"><span class="it-word">Il processo creativo</span><button class="play-btn" data-audio="basic_8ddb5351" aria-label="播放" title="点击播放">🔊</button></span></h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>词汇</th><th>中文</th><th>例句</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_c3791d14"><strong>lo schizzo / il bozzetto</strong><button class="play-btn play-btn-block" data-audio="basic_c3791d14" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>草图</td><td class="it-cell"><span class="it-text" data-audio="basic_930056f7"><span class="it-word">Questi sono i primi schizzi</span><button class="play-btn" data-audio="basic_930056f7" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_e1147589"><strong>la sperimentazione</strong><button class="play-btn play-btn-block" data-audio="basic_e1147589" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>实验/尝试</td><td class="it-cell"><span class="it-text" data-audio="basic_906fa76f"><span class="it-word">Ho fatto molte sperimentazioni con i materiali</span><button class="play-btn" data-audio="basic_906fa76f" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_70eb2b00"><strong>la modellazione</strong><button class="play-btn play-btn-block" data-audio="basic_70eb2b00" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>建模</td><td class="it-cell"><span class="it-text" data-audio="basic_6a83a165"><span class="it-word">Modellazione 3D con...</span><button class="play-btn" data-audio="basic_6a83a165" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_3b740d30"><strong>il prototipo</strong><button class="play-btn play-btn-block" data-audio="basic_3b740d30" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>原型</td><td class="it-cell"><span class="it-text" data-audio="basic_d4e75ba9"><span class="it-word">Ho creato un prototipo</span><button class="play-btn" data-audio="basic_d4e75ba9" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_9c89dabb"><strong>la revisione</strong><button class="play-btn play-btn-block" data-audio="basic_9c89dabb" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>修改</td><td class="it-cell"><em>Dopo varie revisioni...</em></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_da6370a0"><strong>lo sviluppo</strong><button class="play-btn play-btn-block" data-audio="basic_da6370a0" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>发展/演变</td><td class="it-cell"><span class="it-text" data-audio="basic_1cd6650e"><span class="it-word">Lo sviluppo del concept</span><button class="play-btn" data-audio="basic_1cd6650e" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_8fe878ee"><strong>il rendering</strong><button class="play-btn play-btn-block" data-audio="basic_8fe878ee" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>渲染图</td><td class="it-cell">发音 /renˈderinɡ/</td></tr></tbody></table></div>
+<p class="paragraph"><strong>💬 万能句：</strong></p>
+<blockquote class="quote-block"><span class="it-text" data-audio="basic_b7ced43b"><span class="it-word">Questo è il mio processo creativo: prima gli schizzi, poi lo sviluppo del concept, e infine il prodotto finale.</span><button class="play-btn" data-audio="basic_b7ced43b" aria-label="播放" title="点击播放">🔊</button></span>（这是我的创作过程：先画草图，然后发展概念，最后完成成品。）</blockquote>
+<h2 id="sec-6" class="subsection-title">🔹 Step 3: 最终成果 <span class="it-text" data-audio="basic_5a9bb10a"><span class="it-word">Il risultato finale</span><button class="play-btn" data-audio="basic_5a9bb10a" aria-label="播放" title="点击播放">🔊</button></span></h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>词汇</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_b36ce165"><strong>il prodotto finale</strong><button class="play-btn play-btn-block" data-audio="basic_b36ce165" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>最终产品</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_128c88dc"><strong>la soluzione</strong><button class="play-btn play-btn-block" data-audio="basic_128c88dc" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>解决方案</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_b2f6d8a3"><strong>il design finale</strong><button class="play-btn play-btn-block" data-audio="basic_b2f6d8a3" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>最终设计</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_d61ab2e2"><strong>la collezione</strong><button class="play-btn play-btn-block" data-audio="basic_d61ab2e2" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>系列（时尚/产品设计）</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_14f76dce"><strong>l&#x27;opera</strong><button class="play-btn play-btn-block" data-audio="basic_14f76dce" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>作品（偏艺术类）</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_d1eb5351"><strong>l&#x27;installazione</strong><button class="play-btn play-btn-block" data-audio="basic_d1eb5351" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>装置（偏艺术方向）</td></tr></tbody></table></div>
+<div class="divider"></div>
+<h1 id="sec-7" class="section-title"><span class="section-number">03</span><span class="section-title-text">三、描述风格与美学 🎨</span></h1>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>意语</th><th>中文</th><th>反义词</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_de232d5e"><strong>minimale</strong><button class="play-btn play-btn-block" data-audio="basic_de232d5e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>极简的</td><td><span class="it-text" data-audio="basic_23b7074b"><span class="it-word">complesso</span><button class="play-btn" data-audio="basic_23b7074b" aria-label="播放" title="点击播放">🔊</button></span> 复杂的</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_42f225fb"><strong>moderno</strong><button class="play-btn play-btn-block" data-audio="basic_42f225fb" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>现代的</td><td><span class="it-text" data-audio="basic_9afe2cd8"><span class="it-word">classico</span><button class="play-btn" data-audio="basic_9afe2cd8" aria-label="播放" title="点击播放">🔊</button></span> 经典的</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_368f123a"><strong>contemporaneo</strong><button class="play-btn play-btn-block" data-audio="basic_368f123a" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>当代的</td><td><span class="it-text" data-audio="basic_4cc35c8f"><span class="it-word">tradizionale</span><button class="play-btn" data-audio="basic_4cc35c8f" aria-label="播放" title="点击播放">🔊</button></span> 传统的</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_57bf685e"><strong>sperimentale</strong><button class="play-btn play-btn-block" data-audio="basic_57bf685e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>实验性的</td><td><span class="it-text" data-audio="basic_6794bbdd"><span class="it-word">convenzionale</span><button class="play-btn" data-audio="basic_6794bbdd" aria-label="播放" title="点击播放">🔊</button></span> 常规的</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_2c97c8ba"><strong>funzionale</strong><button class="play-btn play-btn-block" data-audio="basic_2c97c8ba" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>功能性的</td><td><span class="it-text" data-audio="basic_05bf9f31"><span class="it-word">decorativo</span><button class="play-btn" data-audio="basic_05bf9f31" aria-label="播放" title="点击播放">🔊</button></span> 装饰性的</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_d6c3e454"><strong>sostenibile</strong><button class="play-btn play-btn-block" data-audio="basic_d6c3e454" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>可持续的</td><td>💚 意大利很看重这个！</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_8e9c4e99"><strong>innovativo</strong><button class="play-btn play-btn-block" data-audio="basic_8e9c4e99" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>创新的</td><td>​</td></tr><tr><td class="it-cell"><strong>elegante</strong></td><td>优雅的</td><td>​</td></tr><tr><td class="it-cell"><strong>pulito</strong></td><td>干净的/简洁的</td><td>形容线条、排版超好用</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_318ee4ec"><strong>armonioso</strong><button class="play-btn play-btn-block" data-audio="basic_318ee4ec" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>和谐的</td><td>​</td></tr><tr><td class="it-cell"><strong>audace</strong></td><td>大胆的</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_9db6d32a"><strong>organico</strong><button class="play-btn play-btn-block" data-audio="basic_9db6d32a" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>有机的</td><td>形容自然形态</td></tr></tbody></table></div>
+<p class="paragraph"><strong>💬 万能句：</strong></p>
+<blockquote class="quote-block"><span class="it-text" data-audio="basic_1575d3d0"><span class="it-word">Il mio stile è minimalista, pulito e funzionale.</span><button class="play-btn" data-audio="basic_1575d3d0" aria-label="播放" title="点击播放">🔊</button></span>（我的风格是极简、干净、功能性的。）</blockquote>
+<blockquote class="quote-block"><span class="it-text" data-audio="basic_ca8b13cd"><span class="it-word">Il progetto unisce la tradizione cinese con un linguaggio contemporaneo.</span><button class="play-btn" data-audio="basic_ca8b13cd" aria-label="播放" title="点击播放">🔊</button></span>（这个项目把中国传统和当代语言结合起来了。）</blockquote>
+<div class="divider"></div>
+<h1 id="sec-8" class="section-title"><span class="section-number">04</span><span class="section-title-text">四、材质与颜色 🌈</span></h1>
+<h2 id="sec-9" class="subsection-title">常用材质 <em>Materiali</em></h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>意语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_b579ae50"><strong>il legno</strong><button class="play-btn play-btn-block" data-audio="basic_b579ae50" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>木头</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_83d2f264"><strong>la ceramica</strong><button class="play-btn play-btn-block" data-audio="basic_83d2f264" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>陶瓷</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_5dc77002"><strong>il vetro</strong><button class="play-btn play-btn-block" data-audio="basic_5dc77002" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>玻璃</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_698a3261"><strong>il metallo</strong><button class="play-btn play-btn-block" data-audio="basic_698a3261" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>金属</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_d9177fa7"><strong>la plastica</strong><button class="play-btn play-btn-block" data-audio="basic_d9177fa7" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>塑料</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_f49e5ae4"><strong>il tessuto</strong><button class="play-btn play-btn-block" data-audio="basic_f49e5ae4" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>布料/织物</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_195ac55a"><strong>la carta riciclata</strong><button class="play-btn play-btn-block" data-audio="basic_195ac55a" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>再生纸</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_7e23b576"><strong>il materiale naturale</strong><button class="play-btn play-btn-block" data-audio="basic_7e23b576" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>天然材料</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_b165f69e"><strong>il materiale sostenibile</strong><button class="play-btn play-btn-block" data-audio="basic_b165f69e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>可持续材料</td></tr></tbody></table></div>
+<h2 id="sec-10" class="subsection-title">颜色词汇 <em>Colori</em></h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>意语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_aa5b994b"><strong>il colore</strong><button class="play-btn play-btn-block" data-audio="basic_aa5b994b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>颜色</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_5c5dcfed"><strong>la tavolozza</strong><button class="play-btn play-btn-block" data-audio="basic_5c5dcfed" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>调色板</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_47b1a307"><strong>il contrasto</strong><button class="play-btn play-btn-block" data-audio="basic_47b1a307" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>对比</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_5b02ad58"><strong>tono su tono</strong><button class="play-btn play-btn-block" data-audio="basic_5b02ad58" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>同色系搭配</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_a781fe2f"><strong>caldo / freddo</strong><button class="play-btn play-btn-block" data-audio="basic_a781fe2f" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>暖色/冷色</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="basic_3a383492"><strong>la tonalità</strong><button class="play-btn play-btn-block" data-audio="basic_3a383492" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>色调</td></tr></tbody></table></div>
+<p class="paragraph"><strong>💬 万能句：</strong></p>
+<blockquote class="quote-block"><span class="it-text" data-audio="basic_d06d6eb9"><span class="it-word">Ho scelto materiali sostenibili perché per me il design deve essere eco-friendly.</span><button class="play-btn" data-audio="basic_d06d6eb9" aria-label="播放" title="点击播放">🔊</button></span>（我选择了可持续材料，因为对我来说设计应该环保。）</blockquote>
+<div class="divider"></div>
+<h1 id="sec-11" class="section-title"><span class="section-number">05</span><span class="section-title-text">五、面试/介绍作品集·高频句型 🎤</span></h1>
+<h2 id="sec-12" class="subsection-title">开场白</h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text" data-audio="basic_f11c81a6"><span class="it-word">Oggi vi presento il mio portfolio.</span><button class="play-btn" data-audio="basic_f11c81a6" aria-label="播放" title="点击播放">🔊</button></span></td><td>今天我向大家介绍我的作品集。</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_5a8c46f7"><span class="it-word">Il mio portfolio contiene X progetti principali.</span><button class="play-btn" data-audio="basic_5a8c46f7" aria-label="播放" title="点击播放">🔊</button></span></td><td>我的作品集包含X个主要项目。</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_19bfa00c"><span class="it-word">Il progetto che voglio mostrarvi si intitola...</span><button class="play-btn" data-audio="basic_19bfa00c" aria-label="播放" title="点击播放">🔊</button></span></td><td>我想给各位展示的项目叫……</td></tr></tbody></table></div>
+<h2 id="sec-13" class="subsection-title">讲解项目</h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text" data-audio="basic_a4a9a588"><span class="it-word">Questo progetto è nato da...</span><button class="play-btn" data-audio="basic_a4a9a588" aria-label="播放" title="点击播放">🔊</button></span></td><td>这个项目源于……</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_fe6c6275"><span class="it-word">L&#x27;obiettivo del progetto era...</span><button class="play-btn" data-audio="basic_fe6c6275" aria-label="播放" title="点击播放">🔊</button></span></td><td>这个项目的目标是……</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_18fda178"><span class="it-word">Il problema che ho voluto risolvere è...</span><button class="play-btn" data-audio="basic_18fda178" aria-label="播放" title="点击播放">🔊</button></span></td><td>我想要解决的问题是……</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_019f702a"><span class="it-word">Ho lavorato su questo progetto per...</span><button class="play-btn" data-audio="basic_019f702a" aria-label="播放" title="点击播放">🔊</button></span></td><td>我做这个项目花了……（时间）</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_829f7e95"><span class="it-word">La parte più importante per me è...</span><button class="play-btn" data-audio="basic_829f7e95" aria-label="播放" title="点击播放">🔊</button></span></td><td>对我来说最重要的部分是……</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_d6e70e32"><span class="it-word">Qui potete vedere il processo...</span><button class="play-btn" data-audio="basic_d6e70e32" aria-label="播放" title="点击播放">🔊</button></span></td><td>这里可以看到过程……</td></tr></tbody></table></div>
+<h2 id="sec-14" class="subsection-title">结尾收束</h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text" data-audio="basic_37adf798"><span class="it-word">Questo è tutto, grazie per l&#x27;attenzione.</span><button class="play-btn" data-audio="basic_37adf798" aria-label="播放" title="点击播放">🔊</button></span></td><td>就这些，谢谢大家关注。</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_835f13e2"><span class="it-word">Sono aperto/a a qualsiasi domanda.</span><button class="play-btn" data-audio="basic_835f13e2" aria-label="播放" title="点击播放">🔊</button></span></td><td>我随时准备回答问题。</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="basic_d9fbde42"><span class="it-word">Spero di continuare a sviluppare questo progetto in Italia.</span><button class="play-btn" data-audio="basic_d9fbde42" aria-label="播放" title="点击播放">🔊</button></span></td><td>我希望能去意大利继续发展这个项目。</td></tr></tbody></table></div>
+<div class="divider"></div>
+<h1 id="sec-15" class="section-title"><span class="section-number">06</span><span class="section-title-text">六、专属学习方案 📚</span></h1>
+<h2 id="sec-16" class="subsection-title">🎯 先从「一句话介绍一个项目」开始</h2>
+<p class="paragraph">不用急着背长段落，先能用一句话说清楚：</p>
+<blockquote class="quote-block quote-italian"><span class="it-text" data-audio="basic_e2ba572f"><span class="it-word">Questo progetto si chiama X, parla di Y, è ispirato da Z.</span><button class="play-btn" data-audio="basic_e2ba572f" aria-label="播放" title="点击播放">🔊</button></span></blockquote>
+<h2 id="sec-17" class="subsection-title">🎯 搞一个双语作品集标注</h2>
+<p class="paragraph">拿你的作品集，每个项目写3-5句意大利语说明，每天练说一遍。录下来自己听。</p>
+<h2 id="sec-18" class="subsection-title">🎯 重点关注</h2>
+<ul class="list-block"><li><strong>动词变位别翻车</strong>：<span class="it-text" data-audio="basic_e4d259bb"><span class="it-word">ho fatto, ho creato, ho sviluppato</span><button class="play-btn" data-audio="basic_e4d259bb" aria-label="播放" title="点击播放">🔊</button></span>（近过去时）就够用80%场景</li><li><strong>数字+时间表达</strong>：<span class="it-text" data-audio="basic_8c05762c"><span class="it-word">per tre mesi, nel 2025</span><button class="play-btn" data-audio="basic_8c05762c" aria-label="播放" title="点击播放">🔊</button></span> 等</li><li><strong>连词</strong>：<span class="it-text" data-audio="basic_e1c0050a"><span class="it-word">perché, quindi, inoltre, prima...poi</span><button class="play-btn" data-audio="basic_e1c0050a" aria-label="播放" title="点击播放">🔊</button></span> 能把介绍串起来</li></ul>
+<h2 id="sec-19" class="subsection-title">🎯 30天学习路径</h2>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>阶段</th><th>内容</th><th>每天时间</th></tr></thead><tbody><tr><td><strong>第1周</strong></td><td>背熟基础词汇表（上面第一部分）</td><td>15分钟</td></tr><tr><td><strong>第2周</strong></td><td>用万能句型介绍1个项目</td><td>写+练 20分钟</td></tr><tr><td><strong>第3周</strong></td><td>介绍全部项目，串成完整presentation</td><td>口练 20分钟</td></tr><tr><td><strong>第4周</strong></td><td>模拟面试，让朋友/老师提问</td><td>30分钟</td></tr></tbody></table></div>
+<div class="divider"></div>
+<blockquote class="quote-block"><span class="it-text" data-audio="basic_4b031db4"><span class="it-word">Inizia con piccoli passi, ma inizia oggi.</span><button class="play-btn" data-audio="basic_4b031db4" aria-label="播放" title="点击播放">🔊</button></span>（从小步开始，但从今天开始。）</blockquote>
+<p class="paragraph"><strong>In bocca al lupo!</strong> 🐺🍀</p>
+    </div>
+  </div>
+</main>
+
+    <nav class="bottom-nav">
+      <a href="index.html" class="bn-home">
+        <span class="bn-icon">🏠</span>
+        <span class="bn-text">返回导航页</span>
+      </a>
+      <div class="bn-others">
+        <a href="enhanced.html" class="bn-other" style="--btn-accent: #f59e0b;"><span class="bno-icon">🚀</span><span class="bno-name">前往加强版</span><span class="bno-arrow">→</span></a><a href="flagship.html" class="bn-other" style="--btn-accent: #a855f7;"><span class="bno-icon">👑</span><span class="bno-name">前往旗舰版</span><span class="bno-arrow">→</span></a>
+      </div>
+    </nav>
+    
+<button class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <span>↑</span>
+</button>
+<div class="audio-player-toast" id="playerToast" hidden>
+  <span class="toast-icon">🔊</span>
+  <span class="toast-text">正在播放...</span>
+</div>
+<script>
+(function() {
+  "use strict";
+
+  // ============ 音频播放管理 ============
+  var audioCache = {};       // audio_id -> HTMLAudioElement
+  var currentAudio = null;   // 当前正在播放的 audio
+  var currentBtn = null;     // 当前正在播放的按钮
+
+  function getAudioPath(id) {
+    // audio/basic/basic_0001.mp3 等
+    var version = document.body.dataset.version;
+    return "audio/" + version + "/" + id + ".mp3";
+  }
+
+  function playAudio(id, btn) {
+    // 如果当前正在播放同一个，暂停
+    if (currentAudio && currentAudio.dataset.id === id) {
+      currentAudio.pause();
+      resetPlayingUI();
+      return;
+    }
+    // 停止之前的
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+    resetPlayingUI();
+
+    // 获取或创建 audio
+    var audio = audioCache[id];
+    if (!audio) {
+      audio = new Audio(getAudioPath(id));
+      audio.dataset.id = id;
+      audioCache[id] = audio;
+      audio.addEventListener("ended", function() {
+        resetPlayingUI();
+      });
+      audio.addEventListener("error", function() {
+        showToast("音频未生成：" + id, true);
+        resetPlayingUI();
+      });
+    }
+    // 重置时间
+    audio.currentTime = 0;
+    audio.play().then(function() {
+      currentAudio = audio;
+      currentBtn = btn;
+      // 标记所有同 id 的元素为 playing
+      document.querySelectorAll('[data-audio="' + id + '"]').forEach(function(el) {
+        el.classList.add("playing");
+      });
+      document.querySelectorAll('.play-btn[data-audio="' + id + '"]').forEach(function(b) {
+        b.classList.add("playing");
+      });
+      showToast("正在播放...");
+    }).catch(function(err) {
+      showToast("播放失败：" + (err.message || err), true);
+    });
+  }
+
+  function resetPlayingUI() {
+    document.querySelectorAll(".playing").forEach(function(el) {
+      el.classList.remove("playing");
+    });
+    currentAudio = null;
+    currentBtn = null;
+    hideToast();
+  }
+
+  // ============ Toast 提示 ============
+  var toastEl = document.getElementById("playerToast");
+  var toastTimer = null;
+  function showToast(msg, isError) {
+    if (!toastEl) return;
+    var textEl = toastEl.querySelector(".toast-text");
+    if (textEl) textEl.textContent = msg;
+    toastEl.hidden = false;
+    if (isError) {
+      toastEl.style.borderColor = "var(--danger)";
+    } else {
+      toastEl.style.borderColor = "";
+    }
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideToast, 3000);
+  }
+  function hideToast() {
+    if (toastEl) toastEl.hidden = true;
+  }
+
+  // ============ 绑定点击事件 ============
+  document.addEventListener("click", function(e) {
+    // 点击播放按钮
+    var btn = e.target.closest(".play-btn");
+    if (btn) {
+      e.preventDefault();
+      e.stopPropagation();
+      var id = btn.dataset.audio;
+      if (id) playAudio(id, btn);
+      return;
+    }
+    // 点击 it-text 整体也触发播放
+    var itText = e.target.closest(".it-text");
+    if (itText) {
+      var id2 = itText.dataset.audio;
+      if (id2) {
+        e.preventDefault();
+        var btn2 = itText.querySelector(".play-btn");
+        playAudio(id2, btn2 || itText);
+      }
+    }
+  });
+
+  // ============ 返回顶部 ============
+  var backToTop = document.getElementById("backToTop");
+  if (backToTop) {
+    window.addEventListener("scroll", function() {
+      if (window.scrollY > 400) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    });
+    backToTop.addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // ============ 目录侧边栏（移动端） ============
+  var tocToggle = document.getElementById("tocToggle");
+  var tocSidebar = document.getElementById("tocSidebar");
+  if (tocToggle && tocSidebar) {
+    tocToggle.addEventListener("click", function() {
+      tocSidebar.classList.toggle("open");
+    });
+    // 点击目录项后关闭（移动端）
+    tocSidebar.querySelectorAll("a").forEach(function(a) {
+      a.addEventListener("click", function() {
+        if (window.innerWidth <= 1024) {
+          tocSidebar.classList.remove("open");
+        }
+      });
+    });
+  }
+
+  // ============ TOC 当前章节高亮 ============
+  var tocItems = tocSidebar ? tocSidebar.querySelectorAll(".toc-item") : [];
+  if (tocItems.length) {
+    var sections = [];
+    tocItems.forEach(function(item) {
+      var href = item.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        var target = document.getElementById(href.slice(1));
+        if (target) sections.push({ el: target, link: item });
+      }
+    });
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          tocItems.forEach(function(i) { i.classList.remove("active"); });
+          var match = sections.find(function(s) { return s.el === entry.target; });
+          if (match) match.link.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-80px 0px -70% 0px", threshold: 0 });
+    sections.forEach(function(s) { observer.observe(s.el); });
+  }
+
+  // ============ 键盘快捷键 ============
+  document.addEventListener("keydown", function(e) {
+    // ESC 关闭目录
+    if (e.key === "Escape" && tocSidebar) {
+      tocSidebar.classList.remove("open");
+    }
+    // 空格暂停/继续当前音频
+    if (e.key === " " && e.target === document.body) {
+      e.preventDefault();
+      if (currentAudio) {
+        if (currentAudio.paused) {
+          currentAudio.play();
+        } else {
+          currentAudio.pause();
+          resetPlayingUI();
+        }
+      }
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
