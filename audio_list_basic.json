@@ -1,0 +1,389 @@
+{
+  "version": "basic",
+  "items": [
+    {
+      "id": "basic_9fcfbe6c",
+      "text": "il portfolio"
+    },
+    {
+      "id": "basic_b6dcbd5a",
+      "text": "il progetto"
+    },
+    {
+      "id": "basic_08ec8071",
+      "text": "la presentazione"
+    },
+    {
+      "id": "basic_83e7795e",
+      "text": "La presentazione del mio portfolio"
+    },
+    {
+      "id": "basic_dd555ee0",
+      "text": "il concept"
+    },
+    {
+      "id": "basic_7bd1019e",
+      "text": "il bozzetto"
+    },
+    {
+      "id": "basic_52ecae60",
+      "text": "il disegno"
+    },
+    {
+      "id": "basic_11409db3",
+      "text": "Disegno industriale"
+    },
+    {
+      "id": "basic_d3be8266",
+      "text": "la mostra"
+    },
+    {
+      "id": "basic_5d522ce0",
+      "text": "Ho fatto una mostra..."
+    },
+    {
+      "id": "basic_861bf829",
+      "text": "il tema"
+    },
+    {
+      "id": "basic_5b728a58",
+      "text": "l'ispirazione"
+    },
+    {
+      "id": "basic_9bfccd86",
+      "text": "lo schizzo"
+    },
+    {
+      "id": "basic_58780d60",
+      "text": "Ricerca e ispirazione"
+    },
+    {
+      "id": "basic_cbd5aad1",
+      "text": "la ricerca"
+    },
+    {
+      "id": "basic_72e7fb28",
+      "text": "Ho fatto una ricerca su..."
+    },
+    {
+      "id": "basic_be5a12f8",
+      "text": "Ho trovato ispirazione nella natura"
+    },
+    {
+      "id": "basic_3d415e1b",
+      "text": "la reference"
+    },
+    {
+      "id": "basic_27ef261b",
+      "text": "Ho usato come reference..."
+    },
+    {
+      "id": "basic_03c2e14c",
+      "text": "il moodboard"
+    },
+    {
+      "id": "basic_2aa78692",
+      "text": "Ho creato un moodboard per definire lo stile"
+    },
+    {
+      "id": "basic_2535ce09",
+      "text": "l'osservazione"
+    },
+    {
+      "id": "basic_a9120fbb",
+      "text": "L'osservazione della vita quotidiana"
+    },
+    {
+      "id": "basic_4c6705ca",
+      "text": "la cultura"
+    },
+    {
+      "id": "basic_998f6265",
+      "text": "La cultura cinese ha influenzato il mio progetto"
+    },
+    {
+      "id": "basic_611d0211",
+      "text": "La mia ispirazione viene dalla cultura tradizionale cinese / dalla natura / dall'architettura contemporanea."
+    },
+    {
+      "id": "basic_8ddb5351",
+      "text": "Il processo creativo"
+    },
+    {
+      "id": "basic_c3791d14",
+      "text": "lo schizzo / il bozzetto"
+    },
+    {
+      "id": "basic_930056f7",
+      "text": "Questi sono i primi schizzi"
+    },
+    {
+      "id": "basic_e1147589",
+      "text": "la sperimentazione"
+    },
+    {
+      "id": "basic_906fa76f",
+      "text": "Ho fatto molte sperimentazioni con i materiali"
+    },
+    {
+      "id": "basic_70eb2b00",
+      "text": "la modellazione"
+    },
+    {
+      "id": "basic_6a83a165",
+      "text": "Modellazione 3D con..."
+    },
+    {
+      "id": "basic_3b740d30",
+      "text": "il prototipo"
+    },
+    {
+      "id": "basic_d4e75ba9",
+      "text": "Ho creato un prototipo"
+    },
+    {
+      "id": "basic_9c89dabb",
+      "text": "la revisione"
+    },
+    {
+      "id": "basic_da6370a0",
+      "text": "lo sviluppo"
+    },
+    {
+      "id": "basic_1cd6650e",
+      "text": "Lo sviluppo del concept"
+    },
+    {
+      "id": "basic_8fe878ee",
+      "text": "il rendering"
+    },
+    {
+      "id": "basic_b7ced43b",
+      "text": "Questo è il mio processo creativo: prima gli schizzi, poi lo sviluppo del concept, e infine il prodotto finale."
+    },
+    {
+      "id": "basic_5a9bb10a",
+      "text": "Il risultato finale"
+    },
+    {
+      "id": "basic_b36ce165",
+      "text": "il prodotto finale"
+    },
+    {
+      "id": "basic_128c88dc",
+      "text": "la soluzione"
+    },
+    {
+      "id": "basic_b2f6d8a3",
+      "text": "il design finale"
+    },
+    {
+      "id": "basic_d61ab2e2",
+      "text": "la collezione"
+    },
+    {
+      "id": "basic_14f76dce",
+      "text": "l'opera"
+    },
+    {
+      "id": "basic_d1eb5351",
+      "text": "l'installazione"
+    },
+    {
+      "id": "basic_de232d5e",
+      "text": "minimale"
+    },
+    {
+      "id": "basic_23b7074b",
+      "text": "complesso"
+    },
+    {
+      "id": "basic_42f225fb",
+      "text": "moderno"
+    },
+    {
+      "id": "basic_9afe2cd8",
+      "text": "classico"
+    },
+    {
+      "id": "basic_368f123a",
+      "text": "contemporaneo"
+    },
+    {
+      "id": "basic_4cc35c8f",
+      "text": "tradizionale"
+    },
+    {
+      "id": "basic_57bf685e",
+      "text": "sperimentale"
+    },
+    {
+      "id": "basic_6794bbdd",
+      "text": "convenzionale"
+    },
+    {
+      "id": "basic_2c97c8ba",
+      "text": "funzionale"
+    },
+    {
+      "id": "basic_05bf9f31",
+      "text": "decorativo"
+    },
+    {
+      "id": "basic_d6c3e454",
+      "text": "sostenibile"
+    },
+    {
+      "id": "basic_8e9c4e99",
+      "text": "innovativo"
+    },
+    {
+      "id": "basic_318ee4ec",
+      "text": "armonioso"
+    },
+    {
+      "id": "basic_9db6d32a",
+      "text": "organico"
+    },
+    {
+      "id": "basic_1575d3d0",
+      "text": "Il mio stile è minimalista, pulito e funzionale."
+    },
+    {
+      "id": "basic_ca8b13cd",
+      "text": "Il progetto unisce la tradizione cinese con un linguaggio contemporaneo."
+    },
+    {
+      "id": "basic_b579ae50",
+      "text": "il legno"
+    },
+    {
+      "id": "basic_83d2f264",
+      "text": "la ceramica"
+    },
+    {
+      "id": "basic_5dc77002",
+      "text": "il vetro"
+    },
+    {
+      "id": "basic_698a3261",
+      "text": "il metallo"
+    },
+    {
+      "id": "basic_d9177fa7",
+      "text": "la plastica"
+    },
+    {
+      "id": "basic_f49e5ae4",
+      "text": "il tessuto"
+    },
+    {
+      "id": "basic_195ac55a",
+      "text": "la carta riciclata"
+    },
+    {
+      "id": "basic_7e23b576",
+      "text": "il materiale naturale"
+    },
+    {
+      "id": "basic_b165f69e",
+      "text": "il materiale sostenibile"
+    },
+    {
+      "id": "basic_aa5b994b",
+      "text": "il colore"
+    },
+    {
+      "id": "basic_5c5dcfed",
+      "text": "la tavolozza"
+    },
+    {
+      "id": "basic_47b1a307",
+      "text": "il contrasto"
+    },
+    {
+      "id": "basic_5b02ad58",
+      "text": "tono su tono"
+    },
+    {
+      "id": "basic_a781fe2f",
+      "text": "caldo / freddo"
+    },
+    {
+      "id": "basic_3a383492",
+      "text": "la tonalità"
+    },
+    {
+      "id": "basic_d06d6eb9",
+      "text": "Ho scelto materiali sostenibili perché per me il design deve essere eco-friendly."
+    },
+    {
+      "id": "basic_f11c81a6",
+      "text": "Oggi vi presento il mio portfolio."
+    },
+    {
+      "id": "basic_5a8c46f7",
+      "text": "Il mio portfolio contiene X progetti principali."
+    },
+    {
+      "id": "basic_19bfa00c",
+      "text": "Il progetto che voglio mostrarvi si intitola..."
+    },
+    {
+      "id": "basic_a4a9a588",
+      "text": "Questo progetto è nato da..."
+    },
+    {
+      "id": "basic_fe6c6275",
+      "text": "L'obiettivo del progetto era..."
+    },
+    {
+      "id": "basic_18fda178",
+      "text": "Il problema che ho voluto risolvere è..."
+    },
+    {
+      "id": "basic_019f702a",
+      "text": "Ho lavorato su questo progetto per..."
+    },
+    {
+      "id": "basic_829f7e95",
+      "text": "La parte più importante per me è..."
+    },
+    {
+      "id": "basic_d6e70e32",
+      "text": "Qui potete vedere il processo..."
+    },
+    {
+      "id": "basic_37adf798",
+      "text": "Questo è tutto, grazie per l'attenzione."
+    },
+    {
+      "id": "basic_835f13e2",
+      "text": "Sono aperto/a a qualsiasi domanda."
+    },
+    {
+      "id": "basic_d9fbde42",
+      "text": "Spero di continuare a sviluppare questo progetto in Italia."
+    },
+    {
+      "id": "basic_e2ba572f",
+      "text": "Questo progetto si chiama X, parla di Y, è ispirato da Z."
+    },
+    {
+      "id": "basic_e4d259bb",
+      "text": "ho fatto, ho creato, ho sviluppato"
+    },
+    {
+      "id": "basic_8c05762c",
+      "text": "per tre mesi, nel 2025"
+    },
+    {
+      "id": "basic_e1c0050a",
+      "text": "perché, quindi, inoltre, prima...poi"
+    },
+    {
+      "id": "basic_4b031db4",
+      "text": "Inizia con piccoli passi, ma inizia oggi."
+    }
+  ]
+}
