@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>设计留学作品集 · 意语词汇教程</title>
+<meta name="description" content="赴意大利留学生设计作品集意语词汇教程 - 基础版 / 加强版 / 旗舰版三阶段进阶">
+<style>
+:root {
+  /* 浅色主题 */
+  --bg-primary: #f5f6f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8f9fb;
+  --text-primary: #1a1d2e;
+  --text-secondary: #4a5170;
+  --text-muted: #7a82a0;
+  --border-color: #d8dce4;
+  --italia-green: #009246;
+  --italia-white: #f4f5f0;
+  --italia-red: #ce2b37;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Georgia", "Times New Roman", "Songti SC", serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* CSS 意大利国旗图标（Windows 不支持国旗 emoji） */
+.it-flag {
+  display: inline-flex;
+  width: 1.2em;
+  height: 0.9em;
+  border-radius: 2px;
+  overflow: hidden;
+  vertical-align: -0.1em;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+  background: var(--italia-white);
+}
+.it-flag::before,
+.it-flag::after {
+  content: "";
+  display: block;
+  height: 100%;
+}
+.it-flag::before { width: 33.333%; background: var(--italia-green); }
+.it-flag::after { width: 33.333%; background: var(--italia-red); margin-left: auto; }
+.it-flag-xl {
+  width: 3.5em;
+  height: 2.6em;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.18);
+}
+
+/* 背景 */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 0%, rgba(0, 146, 70, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(244, 245, 240, 0.30), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(206, 43, 55, 0.10), transparent 60%),
+    var(--bg-primary);
+}
+.bg-flag {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  z-index: 50;
+  background: linear-gradient(90deg,
+    var(--italia-green) 0%, var(--italia-green) 33.33%,
+    var(--italia-white) 33.33%, var(--italia-white) 66.66%,
+    var(--italia-red) 66.66%, var(--italia-red) 100%);
+  box-shadow: 0 0 24px rgba(0,0,0,0.3);
+}
+
+/* 头部 */
+.index-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 24px 60px;
+  text-align: center;
+}
+.ih-flag {
+  font-size: 80px;
+  line-height: 1;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.ih-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--italia-green) 0%, var(--italia-red) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: shimmer 6s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.ih-subtitle {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.ih-tagline {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+/* 介绍区 */
+.intro-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.intro-card {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  transition: all 0.25s;
+}
+.intro-card:hover {
+  border-color: var(--italia-green);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+.intro-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.intro-text h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.intro-text p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* 主卡片区 */
+.cards-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+.section-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.section-sub {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+.version-card {
+  position: relative;
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s;
+  color: var(--text-primary);
+}
+.version-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 48px var(--glow);
+}
+.vc-flag-stripe {
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--italia-green) 0%, var(--italia-green) 33.33%,
+    var(--italia-white) 33.33%, var(--italia-white) 66.66%,
+    var(--italia-red) 66.66%, var(--italia-red) 100%);
+}
+.vc-body {
+  padding: 28px 24px;
+}
+.vc-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.vc-icon {
+  font-size: 48px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 16px var(--glow));
+}
+.vc-meta {
+  flex: 1;
+}
+.vc-version {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.vc-version-it {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
+.vc-level {
+  padding: 5px 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.vc-tagline {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+.vc-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+.vc-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.vc-hl {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.vc-hl-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--glow);
+}
+.vc-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--accent);
+  color: #ffffff;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.version-card:hover .vc-cta {
+  background: var(--text-primary);
+}
+.vc-arrow {
+  transition: transform 0.2s;
+}
+.version-card:hover .vc-arrow {
+  transform: translateX(6px);
+}
+
+/* 学习路径 */
+.path-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+.path-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.path-step {
+  flex: 1;
+  min-width: 240px;
+  max-width: 320px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--accent);
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  transition: all 0.25s;
+}
+.path-step:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+.path-num {
+  position: absolute;
+  top: 14px; right: 16px;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.25;
+  letter-spacing: -0.05em;
+}
+.path-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.path-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.path-detail {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.path-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* 提示区 */
+.tips-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.tip {
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--italia-green);
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.tip strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* 底部 */
+.index-footer {
+  max-width: 800px;
+  margin: 60px auto 0;
+  padding: 40px 24px 60px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+.footer-quote {
+  margin-bottom: 20px;
+  font-family: var(--font-serif);
+}
+.footer-quote em {
+  display: block;
+  font-size: 20px;
+  color: var(--italia-green);
+  margin-bottom: 6px;
+  font-style: italic;
+}
+.quote-cn {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-style: normal;
+}
+.footer-info {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-sep { opacity: 0.5; }
+
+@media (max-width: 720px) {
+  .ih-flag { font-size: 56px; }
+  .ih-title { font-size: 28px; }
+  .ih-subtitle { font-size: 11px; }
+  .index-header { padding: 70px 16px 40px; }
+  .cards-section, .path-section, .tips-section, .intro-section { padding-left: 16px; padding-right: 16px; }
+  .section-heading { font-size: 22px; }
+  .vc-body { padding: 20px 16px; }
+  .vc-icon { font-size: 36px; }
+  .vc-version { font-size: 18px; }
+  .vc-tagline { font-size: 16px; }
+  .path-arrow { display: none; }
+}
+</style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bg-flag"></div>
+
+  <header class="index-header">
+    <div class="ih-flag"><span class="it-flag it-flag-xl"></span></div>
+    <h1 class="ih-title">设计留学作品集 · 意语词汇</h1>
+    <p class="ih-subtitle">VOCABOLARIO DEL PORTFOLIO PER STUDIARE DESIGN IN ITALIA</p>
+    <p class="ih-tagline">面向赴意大利留学生 · 三阶段进阶 · 意语点击即播</p>
+  </header>
+
+  <section class="intro-section">
+    <div class="intro-grid">
+      <div class="intro-card">
+        <div class="intro-icon">🎯</div>
+        <div class="intro-text">
+          <h3>三阶段进阶</h3>
+          <p>从基础开口到学术高阶，按 A1→C1 水平分层，找到最适合你的起点。</p>
+        </div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-icon">🔊</div>
+        <div class="intro-text">
+          <h3>意语点击即播</h3>
+          <p>所有意大利语片段均支持点击播放，跟读模仿，纠正发音，培养语感。</p>
+        </div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-icon">💼</div>
+        <div class="intro-text">
+          <h3>场景化内容</h3>
+          <p>覆盖面试、作品集介绍、设计评论、院校申请等真实场景，学完即可用。</p>
+        </div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-icon">📅</div>
+        <div class="intro-text">
+          <h3>30天学习路径</h3>
+          <p>每版配套 30 天冲刺计划，每天 15-30 分钟，系统化稳步提升。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="cards-section">
+    <h2 class="section-heading">选择你的起点</h2>
+    <p class="section-sub">建议按顺序学习，但也可根据自身水平跳级</p>
+    <div class="cards-grid">
+      
+    <a href="basic.html" class="version-card" data-version="basic"
+       style="--accent: #10b981; --accent-soft: rgba(16, 185, 129, 0.15); --glow: rgba(16, 185, 129, 0.35);">
+      <div class="vc-flag-stripe"></div>
+      <div class="vc-body">
+        <div class="vc-header">
+          <div class="vc-icon">🌱</div>
+          <div class="vc-meta">
+            <div class="vc-version">基础版</div>
+            <div class="vc-version-it">Fondamenti</div>
+          </div>
+          <div class="vc-level">A1-A2</div>
+        </div>
+        <h3 class="vc-tagline">从零开始，能开口介绍作品集</h3>
+        <p class="vc-desc">面向 A1-A2 水平同学。掌握作品集介绍必备词汇、设计流程三件套、面试高频句型，30 天张嘴就能说。</p>
+        <div class="vc-highlights">
+          <span class='vc-hl'><span class='vc-hl-dot'></span>基础词汇 50+</span><span class='vc-hl'><span class='vc-hl-dot'></span>万能句型 10+</span><span class='vc-hl'><span class='vc-hl-dot'></span>30 天学习路径</span>
+        </div>
+        <div class="vc-cta">
+          <span>进入学习</span>
+          <span class="vc-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    
+    <a href="enhanced.html" class="version-card" data-version="enhanced"
+       style="--accent: #f59e0b; --accent-soft: rgba(245, 158, 11, 0.15); --glow: rgba(245, 158, 11, 0.35);">
+      <div class="vc-flag-stripe"></div>
+      <div class="vc-body">
+        <div class="vc-header">
+          <div class="vc-icon">🚀</div>
+          <div class="vc-meta">
+            <div class="vc-version">加强版</div>
+            <div class="vc-version-it">Intermedio</div>
+          </div>
+          <div class="vc-level">A2-B1</div>
+        </div>
+        <h3 class="vc-tagline">分科词汇 + 深度句型 + 面试模拟</h3>
+        <p class="vc-desc">面向 A2-B1 水平同学。按 7 大设计方向分科词汇，含完整面试问答模版和 5 分钟作品集介绍实战。</p>
+        <div class="vc-highlights">
+          <span class='vc-hl'><span class='vc-hl-dot'></span>7 大设计方向</span><span class='vc-hl'><span class='vc-hl-dot'></span>面试 10 问 + 模版</span><span class='vc-hl'><span class='vc-hl-dot'></span>5 分钟完整介绍</span>
+        </div>
+        <div class="vc-cta">
+          <span>进入学习</span>
+          <span class="vc-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    
+    <a href="flagship.html" class="version-card" data-version="flagship"
+       style="--accent: #a855f7; --accent-soft: rgba(168, 85, 247, 0.15); --glow: rgba(168, 85, 247, 0.35);">
+      <div class="vc-flag-stripe"></div>
+      <div class="vc-body">
+        <div class="vc-header">
+          <div class="vc-icon">👑</div>
+          <div class="vc-meta">
+            <div class="vc-version">旗舰版</div>
+            <div class="vc-version-it">Avanzato</div>
+          </div>
+          <div class="vc-level">B1-C1</div>
+        </div>
+        <h3 class="vc-tagline">名校攻略 + 设计文化 + 学术高阶</h3>
+        <p class="vc-desc">面向 B1-C1 水平同学。米理/都理/IUAV 等名校风格解码，含设计大师谈资、学术批评词汇、高级语法。</p>
+        <div class="vc-highlights">
+          <span class='vc-hl'><span class='vc-hl-dot'></span>6 所名校攻略</span><span class='vc-hl'><span class='vc-hl-dot'></span>6 位设计大师</span><span class='vc-hl'><span class='vc-hl-dot'></span>学术批评高阶词汇</span>
+        </div>
+        <div class="vc-cta">
+          <span>进入学习</span>
+          <span class="vc-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    
+    </div>
+  </main>
+
+  <section class="path-section">
+    <h2 class="section-heading">推荐学习路径</h2>
+    <div class="path-flow">
+      <div class="path-step" style="--accent: #10b981;">
+        <div class="path-num">01</div>
+        <div class="path-body">
+          <div class="path-icon">🌱</div>
+          <div class="path-name">基础版</div>
+          <div class="path-detail">背熟核心词汇 + 万能句型 + 30 天养成开口习惯</div>
+        </div>
+      </div>
+      <div class="path-arrow">→</div>
+      <div class="path-step" style="--accent: #f59e0b;">
+        <div class="path-num">02</div>
+        <div class="path-body">
+          <div class="path-icon">🚀</div>
+          <div class="path-name">加强版</div>
+          <div class="path-detail">分科词汇 + 面试问答 + 5 分钟作品集完整介绍</div>
+        </div>
+      </div>
+      <div class="path-arrow">→</div>
+      <div class="path-step" style="--accent: #a855f7;">
+        <div class="path-num">03</div>
+        <div class="path-body">
+          <div class="path-icon">👑</div>
+          <div class="path-name">旗舰版</div>
+          <div class="path-detail">名校风格 + 设计大师 + 学术批评 + 高级语法</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tips-section">
+    <h2 class="section-heading">使用提示</h2>
+    <div class="tips-grid">
+      <div class="tip"><strong>🔊 播放：</strong>点击任意带喇叭图标的意大利语片段即可播放，再次点击暂停</div>
+      <div class="tip"><strong>⌨️ 快捷键：</strong>按空格键可暂停/继续当前播放，按 ESC 关闭目录</div>
+      <div class="tip"><strong>☰ 目录：</strong>左侧目录可快速跳转章节，移动端点击右上角按钮展开</div>
+      <div class="tip"><strong>📱 跨设备：</strong>页面响应式设计，手机/平板/电脑均可流畅使用</div>
+    </div>
+  </section>
+
+  <footer class="index-footer">
+    <div class="footer-quote">
+      <em>"Inizia con piccoli passi, ma inizia oggi."</em>
+      <span class="quote-cn">— 从小步开始，但从今天开始。</span>
+    </div>
+    <div class="footer-info">
+      <span><span class="it-flag"></span> In bocca al lupo! 🐺🍀</span>
+      <span class="footer-sep">·</span>
+      <span>设计留学作品集意语词汇教程</span>
+    </div>
+  </footer>
+</body>
+</html>
