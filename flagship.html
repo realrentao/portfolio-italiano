@@ -3,1417 +3,779 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>设计留学作品集 · 意语词汇（旗舰版）</title>
-<meta name="description" content="名校攻略 + 设计文化 + 学术高阶 - 赴意大利留学生设计作品集意语词汇教程">
+<title>旗舰版 | 设计留学作品集·意语词汇</title>
 <style>
-:root {
-  /* 浅色主题 */
-  --bg-primary: #f5f6f8;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #eef0f4;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f0f2f6;
-  --bg-elevated: #f8f9fb;
-  --text-primary: #1a1d2e;
-  --text-secondary: #4a5170;
-  --text-muted: #7a82a0;
-  --text-dim: #9aa0b8;
-  --border-color: #d8dce4;
-  --border-soft: #e6e9f0;
-
-  /* 意大利国旗色 */
-  --italia-green: #009246;
-  --italia-white: #f4f5f0;
-  --italia-red: #ce2b37;
-
-  /* 通用语义色 */
-  --ok: #059669;
-  --warn: #d97706;
-  --danger: #dc2626;
-  --info: #2563eb;
-
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-lg: 0 10px 32px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
-
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-serif: "Georgia", "Times New Roman", "Songti SC", serif;
-  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, Monaco, monospace;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-sans);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.65;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* ==================== CSS 意大利国旗图标 ==================== */
-/* Windows 不支持国旗 emoji 彩色显示，用 CSS 绘制 */
-.it-flag {
-  display: inline-flex;
-  width: 1.2em;
-  height: 0.9em;
-  border-radius: 2px;
-  overflow: hidden;
-  vertical-align: -0.1em;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
-  flex-shrink: 0;
-}
-.it-flag::before,
-.it-flag::after {
-  content: "";
-  display: block;
-  height: 100%;
-}
-.it-flag { background: var(--italia-white); }
-.it-flag::before { width: 33.333%; background: var(--italia-green); }
-.it-flag::after { width: 33.333%; background: var(--italia-red); margin-left: auto; }
-/* 大号国旗 */
-.it-flag-lg {
-  width: 2.2em;
-  height: 1.6em;
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.15);
-}
-.it-flag-xl {
-  width: 3.5em;
-  height: 2.6em;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.18);
-}
-
-a { color: inherit; text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--accent, var(--italia-green)); }
-
-/* ==================== 顶部导航 ==================== */
-.topbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.02) inset, 0 2px 12px rgba(0,0,0,0.05);
-}
-.topbar-inner {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 10px 24px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.topbar-home {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  flex-shrink: 0;
-}
-.tb-flag { font-size: 22px; }
-.tb-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--accent, var(--italia-green));
-}
-.topbar-version-switch {
-  display: flex;
-  gap: 4px;
-  margin-left: auto;
-  background: var(--bg-secondary);
-  padding: 4px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-soft);
-}
-.version-switch-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  color: var(--text-secondary);
-  transition: all 0.2s;
-  font-weight: 500;
-}
-.version-switch-btn:hover {
-  color: var(--btn-accent, var(--text-primary));
-  background: var(--bg-tertiary);
-}
-.version-switch-btn.active {
-  color: var(--btn-accent);
-  background: var(--bg-elevated);
-  box-shadow: 0 0 0 1px var(--btn-accent), 0 0 16px var(--btn-glow);
-}
-.vsw-icon { font-size: 14px; }
-
-.topbar-toc-toggle {
-  display: none;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  cursor: pointer;
-  align-items: center;
-  gap: 6px;
-}
-
-/* ==================== 页面布局 ==================== */
-.page-main {
-  padding-top: 70px;
-}
-.main-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 24px 24px 60px;
-}
-.main-grid {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-/* ==================== 侧边目录 ==================== */
-.toc-sidebar {
-  position: sticky;
-  top: 86px;
-  max-height: calc(100vh - 110px);
-  overflow-y: auto;
-  padding: 20px 16px 20px 0;
-  border-right: 1px solid var(--border-soft);
-  font-size: 13px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-color) transparent;
-}
-.toc-sidebar::-webkit-scrollbar { width: 6px; }
-.toc-sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
-.toc-title {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-.toc-item {
-  display: block;
-  padding: 5px 10px;
-  border-radius: var(--radius-sm);
-  color: var(--text-secondary);
-  border-left: 2px solid transparent;
-  margin-bottom: 2px;
-  line-height: 1.45;
-  transition: all 0.15s;
-}
-.toc-item:hover {
-  color: var(--text-primary);
-  background: var(--bg-secondary);
-  border-left-color: var(--accent, var(--italia-green));
-}
-.toc-item.toc-level-1 {
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-top: 10px;
-}
-.toc-item.toc-level-1:first-child { margin-top: 0; }
-.toc-item.toc-level-2 {
-  padding-left: 22px;
-  font-size: 12.5px;
-}
-.toc-item.toc-level-3 {
-  padding-left: 34px;
-  font-size: 12px;
-  color: var(--text-muted);
-}
-.toc-item.active {
-  color: var(--accent, var(--italia-green));
-  background: var(--accent-soft, rgba(0,146,70,0.1));
-  border-left-color: var(--accent, var(--italia-green));
-}
-
-/* ==================== 主内容区 ==================== */
-.main-grid > *:not(.toc-sidebar) {
-  grid-column: 2;
-  min-width: 0; /* allow content to shrink */
-}
-
-/* ==================== Hero ==================== */
-.hero {
-  position: relative;
-  padding: 28px 28px;
-  margin-bottom: 20px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-}
-.hero-bg-flag {
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  width: 6px;
-  background: linear-gradient(180deg,
-    var(--italia-green) 0%,
-    var(--italia-green) 33.33%,
-    var(--italia-white) 33.33%,
-    var(--italia-white) 66.66%,
-    var(--italia-red) 66.66%,
-    var(--italia-red) 100%);
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  top: -50%; right: -20%;
-  width: 60%; height: 200%;
-  background: radial-gradient(ellipse at center, var(--accent-soft) 0%, transparent 60%);
-  pointer-events: none;
-}
-.hero-content {
-  position: relative;
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
-.hero-icon {
-  font-size: 56px;
-  line-height: 1;
-  flex-shrink: 0;
-  filter: drop-shadow(0 4px 20px var(--glow));
-}
-.hero-text { flex: 1; min-width: 0; }
-.hero-eyebrow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-  font-size: 11px;
-}
-.hero-version, .hero-level, .hero-time {
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  border: 1px solid var(--accent);
-}
-.hero-level, .hero-time {
-  background: var(--bg-tertiary);
-  color: var(--text-secondary);
-  border-color: var(--border-color);
-  font-weight: 500;
-}
-.hero-title {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-.hero-version-tag {
-  display: inline-block;
-  padding: 2px 12px;
-  background: var(--accent);
-  color: #ffffff;
-  border-radius: var(--radius-sm);
-  font-size: 22px;
-  font-weight: 700;
-  margin-left: 6px;
-  vertical-align: middle;
-  box-shadow: 0 4px 16px var(--glow);
-}
-.hero-tagline {
-  font-size: 17px;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
-  font-style: italic;
-}
-.hero-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  max-width: 720px;
-}
-.hero-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.hl-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  font-size: 12.5px;
-  color: var(--text-secondary);
-}
-.hl-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--glow);
-}
-
-/* ==================== 统计条 ==================== */
-.stats-bar {
-  display: flex;
-  gap: 0;
-  padding: 12px 20px;
-  margin-bottom: 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  border-left: 3px solid var(--accent);
-}
-.stat-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4px 12px;
-  border-right: 1px solid var(--border-soft);
-}
-.stat-item:last-child { border-right: none; }
-.stat-num {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1.2;
-}
-.stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-/* ==================== 标题 ==================== */
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 26px;
-  font-weight: 700;
-  margin: 32px 0 14px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--border-color);
-  position: relative;
-  scroll-margin-top: 80px;
-}
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 80px; height: 2px;
-  background: var(--accent, var(--italia-green));
-  box-shadow: 0 0 12px var(--glow);
-}
-.section-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px; height: 42px;
-  border-radius: var(--radius-md);
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 16px;
-  font-weight: 700;
-  border: 1px solid var(--accent);
-  flex-shrink: 0;
-}
-.section-title-text { flex: 1; }
-
-.subsection-title {
-  font-size: 21px;
-  font-weight: 600;
-  margin: 24px 0 12px;
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  scroll-margin-top: 80px;
-}
-.subsection-title::before {
-  content: "";
-  display: inline-block;
-  width: 4px; height: 22px;
-  background: var(--accent, var(--italia-green));
-  border-radius: 2px;
-  box-shadow: 0 0 8px var(--glow);
-}
-
-.subsubsection-title {
-  font-size: 17px;
-  font-weight: 600;
-  margin: 16px 0 10px;
-  color: var(--text-primary);
-  padding-left: 12px;
-  border-left: 3px solid var(--border-color);
-  scroll-margin-top: 80px;
-}
-.h4-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 12px 0 8px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* ==================== 段落 ==================== */
-.paragraph {
-  margin: 8px 0;
-  color: var(--text-secondary);
-  line-height: 1.75;
-}
-
-/* ==================== 表格 ==================== */
-.table-wrap {
-  margin: 12px 0 16px;
-  overflow-x: auto;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  background: var(--bg-card);
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-color) transparent;
-}
-.table-wrap::-webkit-scrollbar { height: 6px; }
-.table-wrap::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-.data-table th {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  font-weight: 600;
-  text-align: left;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border-color);
-  white-space: nowrap;
-  position: sticky;
-  top: 0;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-}
-.data-table td {
-  padding: 11px 14px;
-  border-bottom: 1px solid var(--border-soft);
-  color: var(--text-secondary);
-  vertical-align: top;
-}
-.data-table tbody tr:last-child td { border-bottom: none; }
-.data-table tbody tr:hover {
-  background: var(--bg-card-hover);
-}
-.data-table td.it-cell {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* ==================== 意语可点击播放 ==================== */
-.it-text {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-  padding: 2px 6px;
-  margin: 0 -2px;
-  border-radius: var(--radius-sm);
-  transition: background 0.15s;
-  cursor: pointer;
-}
-.it-text:hover {
-  background: var(--accent-soft, rgba(0,146,70,0.1));
-}
-.it-text.it-text-block {
-  display: inline-block;
-  width: 100%;
-}
-.it-word {
-  color: var(--text-primary);
-  font-style: italic;
-  font-family: var(--font-serif);
-  font-weight: 500;
-}
-.it-cell .it-word {
-  font-style: normal;
-  font-family: var(--font-sans);
-}
-.play-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px; height: 22px;
-  border: none;
-  background: transparent;
-  color: var(--accent, var(--italia-green));
-  font-size: 13px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.2s;
-  opacity: 0.7;
-  padding: 0;
-  flex-shrink: 0;
-}
-.it-text:hover .play-btn { opacity: 1; }
-.play-btn:hover {
-  background: var(--accent, var(--italia-green));
-  color: #ffffff;
-  transform: scale(1.1);
-}
-.play-btn.playing {
-  background: var(--accent, var(--italia-green));
-  color: #ffffff;
-  opacity: 1;
-  animation: pulse 1.2s ease-in-out infinite;
-}
-.play-btn-block {
-  margin-left: 8px;
-  width: 26px; height: 26px;
-  font-size: 14px;
-}
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 var(--glow, rgba(0,146,70,0.5)); }
-  50% { box-shadow: 0 0 0 8px transparent; }
-}
-.it-text.playing {
-  background: var(--accent-soft, rgba(0,146,70,0.15));
-  box-shadow: 0 0 0 1px var(--accent, var(--italia-green));
-}
-
-/* ==================== 引用块 ==================== */
-.quote-block {
-  margin: 12px 0 16px;
-  padding: 14px 18px;
-  background: var(--bg-card);
-  border-left: 3px solid var(--text-muted);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  color: var(--text-secondary);
-  font-size: 14px;
-  line-height: 1.75;
-}
-.quote-block.quote-italian {
-  border-left-color: var(--accent, var(--italia-green));
-  background: linear-gradient(90deg, var(--accent-soft, rgba(0,146,70,0.08)) 0%, var(--bg-card) 100%);
-}
-
-/* ==================== 列表 ==================== */
-.list-block {
-  margin: 8px 0 14px;
-  padding-left: 24px;
-  color: var(--text-secondary);
-}
-.list-block li {
-  margin: 4px 0;
-  line-height: 1.7;
-}
-.list-block.list-ordered {
-  list-style: decimal;
-}
-.list-block:not(.list-ordered) {
-  list-style: none;
-  padding-left: 0;
-}
-.list-block:not(.list-ordered) li {
-  position: relative;
-  padding-left: 22px;
-}
-.list-block:not(.list-ordered) li::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--accent, var(--italia-green));
-  font-weight: 700;
-}
-
-/* ==================== 代码块 ==================== */
-.code-block {
-  margin: 12px 0 16px;
-  padding: 16px 18px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  white-space: pre;
-}
-.inline-code {
-  font-family: var(--font-mono);
-  font-size: 0.88em;
-  padding: 2px 6px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-soft);
-  border-radius: 4px;
-  color: var(--accent, var(--italia-green));
-}
-
-/* ==================== 分隔线 ==================== */
-.divider {
-  height: 1px;
-  margin: 24px 0;
-  background: linear-gradient(90deg, transparent, var(--border-color) 20%, var(--border-color) 80%, transparent);
-  position: relative;
-}
-.divider::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--bg-primary);
-  padding: 0 12px;
-  width: 24px;
-  height: 16px;
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px var(--border-color);
-  background:
-    linear-gradient(to right,
-      var(--italia-green) 0%, var(--italia-green) 33.33%,
-      var(--italia-white) 33.33%, var(--italia-white) 66.66%,
-      var(--italia-red) 66.66%, var(--italia-red) 100%);
-}
-}
-
-/* ==================== 底部导航 ==================== */
-.bottom-nav {
-  max-width: 1600px;
-  margin: 60px auto 0;
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  border-top: 1px solid var(--border-color);
-}
-.bn-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  font-weight: 600;
-  align-self: flex-start;
-  transition: all 0.2s;
-}
-.bn-home:hover {
-  background: var(--bg-elevated);
-  border-color: var(--accent, var(--italia-green));
-  color: var(--accent, var(--italia-green));
-}
-.bn-icon { font-size: 18px; }
-.bn-others {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
-}
-.bn-other {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-.bn-other::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  width: 3px;
-  background: var(--btn-accent, var(--italia-green));
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.25s;
-}
-.bn-other:hover {
-  background: var(--bg-elevated);
-  border-color: var(--btn-accent, var(--italia-green));
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-.bn-other:hover::before { transform: scaleY(1); }
-.bno-icon { font-size: 24px; }
-.bno-name {
-  flex: 1;
-  font-weight: 600;
-  font-size: 15px;
-}
-.bno-arrow {
-  color: var(--btn-accent, var(--italia-green));
-  font-size: 18px;
-  transition: transform 0.2s;
-}
-.bn-other:hover .bno-arrow { transform: translateX(4px); }
-
-/* ==================== 返回顶部 ==================== */
-.back-to-top {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-color);
-  color: var(--accent, var(--italia-green));
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.25s;
-  z-index: 90;
-  box-shadow: var(--shadow-md);
-}
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-.back-to-top:hover {
-  background: var(--accent, var(--italia-green));
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px var(--glow, rgba(0,146,70,0.4));
-}
-
-/* ==================== 音频播放提示 ==================== */
-.audio-player-toast {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--bg-elevated);
-  border: 1px solid var(--accent, var(--italia-green));
-  border-radius: 999px;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--text-primary);
-  z-index: 100;
-  box-shadow: 0 8px 32px var(--glow, rgba(0,146,70,0.4));
-  transition: all 0.3s;
-}
-.audio-player-toast[hidden] {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%) translateY(20px);
-}
-.toast-icon {
-  font-size: 16px;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* ==================== 响应式 ==================== */
-@media (max-width: 1024px) {
-  .main-container {
-    padding: 12px 14px 40px;
+  :root {
+    --bg: #f8f9fb; --surface: #fff; --surface2: #f1f3f6; --border: #e1e4e8;
+    --text: #1a1e23; --text-dim: #57606a; --text-faint: #8c959f;
+    --accent: #855f1c; --accent-dim: rgba(133,95,28,.08); --accent-l: #fef3e2;
+    --green: #1a7f37; --green-dim: rgba(26,127,55,.1); --green-l: #e8f5e9;
+    --blue: #0550ae; --blue-dim: rgba(5,80,174,.1); --blue-l: #e8f0fe;
+    --red: #cf222e; --red-dim: rgba(207,34,46,.1); --red-l: #ffeef0;
+    --purple: #6f42c1; --purple-dim: rgba(111,66,193,.1); --purple-l: #f3f0ff;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04); --shadow-md: 0 4px 12px rgba(0,0,0,.06);
+    --radius: 10px;
   }
-  .main-grid {
-    grid-template-columns: 1fr;
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+  .flag-it{display:inline-block;width:22px;height:14px;background:linear-gradient(90deg,#009246 33.33%,#fff 33.33%,#fff 66.66%,#ce2b37 66.66%);border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.1);vertical-align:middle;margin-right:6px}
+
+  .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:56px;gap:4px}
+  .nav .logo{font-weight:700;font-size:14px;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
+  .nav .sep{flex:1}
+  .nav a.nav-link{text-decoration:none;color:var(--text-dim);font-size:13px;padding:6px 14px;border-radius:8px;transition:all .2s;font-weight:500}
+  .nav a.nav-link:hover{color:var(--text);background:var(--surface2)}
+  .nav a.nav-link.active{background:var(--accent-l);color:var(--accent);font-weight:600}
+
+  .container{max-width:960px;margin:0 auto;padding:0 24px 80px}
+
+  .page-header{text-align:center;padding:64px 0 36px}
+  .page-header .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-l);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:5px 16px;border-radius:6px;margin-bottom:16px}
+  .page-header h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+  .page-header .meta{color:var(--text-dim);font-size:15px;line-height:1.7}
+
+  section{margin-bottom:44px}
+  section h2{font-size:20px;font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
+  section h3{font-size:17px;font-weight:600;margin:26px 0 12px;color:var(--accent);letter-spacing:-.1px}
+  section h4{font-size:15px;font-weight:600;color:var(--text-dim);margin:18px 0 8px}
+
+  .school-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin:14px 0;box-shadow:var(--shadow-sm)}
+  .school-card .school-name{font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-.2px}
+  .school-card .school-grid{display:grid;grid-template-columns:120px 1fr;gap:5px 12px;font-size:13px}
+  .school-card .school-grid .label{color:var(--accent);font-weight:600}
+  .school-card .school-grid .val{color:var(--text-dim)}
+  .school-card .school-tip{margin-top:10px;padding:10px 14px;background:var(--accent-l);border-radius:6px;font-size:13px;color:var(--text-dim)}
+
+  .master-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;margin:10px 0;box-shadow:var(--shadow-sm)}
+  .master-card .master-name{font-size:16px;font-weight:700;letter-spacing:-.2px}
+  .master-card .master-grid{display:grid;grid-template-columns:80px 1fr;gap:4px 12px;font-size:13px;margin:8px 0}
+  .master-card .master-grid .label{color:var(--accent);font-weight:600}
+  .master-card .master-grid .val{color:var(--text-dim)}
+  .master-card .master-interview{font-size:13px;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
+
+  .timeline{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+  .timeline-item{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;box-shadow:var(--shadow-sm)}
+  .timeline-item .period{font-size:12px;font-weight:700;color:var(--accent)}
+  .timeline-item .movement{font-size:14px;font-weight:600;margin:3px 0}
+  .timeline-item .keywords{font-size:11px;color:var(--text-faint);font-style:italic}
+
+  .brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:14px 0}
+  .brand-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;box-shadow:var(--shadow-sm)}
+  .brand-item .b-name{font-weight:700;font-size:14px}
+  .brand-item .b-desc{font-size:12px;color:var(--text-dim)}
+  .brand-item .b-tag{font-size:11px;color:var(--accent);font-style:italic}
+
+  .table-wrap{overflow-x:auto;margin:14px 0;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+  table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+  th{background:var(--surface2);color:var(--text-dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.6px;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);line-height:1.5;vertical-align:middle}
+  td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:middle;transition:background .15s;word-break:break-word;line-height:1.5;font-size:14px}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:var(--accent-l)}
+
+  .it{cursor:pointer;transition:color .15s}
+  .it:hover{color:var(--accent)}
+  .it.speaking{color:var(--accent);font-weight:600}
+
+  .quote-box{background:var(--accent-l);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0}
+  .quote-box p{font-size:14px;margin:3px 0}
+  .quote-box .it-text{font-weight:500;color:var(--text)}
+  .quote-box .zh-text{color:var(--text-dim);font-size:13px}
+
+  .structure{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin:14px 0;box-shadow:var(--shadow-sm)}
+  .structure .step{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+  .structure .step:last-child{border-bottom:none}
+  .structure .step-num{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  .structure .step:nth-child(1) .step-num{background:var(--green-l);color:var(--green)}
+  .structure .step:nth-child(2) .step-num{background:var(--blue-l);color:var(--blue)}
+  .structure .step:nth-child(3) .step-num{background:var(--accent-l);color:var(--accent)}
+  .structure .step:nth-child(4) .step-num{background:var(--purple-l);color:var(--purple)}
+  .structure .step-title{font-weight:600;font-size:14px}
+  .structure .step-desc{font-size:12px;color:var(--text-dim)}
+
+  .example-box{background:var(--accent-l);border:1px solid var(--accent);border-radius:var(--radius);padding:18px 20px;margin:14px 0}
+  .example-box h4{color:var(--accent);margin:0 0 10px;font-size:14px;font-weight:700}
+  .example-box p{font-size:13px;margin:5px 0;line-height:1.7}
+  .example-box .ex-zh{color:var(--text-dim);font-size:12px}
+
+  .plan-table td:first-child{color:var(--accent);font-weight:600;white-space:nowrap}
+
+  .page-footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);color:var(--text-faint);font-size:13px;background:var(--surface)}
+  .page-footer .end-quote{font-size:15px;color:var(--text-dim);font-style:italic;margin-bottom:6px}
+
+  .audio-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);border-radius:8px;padding:10px 22px;font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+  .audio-toast.show{opacity:1}
+  .audio-toast .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  @media(max-width:768px){
+    .container{padding:0 16px 60px}
+    .nav-inner{gap:2px}
+    .nav a.nav-link{font-size:12px;padding:4px 9px}
+    .school-card .school-grid{grid-template-columns:1fr}
+    .brand-grid{grid-template-columns:1fr}
+    table{font-size:13px}
+    th,td{padding:8px 10px}
+    .timeline{flex-direction:column}
   }
-  .toc-sidebar {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    max-height: none;
-    background: var(--bg-primary);
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px;
-    z-index: 95;
-    transform: translateX(-100%);
-    transition: transform 0.3s;
-    overflow-y: auto;
-  }
-  .toc-sidebar.open { transform: translateX(0); }
-  .topbar-toc-toggle { display: inline-flex; }
-  .topbar-version-switch { display: none; }
-  .main-grid > *:not(.toc-sidebar) {
-    grid-column: 1;
-  }
-}
-@media (max-width: 720px) {
-  .main-container { padding: 10px 12px 32px; }
-  .topbar-inner { padding: 8px 14px; gap: 8px; }
-  .tb-title { display: none; }
-  .hero { padding: 20px 16px; margin-bottom: 14px; }
-  .hero-content { flex-direction: column; gap: 8px; }
-  .hero-icon { font-size: 36px; }
-  .hero-title { font-size: 20px; }
-  .hero-version-tag { font-size: 14px; padding: 2px 6px; }
-  .stats-bar { flex-wrap: wrap; padding: 10px; margin-bottom: 16px; }
-  .stat-item { min-width: 33.33%; border-right: none; }
-  .section-title { font-size: 18px; gap: 8px; margin: 22px 0 10px; padding-bottom: 8px; }
-  .section-number { width: 28px; height: 28px; font-size: 12px; }
-  .subsection-title { font-size: 16px; margin: 16px 0 8px; }
-  .subsubsection-title { font-size: 15px; margin: 12px 0 8px; }
-  .h4-title { font-size: 14px; margin: 10px 0 6px; }
-  .paragraph { margin: 6px 0; }
-  .table-wrap { margin: 8px 0 12px; }
-  .quote-block { margin: 8px 0 12px; padding: 12px 14px; }
-  .list-block { margin: 6px 0 10px; }
-  .list-block li { margin: 3px 0; }
-  .code-block { margin: 8px 0 12px; padding: 12px 14px; font-size: 12px; }
-  .divider { margin: 16px 0; }
-  .data-table { font-size: 13px; }
-  .data-table th, .data-table td { padding: 7px 8px; }
-  .bottom-nav { padding: 16px 14px; gap: 10px; margin-top: 32px; }
-  .bn-others { grid-template-columns: 1fr; gap: 8px; }
-}
-</style>
-<style>
-:root {
-  --accent: #a855f7;
-  --accent-soft: rgba(168, 85, 247, 0.15);
-  --glow: rgba(168, 85, 247, 0.35);
-}
-body[data-version="flagship"] .hero-icon {
-  filter: drop-shadow(0 4px 24px rgba(168, 85, 247, 0.35));
-}
-body[data-version="flagship"] .hero-version-tag {
-  background: #a855f7;
-  box-shadow: 0 0 32px rgba(168, 85, 247, 0.35);
-}
-/* 让特色色在元素上生效 */
-body[data-version="flagship"] .section-title::after { background: #a855f7; box-shadow: 0 0 12px rgba(168, 85, 247, 0.35); }
-body[data-version="flagship"] .subsection-title::before { background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.35); }
-body[data-version="flagship"] .stats-bar { border-left-color: #a855f7; }
-body[data-version="flagship"] .stat-num { color: #a855f7; }
-body[data-version="flagship"] .quote-block.quote-italian {
-  border-left-color: #a855f7;
-  background: linear-gradient(90deg, rgba(168, 85, 247, 0.15) 0%, var(--bg-card) 100%);
-}
-body[data-version="flagship"] .play-btn { color: #a855f7; }
-body[data-version="flagship"] .play-btn:hover {
-  background: #a855f7;
-  color: #ffffff;
-}
-body[data-version="flagship"] .play-btn.playing {
-  background: #a855f7;
-  color: #ffffff;
-}
-body[data-version="flagship"] .it-text:hover { background: rgba(168, 85, 247, 0.15); }
-body[data-version="flagship"] .it-text.playing {
-  background: rgba(168, 85, 247, 0.15);
-  box-shadow: 0 0 0 1px #a855f7;
-}
-body[data-version="flagship"] .toc-item:hover {
-  border-left-color: #a855f7;
-}
-body[data-version="flagship"] .toc-item.active {
-  color: #a855f7;
-  background: rgba(168, 85, 247, 0.15);
-  border-left-color: #a855f7;
-}
-body[data-version="flagship"] .section-number {
-  background: rgba(168, 85, 247, 0.15);
-  color: #a855f7;
-  border-color: #a855f7;
-}
-body[data-version="flagship"] .list-block:not(.list-ordered) li::before {
-  color: #a855f7;
-}
-body[data-version="flagship"] .back-to-top {
-  color: #a855f7;
-  border-color: #a855f7;
-}
-body[data-version="flagship"] .back-to-top:hover {
-  background: #a855f7;
-  color: #ffffff;
-  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.35);
-}
-body[data-version="flagship"] .audio-player-toast {
-  border-color: #a855f7;
-  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.35);
-}
-body[data-version="flagship"] .inline-code { color: #a855f7; }
-body[data-version="flagship"] .version-switch-btn.active {
-  color: #a855f7;
-  box-shadow: 0 0 0 1px #a855f7, 0 0 16px rgba(168, 85, 247, 0.35);
-}
-body[data-version="flagship"] .hl-dot {
-  background: #a855f7;
-  box-shadow: 0 0 8px rgba(168, 85, 247, 0.35);
-}
-body[data-version="flagship"] .hero-version, body[data-version="flagship"] .hero-level, body[data-version="flagship"] .hero-time {
-  /* keep default */
-}
-body[data-version="flagship"] .hero-version {
-  background: rgba(168, 85, 247, 0.15);
-  color: #a855f7;
-  border-color: #a855f7;
-}
 </style>
 </head>
-<body data-version="flagship" data-accent="#a855f7">
+<body>
 
-    <header class="topbar" style="--accent: #a855f7;">
-      <div class="topbar-inner">
-        <a href="index.html" class="topbar-home" aria-label="返回导航页">
-          <span class="it-flag it-flag-lg"></span>
-          <span class="tb-title">设计留学 · 意语词汇</span>
-        </a>
-        <nav class="topbar-version-switch"><a href="basic.html" class="version-switch-btn " style="--btn-accent: #10b981; --btn-glow: rgba(16, 185, 129, 0.35)"><span class="vsw-icon">🌱</span><span class="vsw-name">基础版</span></a><a href="enhanced.html" class="version-switch-btn " style="--btn-accent: #f59e0b; --btn-glow: rgba(245, 158, 11, 0.35)"><span class="vsw-icon">🚀</span><span class="vsw-name">加强版</span></a><a href="flagship.html" class="version-switch-btn active" style="--btn-accent: #a855f7; --btn-glow: rgba(168, 85, 247, 0.35)"><span class="vsw-icon">👑</span><span class="vsw-name">旗舰版</span></a></nav>
-        <button class="topbar-toc-toggle" id="tocToggle" aria-label="切换目录">
-          <span class="toc-icon">☰</span>
-          <span class="toc-label">目录</span>
-        </button>
-      </div>
-    </header>
-    
-<main class="page-main">
-  <div class="main-container">
-    
-    <section class="hero" style="--accent: #a855f7; --accent-soft: rgba(168, 85, 247, 0.15); --glow: rgba(168, 85, 247, 0.35);">
-      <div class="hero-bg-flag"></div>
-      <div class="hero-content">
-        <div class="hero-icon">👑</div>
-        <div class="hero-text">
-          <div class="hero-eyebrow">
-            <span class="hero-version">VOCABOLARIO · Avanzato</span>
-            <span class="hero-level">水平 B1-C1</span>
-            <span class="hero-time">学习周期 30 天</span>
-          </div>
-          <h1 class="hero-title">设计留学作品集 · 意语词汇 <span class="hero-version-tag">旗舰版</span></h1>
-          <p class="hero-tagline">名校攻略 + 设计文化 + 学术高阶</p>
-          <p class="hero-desc">面向 B1-C1 水平同学。米理/都理/IUAV 等名校风格解码，含设计大师谈资、学术批评词汇、高级语法。</p>
-          <div class="hero-highlights">
-            <span class="hl-chip"><span class="hl-dot"></span>6 所名校攻略</span><span class="hl-chip"><span class="hl-dot"></span>6 位设计大师</span><span class="hl-chip"><span class="hl-dot"></span>学术批评高阶词汇</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    
-    <div class="stats-bar" style="--accent: #a855f7;">
-      <div class="stat-item">
-        <span class="stat-num">240</span>
-        <span class="stat-label">意语片段</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">点击</span>
-        <span class="stat-label">🔊 即可播放</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">A-Z</span>
-        <span class="stat-label">支持搜索</span>
-      </div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="flag-it"></span>设计留学·意语词汇</a>
+    <span class="sep"></span>
+    <a href="basic.html" class="nav-link">基础版</a>
+    <a href="intermediate.html" class="nav-link">加强版</a>
+    <a href="flagship.html" class="nav-link active">旗舰版</a>
+  </div>
+</nav>
+
+<div class="audio-toast" id="audioToast"><span class="dot"></span>正在朗读意大利语...</div>
+
+<div class="container">
+
+<div class="page-header">
+  <div class="badge">🔴 旗舰级</div>
+  <h1>设计留学作品集·意语词汇（旗舰版）</h1>
+  <p class="meta">深化篇：从"会介绍"到"让教授眼前一亮"<br>建议搭配基础版+加强版一起食用 🍝</p>
+</div>
+
+<!-- MODULE 1: 意大利设计名校 -->
+<section>
+  <h2>MODULE 1 · 意大利设计名校全攻略 🏛️</h2>
+  <h3>1.1 六大王牌院校·风格解码</h3>
+
+  <div class="school-card">
+    <div class="school-name">🏫 Politecnico di Milano — 米兰理工大学</div>
+    <div class="school-grid">
+      <span class="label">地位</span><span class="val">意大利设计界"天花板"，QS艺术设计全球Top 10</span>
+      <span class="label">王牌专业</span><span class="val">产品设计、室内设计、交互设计、传播设计、建筑设计</span>
+      <span class="label">作品集风格</span><span class="val">🤍 极简、干净、理性</span>
+      <span class="label">教授最看重</span><span class="val">设计流程的完整性（调研→概念→迭代→成品）</span>
+      <span class="label">加分项</span><span class="val">手工模型、手绘草图、技术图纸</span>
+      <span class="label">雷区</span><span class="val">排版花里胡哨、只有效果图没有过程</span>
+      <span class="label">一句话总结</span><span class="val"><span class="it" data-speak="Less is more. Il processo è più importante del risultato.">"Less is more." 过程比结果重要。</span></span>
     </div>
-    
-    <div class="main-grid">
-      <nav class="toc-sidebar" id="tocSidebar"><div class="toc-title">目录</div><a href="#sec-2" class="toc-item toc-level-1">MODULE 1 · 意大利设计名校全攻略 🏛️</a><a href="#sec-3" class="toc-item toc-level-2">1.1 六大王牌院校·风格解码</a><a href="#sec-4" class="toc-item toc-level-3">🏫 Politecnico di Milano — 米兰理工大学</a><a href="#sec-5" class="toc-item toc-level-3">🏫 Politecnico di Torino — 都灵理工大学</a><a href="#sec-6" class="toc-item toc-level-3">🏫 IUAV — 威尼斯建筑大学</a><a href="#sec-7" class="toc-item toc-level-3">🏫 NABA — 米兰新美术学院</a><a href="#sec-8" class="toc-item toc-level-3">🏫 Istituto Marangoni — 马兰欧尼学院</a><a href="#sec-9" class="toc-item toc-level-3">🏫 Domus Academy — 多莫斯设计学院</a><a href="#sec-10" class="toc-item toc-level-2">1.2 面试中聊院校的加分句型</a><a href="#sec-11" class="toc-item toc-level-1">MODULE 2 · 作品集 Descrizione 专业写作模版 ✍️</a><a href="#sec-12" class="toc-item toc-level-2">2.1 项目卡片的黄金结构</a><a href="#sec-13" class="toc-item toc-level-3">🟢 项目概览 — L&#x27;apertura</a><a href="#sec-14" class="toc-item toc-level-3">🟢 灵感与动机 — L&#x27;ispirazione</a><a href="#sec-15" class="toc-item toc-level-3">🟢 过程与方法 — Il processo</a><a href="#sec-16" class="toc-item toc-level-3">🟢 成果与反思 — Il risultato</a><a href="#sec-17" class="toc-item toc-level-2">2.2 完整 Descrizione 范例</a><a href="#sec-18" class="toc-item toc-level-3">🟢 产品设计·范例</a><a href="#sec-19" class="toc-item toc-level-3">🟡 服装设计·范例</a><a href="#sec-20" class="toc-item toc-level-2">2.3 🔴 高阶：设计方法论词汇</a><a href="#sec-21" class="toc-item toc-level-1">MODULE 3 · 意大利设计文化必知</a><a href="#sec-22" class="toc-item toc-level-2">3.1 设计大师·面试谈资</a><a href="#sec-23" class="toc-item toc-level-3">🏆 Gio Ponti (1891-1979)</a><a href="#sec-24" class="toc-item toc-level-3">🏆 Achille Castiglioni (1918-2002)</a><a href="#sec-25" class="toc-item toc-level-3">🏆 Ettore Sottsass (1917-2007)</a><a href="#sec-26" class="toc-item toc-level-3">🏆 Bruno Munari (1907-1998)</a><a href="#sec-27" class="toc-item toc-level-3">🏆 Joe Colombo (1930-1971)</a><a href="#sec-28" class="toc-item toc-level-3">🏆 Patricia Urquiola (1961-)</a><a href="#sec-29" class="toc-item toc-level-2">3.2 意大利设计运动·时间线</a><a href="#sec-30" class="toc-item toc-level-2">3.3 不可不知的意大利设计品牌</a><a href="#sec-31" class="toc-item toc-level-1">MODULE 4 · 设计语境下的高级语法 🧠</a><a href="#sec-32" class="toc-item toc-level-2">4.1 Condizionale 条件式 — 表达假设与建议</a><a href="#sec-33" class="toc-item toc-level-2">4.2 Congiuntivo 虚拟式 — 表达看法与观点</a><a href="#sec-34" class="toc-item toc-level-2">4.3 &quot;Ci&quot; 在设计语境中的使用</a><a href="#sec-35" class="toc-item toc-level-2">4.4 &quot;Ne&quot; 在设计语境中的使用</a><a href="#sec-36" class="toc-item toc-level-2">4.5 设计假设句 · Periodo Ipotetico</a><a href="#sec-37" class="toc-item toc-level-2">4.6 设计描述的比较级与最高级</a><a href="#sec-38" class="toc-item toc-level-3">Comparativo 比较级</a><a href="#sec-39" class="toc-item toc-level-3">Superlativo 最高级</a><a href="#sec-40" class="toc-item toc-level-1">MODULE 5 · 设计批评与学术高阶词汇 🎓</a><a href="#sec-41" class="toc-item toc-level-2">5.1 结构批评 —— Struttura</a><a href="#sec-42" class="toc-item toc-level-2">5.2 概念批评 —— Concetto</a><a href="#sec-43" class="toc-item toc-level-2">5.3 感知批评 —— Percezione</a><a href="#sec-44" class="toc-item toc-level-2">5.4 学术批评句型模版</a><a href="#sec-45" class="toc-item toc-level-1">MODULE 6 · 排版印刷专业技术术语 🔍</a><a href="#sec-46" class="toc-item toc-level-2">6.1 字体设计 Typography</a><a href="#sec-47" class="toc-item toc-level-2">6.2 版面 Grid &amp; Layout</a><a href="#sec-48" class="toc-item toc-level-2">6.3 色彩 Color</a><a href="#sec-49" class="toc-item toc-level-2">6.4 印刷工艺 Stampa</a><a href="#sec-50" class="toc-item toc-level-1">MODULE 7 · 意中设计对比与文化差异 🌏</a><a href="#sec-51" class="toc-item toc-level-2">7.1 对比常用句型</a><a href="#sec-52" class="toc-item toc-level-2">7.2 意中设计差异表达</a><a href="#sec-53" class="toc-item toc-level-2">7.3 文化融合·作品集加分表达</a><a href="#sec-54" class="toc-item toc-level-1">🔥 终极彩蛋：30天冲刺升级版</a></nav><blockquote class="quote-block"><strong>深化篇</strong>：从"会介绍"到"让教授眼前一亮"建议搭配基础版+加强版一起食用 🍝</blockquote>
-<div class="divider"></div>
-<h1 id="sec-2" class="section-title"><span class="section-number">01</span><span class="section-title-text">MODULE 1 · 意大利设计名校全攻略 🏛️</span></h1>
-<h2 id="sec-3" class="subsection-title">1.1 六大王牌院校·风格解码</h2>
-<h3 id="sec-4" class="subsubsection-title">🏫 Politecnico di Milano — 米兰理工大学</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>地位</strong></td><td>意大利设计界"天花板"，QS艺术设计全球Top 10</td></tr><tr><td><strong>王牌专业</strong></td><td>产品设计、室内设计、交互设计、传播设计、建筑设计</td></tr><tr><td><strong>作品集风格</strong></td><td>🤍 <strong>极简、干净、理性</strong></td></tr><tr><td><strong>教授最看重</strong></td><td>设计流程的完整性（调研→概念→迭代→成品）</td></tr><tr><td><strong>加分项</strong></td><td>手工模型、手绘草图、技术图纸</td></tr><tr><td><strong>雷区</strong></td><td>排版花里胡哨、只有效果图没有过程</td></tr><tr><td><strong>面试语言</strong></td><td>意语/英语均可（英语授课项目多）</td></tr><tr><td><strong>一句话总结</strong></td><td><em>&quot;Less is more. 过程比结果重要。&quot;</em></td></tr></tbody></table></div>
-<blockquote class="quote-block"><strong>🎯 面试技巧</strong>：米理教授喜欢问 "Why this material?" "What's the user problem?" 准备好从<strong>功能逻辑</strong>角度回答，不要只说"好看"。</blockquote>
-<h3 id="sec-5" class="subsubsection-title">🏫 Politecnico di Torino — 都灵理工大学</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>特色</strong></td><td>工程与设计结合紧密，偏向系统性思维</td></tr><tr><td><strong>作品集偏好</strong></td><td>技术与美学的平衡，逻辑严谨</td></tr><tr><td><strong>加分项</strong></td><td>技术图纸规范、材料研究深入、可持续设计</td></tr><tr><td><strong>面试风格</strong></td><td>偏学术，会问很多技术细节</td></tr></tbody></table></div>
-<h3 id="sec-6" class="subsubsection-title">🏫 IUAV — 威尼斯建筑大学</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>特色</strong></td><td>实验性、前卫、艺术感强</td></tr><tr><td><strong>作品集偏好</strong></td><td>🎭 <strong>有艺术张力、概念驱动</strong></td></tr><tr><td><strong>教授最看重</strong></td><td>独特视角、批判性思维、跨媒介实验</td></tr><tr><td><strong>加分项</strong></td><td>装置艺术、多媒体、非常规材料</td></tr><tr><td><strong>雷区</strong></td><td>过于商业化的设计</td></tr><tr><td><strong>一句话总结</strong></td><td><em>&quot;打破常规，用设计提出问题。&quot;</em></td></tr></tbody></table></div>
-<h3 id="sec-7" class="subsubsection-title">🏫 NABA — 米兰新美术学院</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>特色</strong></td><td>私立，名校+名企合作，就业导向</td></tr><tr><td><strong>王牌专业</strong></td><td>平面设计、服装设计、室内设计</td></tr><tr><td><strong>作品集偏好</strong></td><td>💡 <strong>概念+商业的平衡，要有故事性</strong></td></tr><tr><td><strong>教授最看重</strong></td><td>创意潜力、可塑性、跨界能力</td></tr><tr><td><strong>加分项</strong></td><td>品牌合作项目、社会议题设计</td></tr><tr><td><strong>面试风格</strong></td><td>轻松但有料，会跟你聊设计灵感来源</td></tr><tr><td><strong>一句话总结</strong></td><td><em>&quot;Tell me a story through your design.&quot;</em></td></tr></tbody></table></div>
-<h3 id="sec-8" class="subsubsection-title">🏫 Istituto Marangoni — 马兰欧尼学院</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>特色</strong></td><td>时尚界"哈佛"，人脉资源天花板</td></tr><tr><td><strong>王牌专业</strong></td><td>服装设计、配饰设计、时尚管理</td></tr><tr><td><strong>作品集偏好</strong></td><td>👗 <strong>审美在线、工艺讲究、有态度</strong></td></tr><tr><td><strong>教授最看重</strong></td><td>手绘能力、对时尚趋势的敏感度</td></tr><tr><td><strong>加分项</strong></td><td>完整系列设计、面料实验、时尚大片</td></tr><tr><td><strong>雷区</strong></td><td>只有灵感板没有成品</td></tr><tr><td><strong>面试建议</strong></td><td>穿得有设计感一点——他们看整体感觉！</td></tr><tr><td><strong>一句话总结</strong></td><td><em>&quot;Fashion is not just clothes, it&#x27;s an attitude.&quot;</em></td></tr></tbody></table></div>
-<h3 id="sec-9" class="subsubsection-title">🏫 Domus Academy — 多莫斯设计学院</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>特色</strong></td><td>研究生院，导师联盟制（学术+行业双导师）</td></tr><tr><td><strong>作品集偏好</strong></td><td>🌍 <strong>社会议题驱动、实验性、跨学科</strong></td></tr><tr><td><strong>教授最看重</strong></td><td>批判性思维、研究深度、全球视野</td></tr><tr><td><strong>加分项</strong></td><td>与社会议题结合的设计（难民/环保/城市问题）</td></tr><tr><td><strong>一句话总结</strong></td><td><em>&quot;Design as a tool for social change.&quot;</em></td></tr></tbody></table></div>
-<div class="divider"></div>
-<h2 id="sec-10" class="subsection-title">1.2 面试中聊院校的加分句型</h2>
-<blockquote class="quote-block">教授问你 "Perché hai scelto la nostra scuola?"（为什么选我们学校？）别再只说 "Perché è famosa." 试试这些👇</blockquote>
-<p class="paragraph"><strong>🔰 基础版：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_3f491590"><span class="it-word">Ho scelto il Politecnico di Milano perché è una delle migliori università di design al mondo.</span><button class="play-btn" data-audio="flagship_3f491590" aria-label="播放" title="点击播放">🔊</button></span>（我选米兰理工因为它是世界顶级设计学府之一。）</blockquote>
-<p class="paragraph"><strong>🟡 进阶版（推荐）：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_89a73092"><span class="it-word">Ho scelto NABA perché il vostro approccio pratico e le collaborazioni con aziende come \[品牌名] mi offrono l&#x27;opportunità di crescere sia come designer che come professionista.</span><button class="play-btn" data-audio="flagship_89a73092" aria-label="播放" title="点击播放">🔊</button></span>（我选NABA因为你们的实践导向和与……等企业的合作，让我有机会既作为设计师也作为专业人士成长。）</blockquote>
-<p class="paragraph"><strong>🔴 高阶版（让教授点头）：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_0f151f79"><span class="it-word">Sono attratto dal Politecnico di Milano perché il vostro metodo di insegnamento unisce rigore tecnico e libertà creativa. In particolare, il corso di \[专业名] affronta il design in modo sistemico, che è esattamente l&#x27;approccio che voglio approfondire. Credo che la mia formazione in Cina, combinata con l&#x27;esperienza qui, possa darmi una prospettiva unica nel mondo del design contemporaneo.</span><button class="play-btn" data-audio="flagship_0f151f79" aria-label="播放" title="点击播放">🔊</button></span>（米兰理工吸引我，是因为你们的教学方法把技术严谨和创作自由结合起来了。特别是……专业以系统性的方式对待设计，这正是我想深入的方向。我相信我在中国的教育背景，加上在这里的经历，能给我在当代设计领域带来独特的视角。）</blockquote>
-<div class="divider"></div>
-<h1 id="sec-11" class="section-title"><span class="section-number">02</span><span class="section-title-text">MODULE 2 · 作品集 Descrizione 专业写作模版 ✍️</span></h1>
-<h2 id="sec-12" class="subsection-title">2.1 项目卡片的黄金结构</h2>
-<p class="paragraph">意大利院校作品集里每个项目配一段说明文字，<strong>标准的意大利式写法</strong>分四层：</p>
-<pre class="code-block"><code>┌─ 1️⃣ 项目概览（1-2句） ─────────────────┐
-│  Titolo + Cosa + Per chi                  │
-├─ 2️⃣ 灵感与动机（2-3句） ─────────────────┤
-│  Ispirazione + Problema + Domanda         │
-├─ 3️⃣ 过程与方法（3-4句） ─────────────────┤
-│  Ricerca → Concept → Iterazioni → Test    │
-├─ 4️⃣ 成果与反思（2-3句） ─────────────────┤
-│  Risultato + Impatto + Cosa ho imparato   │
-└────────────────────────────────────────────┘</code></pre>
-<h3 id="sec-13" class="subsubsection-title">🟢 项目概览 — L'apertura</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>句型</th><th>意语</th></tr></thead><tbody><tr><td>标题+类型</td><td class="it-cell"><span class="it-text" data-audio="flagship_a630cce2"><span class="it-word">\[Titolo] è un progetto di \[categoria] realizzato in \[periodo/contesto].</span><button class="play-btn" data-audio="flagship_a630cce2" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>服务对象</td><td class="it-cell"><span class="it-text" data-audio="flagship_316dac65"><span class="it-word">Il progetto è pensato per \[target].</span><button class="play-btn" data-audio="flagship_316dac65" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>一句话说清</td><td class="it-cell"><span class="it-text" data-audio="flagship_9a1617f2"><span class="it-word">L&#x27;obiettivo era \[目标].</span><button class="play-btn" data-audio="flagship_9a1617f2" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-14" class="subsubsection-title">🟢 灵感与动机 — L'ispirazione</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>句型</th><th>意语</th></tr></thead><tbody><tr><td>灵感来源</td><td class="it-cell"><span class="it-text" data-audio="flagship_6a7b911d"><span class="it-word">L&#x27;ispirazione nasce da / viene da / è partita da...</span><button class="play-btn" data-audio="flagship_6a7b911d" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>发现问题</td><td class="it-cell"><span class="it-text" data-audio="flagship_d3afa1b2"><span class="it-word">Ho notato che... / Mi sono reso conto che...</span><button class="play-btn" data-audio="flagship_d3afa1b2" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>核心问题</td><td class="it-cell"><span class="it-text" data-audio="flagship_26f8c024"><span class="it-word">La domanda principale era: come possiamo...?</span><button class="play-btn" data-audio="flagship_26f8c024" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-15" class="subsubsection-title">🟢 过程与方法 — Il processo</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>句型</th><th>意语</th></tr></thead><tbody><tr><td>过渡词时间线</td><td class="it-cell"><span class="it-text" data-audio="flagship_f361c80d"><span class="it-word">In primo luogo... / Successivamente... / Infine...</span><button class="play-btn" data-audio="flagship_f361c80d" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>做了啥</td><td class="it-cell"><span class="it-text" data-audio="flagship_6019886b"><span class="it-word">Ho condotto una ricerca / sviluppato concept / realizzato prototipi</span><button class="play-btn" data-audio="flagship_6019886b" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>遇到了啥</td><td class="it-cell"><span class="it-text" data-audio="flagship_60d0bdcc"><span class="it-word">La sfida principale è stata... / Un ostacolo è stato...</span><button class="play-btn" data-audio="flagship_60d0bdcc" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>怎么解决</td><td class="it-cell"><span class="it-text" data-audio="flagship_dad2603f"><span class="it-word">Per risolvere questo problema, ho...</span><button class="play-btn" data-audio="flagship_dad2603f" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-16" class="subsubsection-title">🟢 成果与反思 — Il risultato</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>句型</th><th>意语</th></tr></thead><tbody><tr><td>成果</td><td class="it-cell"><span class="it-text" data-audio="flagship_e3f08a35"><span class="it-word">Il risultato finale è... / Il progetto si concretizza in...</span><button class="play-btn" data-audio="flagship_e3f08a35" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>影响</td><td class="it-cell"><span class="it-text" data-audio="flagship_fa2c9c8f"><span class="it-word">Il progetto ha ricevuto feedback positivi / è stato esposto a...</span><button class="play-btn" data-audio="flagship_fa2c9c8f" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td>反思</td><td class="it-cell"><span class="it-text" data-audio="flagship_7fe6b21f"><span class="it-word">Se potessi migliorare... / In futuro vorrei...</span><button class="play-btn" data-audio="flagship_7fe6b21f" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<div class="divider"></div>
-<h2 id="sec-17" class="subsection-title">2.2 完整 Descrizione 范例</h2>
-<h3 id="sec-18" class="subsubsection-title">🟢 产品设计·范例</h3>
-<blockquote class="quote-block quote-italian"><strong>CleanSip</strong> — <span class="it-text" data-audio="flagship_0c8a63a3"><span class="it-word">Una borraccia intelligente per ridurre la plastica monouso</span><button class="play-btn" data-audio="flagship_0c8a63a3" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_b1da4428"><span class="it-word">CleanSip è un progetto di product design sviluppato durante il mio secondo anno di università. L&#x27;obiettivo era creare un&#x27;alternativa sostenibile alle bottiglie di plastica monouso, pensata per studenti universitari tra i 18 e i 25 anni.</span><button class="play-btn" data-audio="flagship_b1da4428" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_88265517"><span class="it-word">L&#x27;ispirazione è nata dall&#x27;osservazione del consumo di plastica nel mio campus: ogni giorno venivano gettate via migliaia di bottiglie. Mi sono chiesto: come può il design rendere più conveniente e desiderabile l&#x27;uso di una borraccia riutilizzabile?</span><button class="play-btn" data-audio="flagship_88265517" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_5935e9cf"><span class="it-word">Ho iniziato con interviste a 30 studenti, seguite da un&#x27;analisi dei competitor. Dopo vari schizzi e modelli 3D, ho realizzato tre prototipi funzionali. La sfida principale era creare un sistema di filtrazione integrato che fosse facile da pulire. Dopo test e iterazioni, ho sviluppato un meccanismo a cartuccia sostituibile.</span><button class="play-btn" data-audio="flagship_5935e9cf" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_2f97c575"><span class="it-word">Il risultato è una borraccia in acciaio inox con filtro al carbone integrato, display della temperatura e un design minimalista. Il progetto ha vinto il primo premio al concorso di design sostenibile della mia università.</span><button class="play-btn" data-audio="flagship_2f97c575" aria-label="播放" title="点击播放">🔊</button></span></blockquote>
-<h3 id="sec-19" class="subsubsection-title">🟡 服装设计·范例</h3>
-<blockquote class="quote-block quote-italian"><strong>Ricucire</strong> — <span class="it-text" data-audio="flagship_76736830"><span class="it-word">Una collezione di moda che unisce artigianato cinese e contemporaneità</span><button class="play-btn" data-audio="flagship_76736830" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_ddf2d547"><span class="it-word">Ricucire è una collezione di 5 outfit che ho progettato per il mio progetto di diploma. Il target è una donna moderna tra i 25 e i 40 anni, che cerca un guardaroba consapevole e senza tempo.</span><button class="play-btn" data-audio="flagship_ddf2d547" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_bc3af922"><span class="it-word">L&#x27;ispirazione viene dalla tecnica tradizionale cinese del &quot;ricamo di Suzhou&quot;, che ho avuto modo di studiare durante un viaggio nella regione del Jiangsu. Volevo portare questa tradizione artigianale in un contesto contemporaneo.</span><button class="play-btn" data-audio="flagship_bc3af922" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_e173030a"><span class="it-word">La ricerca è durata tre mesi: ho visitato laboratori artigianali, studiato i motivi tradizionali e sperimentato con tessuti sostenibili come il lino organico e la seta riciclata. Dopo numerosi schizzi e prove di drappeggio, ho selezionato 5 silhouette chiave.</span><button class="play-btn" data-audio="flagship_e173030a" aria-label="播放" title="点击播放">🔊</button></span><span class="it-text" data-audio="flagship_e1095a87"><span class="it-word">Ogni capo unisce tecniche di ricamo tradizionale a tagli moderni e minimalisti. La collezione è stata presentata alla sfilata di fine anno della mia accademia e ha ricevuto l&#x27;interesse di una piccola casa di moda di Shanghai.</span><button class="play-btn" data-audio="flagship_e1095a87" aria-label="播放" title="点击播放">🔊</button></span></blockquote>
-<div class="divider"></div>
-<h2 id="sec-20" class="subsection-title">2.3 🔴 高阶：设计方法论词汇</h2>
-<p class="paragraph">让描述更专业——面试时说出这些词，教授秒懂你的设计功底：</p>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th><th>解释</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_0d041a93"><strong>l&#x27;approccio human-centered</strong><button class="play-btn play-btn-block" data-audio="flagship_0d041a93" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>人本设计</td><td class="it-cell"><span class="it-text" data-audio="flagship_fb4347de"><span class="it-word">Ho adottato un approccio human-centered...</span><button class="play-btn" data-audio="flagship_fb4347de" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_1d6062f9"><strong>il design thinking</strong><button class="play-btn play-btn-block" data-audio="flagship_1d6062f9" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>设计思维</td><td class="it-cell"><span class="it-text" data-audio="flagship_608fc33d"><span class="it-word">Seguendo il processo di design thinking...</span><button class="play-btn" data-audio="flagship_608fc33d" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_c37fae9c"><strong>la metodologia</strong><button class="play-btn play-btn-block" data-audio="flagship_c37fae9c" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>方法论</td><td class="it-cell"><span class="it-text" data-audio="flagship_b3f59137"><span class="it-word">La metodologia utilizzata è...</span><button class="play-btn" data-audio="flagship_b3f59137" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_d3a5e527"><strong>l&#x27;analisi contestuale</strong><button class="play-btn play-btn-block" data-audio="flagship_d3a5e527" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>情境分析</td><td class="it-cell"><span class="it-text" data-audio="flagship_e5d66f4a"><span class="it-word">Ho fatto un&#x27;analisi contestuale dell&#x27;ambiente d&#x27;uso.</span><button class="play-btn" data-audio="flagship_e5d66f4a" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_98874ab0"><strong>la mappatura</strong><button class="play-btn play-btn-block" data-audio="flagship_98874ab0" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>映射/地图</td><td class="it-cell"><span class="it-text" data-audio="flagship_529cb874"><span class="it-word">Ho creato una mappa degli stakeholder.</span><button class="play-btn" data-audio="flagship_529cb874" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_c0ef4f58"><strong>la user journey map</strong><button class="play-btn play-btn-block" data-audio="flagship_c0ef4f58" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>用户旅程图</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_d626d814"><strong>la persona / l&#x27;utente tipo</strong><button class="play-btn play-btn-block" data-audio="flagship_d626d814" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>用户画像</td><td class="it-cell"><span class="it-text" data-audio="flagship_88f1250a"><span class="it-word">Ho definito tre personas target.</span><button class="play-btn" data-audio="flagship_88f1250a" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_eab578c7"><strong>lo scenario d&#x27;uso</strong><button class="play-btn play-btn-block" data-audio="flagship_eab578c7" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>使用场景</td><td class="it-cell"><span class="it-text" data-audio="flagship_60681918"><span class="it-word">Ho immaginato diversi scenari d&#x27;uso.</span><button class="play-btn" data-audio="flagship_60681918" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_7d46a4e2"><strong>il brainstorming</strong><button class="play-btn play-btn-block" data-audio="flagship_7d46a4e2" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>头脑风暴</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_8fb71139"><strong>il concept generation</strong><button class="play-btn play-btn-block" data-audio="flagship_8fb71139" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>概念生成</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_4e32104d"><strong>la selezione del concept</strong><button class="play-btn play-btn-block" data-audio="flagship_4e32104d" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>概念筛选</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_5f03aca0"><strong>il test di concept</strong><button class="play-btn play-btn-block" data-audio="flagship_5f03aca0" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>概念测试</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_28475668"><strong>la validazione</strong><button class="play-btn play-btn-block" data-audio="flagship_28475668" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>验证</td><td class="it-cell"><span class="it-text" data-audio="flagship_c4c499a5"><span class="it-word">Per validare il concept...</span><button class="play-btn" data-audio="flagship_c4c499a5" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_b5522499"><strong>l&#x27;analisi SWOT</strong><button class="play-btn play-btn-block" data-audio="flagship_b5522499" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>SWOT分析</td><td class="it-cell"><span class="it-text" data-audio="flagship_5486bc74"><span class="it-word">Ho condotto un&#x27;analisi SWOT.</span><button class="play-btn" data-audio="flagship_5486bc74" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_9a2aea12"><strong>l&#x27;analisi dei competitor</strong><button class="play-btn play-btn-block" data-audio="flagship_9a2aea12" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>竞品分析</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_103b74b7"><strong>il benchmark</strong><button class="play-btn play-btn-block" data-audio="flagship_103b74b7" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>对标分析</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_fc6cc0d6"><strong>lo sviluppo iterativo</strong><button class="play-btn play-btn-block" data-audio="flagship_fc6cc0d6" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>迭代开发</td><td class="it-cell"><span class="it-text" data-audio="flagship_6af1b11c"><span class="it-word">Lo sviluppo è stato iterativo...</span><button class="play-btn" data-audio="flagship_6af1b11c" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_31e06264"><strong>l&#x27;ottimizzazione</strong><button class="play-btn play-btn-block" data-audio="flagship_31e06264" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>优化</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_85202636"><strong>la fattibilità</strong><button class="play-btn play-btn-block" data-audio="flagship_85202636" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>可行性</td><td class="it-cell"><span class="it-text" data-audio="flagship_19c875b7"><span class="it-word">Ho valutato la fattibilità tecnica.</span><button class="play-btn" data-audio="flagship_19c875b7" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_c71994aa"><strong>l&#x27;implementazione</strong><button class="play-btn play-btn-block" data-audio="flagship_c71994aa" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>实施/落地</td><td class="it-cell">​</td></tr></tbody></table></div>
-<div class="divider"></div>
-<h1 id="sec-21" class="section-title"><span class="section-number">03</span><span class="section-title-text">MODULE 3 · 意大利设计文化必知 <span class="it-flag"></span></span></h1>
-<h2 id="sec-22" class="subsection-title">3.1 设计大师·面试谈资</h2>
-<p class="paragraph">面试时如果能提到一两个意大利设计师并说出你的看法，<strong>加分巨大</strong>！</p>
-<h3 id="sec-23" class="subsubsection-title">🏆 Gio Ponti (1891-1979)</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>称号</strong></td><td class="it-cell">意大利现代设计之父</td></tr><tr><td><strong>代表作</strong></td><td class="it-cell">Pirelli Tower（米兰倍耐力大厦）、Superleggera椅子</td></tr><tr><td><strong>名言</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_029ed600"><span class="it-word">&quot;L&#x27;architettura è un gioco di luce e spazio.&quot;</span><button class="play-btn" data-audio="flagship_029ed600" aria-label="播放" title="点击播放">🔊</button></span>（建筑是光与空间的游戏）</td></tr><tr><td><strong>面试怎么聊</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_18226aab"><span class="it-word">Ammiro Gio Ponti per la sua capacità di unire architettura, design e arte in un&#x27;unica visione.</span><button class="play-btn" data-audio="flagship_18226aab" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-24" class="subsubsection-title">🏆 Achille Castiglioni (1918-2002)</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>称号</strong></td><td class="it-cell">意大利设计"鬼才"</td></tr><tr><td><strong>代表作</strong></td><td class="it-cell">Arco灯（整个天花板吊下来的抛物线落地灯）、Snoopy灯、Mezzadro凳（拖拉机座椅改的）</td></tr><tr><td><strong>风格</strong></td><td class="it-cell">幽默、功能主义、对"已有之物"的再创造</td></tr><tr><td><strong>名言</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_16626a40"><span class="it-word">&quot;Il design non è solo come un oggetto appare, ma come funziona e come ti fa sentire.&quot;</span><button class="play-btn" data-audio="flagship_16626a40" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td><strong>面试怎么聊</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_2633fc77"><span class="it-word">Castiglioni mi ha insegnato che il design può avere senso dell&#x27;umorismo. La sedia Mezzadro è un perfetto esempio: prende un oggetto esistente e lo trasforma in qualcosa di nuovo e sorprendente.</span><button class="play-btn" data-audio="flagship_2633fc77" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-25" class="subsubsection-title">🏆 Ettore Sottsass (1917-2007)</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>称号</strong></td><td class="it-cell">Memphis Group创始人，反叛者</td></tr><tr><td><strong>代表作</strong></td><td class="it-cell">Carlton书架（彩色不规则形状）、红色打字机Valentine</td></tr><tr><td><strong>风格</strong></td><td class="it-cell">大胆配色、不规则几何、反功能主义</td></tr><tr><td><strong>面试怎么聊</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_852792c5"><span class="it-word">Sottsass ha rotto le regole del design modernista. Con Memphis ha dimostrato che il design può essere giocoso, espressivo e ironico.</span><button class="play-btn" data-audio="flagship_852792c5" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-26" class="subsubsection-title">🏆 Bruno Munari (1907-1998)</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>称号</strong></td><td class="it-cell">全能艺术家，设计教育家</td></tr><tr><td><strong>代表作</strong></td><td class="it-cell"><em>Libri illeggibili</em>（不可读的书）、Abitacolo床、儿童书籍</td></tr><tr><td><strong>风格</strong></td><td class="it-cell">实验性、教育性、跨媒介</td></tr><tr><td><strong>名言</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_e3a916b9"><span class="it-word">&quot;La creatività è immaginazione più intelligenza e azione.&quot;</span><button class="play-btn" data-audio="flagship_e3a916b9" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td><strong>面试怎么聊</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_a0d7199a"><span class="it-word">Munari è stato un grande innovatore. I suoi libri per bambini mi hanno ispirato a pensare al design come strumento educativo.</span><button class="play-btn" data-audio="flagship_a0d7199a" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-27" class="subsubsection-title">🏆 Joe Colombo (1930-1971)</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>代表作</strong></td><td class="it-cell">Tube Chair（管状沙发椅）、多功能厨房系统</td></tr><tr><td><strong>风格</strong></td><td class="it-cell">未来主义、模块化、空间节约</td></tr><tr><td><strong>面试怎么聊</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_78c8dfb5"><span class="it-word">Colombo aveva una visione futuristica: i suoi design modulari anticipavano le esigenze della vita contemporanea.</span><button class="play-btn" data-audio="flagship_78c8dfb5" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-28" class="subsubsection-title">🏆 Patricia Urquiola (1961-)</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>称号</strong></td><td>当代最著名的女性设计师之一</td></tr><tr><td><strong>代表作</strong></td><td>为Moroso/Kartell设计的家具系列</td></tr><tr><td><strong>风格</strong></td><td>色彩丰富、柔软形态、手工质感</td></tr><tr><td><strong>面试怎么聊</strong></td><td><span class="it-text" data-audio="flagship_6ebad950"><span class="it-word">Urquiola è per me un modello di come si possa unire artigianato, innovazione e sensibilità femminile nel design contemporaneo.</span><button class="play-btn" data-audio="flagship_6ebad950" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<p class="paragraph"><strong>💬 万能聊天句型：</strong></p>
-<blockquote class="quote-block quote-italian"><span class="it-text" data-audio="flagship_9aff9d65"><span class="it-word">Il designer italiano che mi ha più influenzato è \[名字], perché \[原因]. In particolare, il suo progetto \[代表作] mi ha fatto capire che \[感悟].</span><button class="play-btn" data-audio="flagship_9aff9d65" aria-label="播放" title="点击播放">🔊</button></span></blockquote>
-<div class="divider"></div>
-<h2 id="sec-29" class="subsection-title">3.2 意大利设计运动·时间线</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>时期</th><th>运动</th><th>特点</th><th>关键词</th></tr></thead><tbody><tr><td><strong>1950s</strong></td><td class="it-cell"><strong>Ricostruzione</strong> 战后重建</td><td>功能主义、工业化</td><td class="it-cell"><span class="it-text" data-audio="flagship_e8396a92"><span class="it-word">funzionale, industriale, moderno</span><button class="play-btn" data-audio="flagship_e8396a92" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td><strong>1960s</strong></td><td class="it-cell"><strong>Radical Design</strong> 激进设计</td><td>反消费主义、实验性</td><td class="it-cell"><span class="it-text" data-audio="flagship_29433d9c"><span class="it-word">sperimentale, provocatorio</span><button class="play-btn" data-audio="flagship_29433d9c" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td><strong>1980s</strong></td><td class="it-cell"><strong>Memphis</strong> 孟菲斯集团</td><td>大胆颜色、不规则几何</td><td class="it-cell"><span class="it-text" data-audio="flagship_c92ea203"><span class="it-word">colorato, ironico, giocoso</span><button class="play-btn" data-audio="flagship_c92ea203" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td><strong>1990s</strong></td><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_674aa9ae"><strong>Minimalismo Italiano</strong><button class="play-btn play-btn-block" data-audio="flagship_674aa9ae" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>极简、品质</td><td class="it-cell"><span class="it-text" data-audio="flagship_33abdee7"><span class="it-word">essenziale, di qualità</span><button class="play-btn" data-audio="flagship_33abdee7" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td><strong>2000s+</strong></td><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_bb192370"><strong>Sostenibilità</strong> 可持续<button class="play-btn play-btn-block" data-audio="flagship_bb192370" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>环保、社会责任</td><td class="it-cell"><span class="it-text" data-audio="flagship_cdc6e797"><span class="it-word">sostenibile, etico, circolare</span><button class="play-btn" data-audio="flagship_cdc6e797" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<p class="paragraph"><strong>💬 面试例句：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_ed2e3ac4"><span class="it-word">Il movimento Memphis mi ha particolarmente ispirato perché ha rotto gli schemi del design tradizionale, dimostrando che gli oggetti possono essere sia funzionali che espressivi.</span><button class="play-btn" data-audio="flagship_ed2e3ac4" aria-label="播放" title="点击播放">🔊</button></span>（孟菲斯运动特别启发了我，因为它打破了传统设计的框架，证明了物品既可以是功能性的，也可以有表现力。）</blockquote>
-<div class="divider"></div>
-<h2 id="sec-30" class="subsection-title">3.3 不可不知的意大利设计品牌</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>品牌</th><th>意大利语</th><th>代表作</th><th>风格标签</th></tr></thead><tbody><tr><td class="it-cell"><strong>Alessi</strong></td><td class="it-cell"><em>A</em></td><td>厨房用品、红酒开瓶器</td><td class="it-cell"><span class="it-text" data-audio="flagship_9c86bfa7"><span class="it-word">giocoso, iconico, casalingo</span><button class="play-btn" data-audio="flagship_9c86bfa7" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><strong>Kartell</strong></td><td class="it-cell"><em>K</em></td><td>Louis Ghost椅（透明椅）</td><td class="it-cell"><span class="it-text" data-audio="flagship_88996b4a"><span class="it-word">plastica, trasparente, innovativo</span><button class="play-btn" data-audio="flagship_88996b4a" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><strong>Artemide</strong></td><td class="it-cell"><em>A</em></td><td>灯具</td><td class="it-cell"><span class="it-text" data-audio="flagship_70f8a61e"><span class="it-word">illuminazione, elegante</span><button class="play-btn" data-audio="flagship_70f8a61e" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><strong>Flos</strong></td><td class="it-cell"><em>F</em></td><td>Arco灯、灯具</td><td class="it-cell"><span class="it-text" data-audio="flagship_61ff680c"><span class="it-word">scultoreo, luce</span><button class="play-btn" data-audio="flagship_61ff680c" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_186fec8b"><strong>Cassina</strong><button class="play-btn play-btn-block" data-audio="flagship_186fec8b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><em>C</em></td><td>LC系列、家具</td><td class="it-cell"><span class="it-text" data-audio="flagship_c2d4ed50"><span class="it-word">storico, di lusso, senza tempo</span><button class="play-btn" data-audio="flagship_c2d4ed50" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><strong>B\&amp;B Italia</strong></td><td class="it-cell"><em>B\&amp;B</em></td><td>沙发、现代家具</td><td class="it-cell"><span class="it-text" data-audio="flagship_87f5081e"><span class="it-word">contemporaneo, comfort</span><button class="play-btn" data-audio="flagship_87f5081e" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_4262eefd"><strong>Moroso</strong><button class="play-btn play-btn-block" data-audio="flagship_4262eefd" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><em>M</em></td><td>彩色沙发、时尚家具</td><td class="it-cell"><span class="it-text" data-audio="flagship_9824e674"><span class="it-word">colorato, audace</span><button class="play-btn" data-audio="flagship_9824e674" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_7cd038bb"><strong>Prada / Gucci / Valentino</strong><button class="play-btn play-btn-block" data-audio="flagship_7cd038bb" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell">—</td><td>时装</td><td class="it-cell"><span class="it-text" data-audio="flagship_562cbd18"><span class="it-word">lussuoso, artigianale</span><button class="play-btn" data-audio="flagship_562cbd18" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<p class="paragraph"><strong>💬 面试例句：</strong></p>
-<blockquote class="quote-block quote-italian"><span class="it-text" data-audio="flagship_29bedc00"><span class="it-word">Ammiro molto Kartell per la sua capacità di innovare con i materiali. La sedia Louis Ghost ha dimostrato che la plastica può essere elegante e senza tempo.</span><button class="play-btn" data-audio="flagship_29bedc00" aria-label="播放" title="点击播放">🔊</button></span>（我特别欣赏Kartell在材料上的创新能力。Louis Ghost椅证明了塑料也可以优雅且永不过时。）</blockquote>
-<div class="divider"></div>
-<h1 id="sec-31" class="section-title"><span class="section-number">04</span><span class="section-title-text">MODULE 4 · 设计语境下的高级语法 🧠</span></h1>
-<h2 id="sec-32" class="subsection-title">4.1 Condizionale 条件式 — 表达假设与建议</h2>
-<p class="paragraph">在设计语境中，条件式用于表达 <strong>假设方案、建议、理想状态</strong>，听起来非常专业。</p>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>用法</th><th>例句</th><th>中文</th></tr></thead><tbody><tr><td><strong>礼貌建议</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_86247910"><span class="it-word">Io &lt;strong&gt;sceglierei&lt;/strong&gt; un materiale più leggero.</span><button class="play-btn" data-audio="flagship_86247910" aria-label="播放" title="点击播放">🔊</button></span></td><td>我会选择更轻的材料。</td></tr><tr><td><strong>理想方案</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_9d6be1e3"><span class="it-word">L&#x27;ideale &lt;strong&gt;sarebbe&lt;/strong&gt; creare un sistema modulare.</span><button class="play-btn" data-audio="flagship_9d6be1e3" aria-label="播放" title="点击播放">🔊</button></span></td><td>理想方案是做一个模块化系统。</td></tr><tr><td><strong>假设场景</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_71e1d274"><span class="it-word">&lt;strong&gt;Si potrebbe&lt;/strong&gt; migliorare l&#x27;ergonomia con una maniglia curva.</span><button class="play-btn" data-audio="flagship_71e1d274" aria-label="播放" title="点击播放">🔊</button></span></td><td>可以用弯曲把手改善人机工学。</td></tr><tr><td><strong>愿望/目标</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_638cb449"><span class="it-word">In futuro, &lt;strong&gt;vorrei&lt;/strong&gt; sviluppare questo concept.</span><button class="play-btn" data-audio="flagship_638cb449" aria-label="播放" title="点击播放">🔊</button></span></td><td>未来我想发展这个概念。</td></tr><tr><td><strong>可能性</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_ad15bc33"><span class="it-word">Un&#x27;altra soluzione &lt;strong&gt;potrebbe essere&lt;/strong&gt; l&#x27;uso della ceramica.</span><button class="play-btn" data-audio="flagship_ad15bc33" aria-label="播放" title="点击播放">🔊</button></span></td><td>另一种方案可能是使用陶瓷。</td></tr></tbody></table></div>
-<p class="paragraph"><strong>💬 面试用法：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_c9987e9f"><span class="it-word">Se potessi migliorare questo progetto, &lt;strong&gt;cercherei&lt;/strong&gt; di ridurre ulteriormente l&#x27;impatto ambientale. L&#x27;ideale &lt;strong&gt;sarebbe&lt;/strong&gt; utilizzare materiali completamente biodegradabili.</span><button class="play-btn" data-audio="flagship_c9987e9f" aria-label="播放" title="点击播放">🔊</button></span>（如果我能改进这个项目，我会进一步减少环境影响。理想方案是完全使用可生物降解的材料。）</blockquote>
-<div class="divider"></div>
-<h2 id="sec-33" class="subsection-title">4.2 Congiuntivo 虚拟式 — 表达看法与观点</h2>
-<p class="paragraph">面试中表达个人观点时，用虚拟式会让你的意大利语直接上两个档次👇</p>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>触发词</th><th>例句</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_cea34e2e"><strong>Penso che...</strong><button class="play-btn play-btn-block" data-audio="flagship_cea34e2e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_344bf79e"><span class="it-word">Penso che il design &lt;strong&gt;debba&lt;/strong&gt; essere funzionale.</span><button class="play-btn" data-audio="flagship_344bf79e" aria-label="播放" title="点击播放">🔊</button></span></td><td>我认为设计应该是功能性的。</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_bea1001e"><strong>Credo che...</strong><button class="play-btn play-btn-block" data-audio="flagship_bea1001e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_61aeda18"><span class="it-word">Credo che l&#x27;Italia &lt;strong&gt;sia&lt;/strong&gt; il posto giusto per studiare design.</span><button class="play-btn" data-audio="flagship_61aeda18" aria-label="播放" title="点击播放">🔊</button></span></td><td>我相信意大利是学设计的正确地方。</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_82b62041"><strong>Secondo me...</strong><button class="play-btn play-btn-block" data-audio="flagship_82b62041" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><em>(不需要虚拟式! 因为表达的是个人确信)</em></td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_0e9cbdf5"><strong>È importante che...</strong><button class="play-btn play-btn-block" data-audio="flagship_0e9cbdf5" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_18ebb72f"><span class="it-word">È importante che il designer &lt;strong&gt;ascolti&lt;/strong&gt; l&#x27;utente.</span><button class="play-btn" data-audio="flagship_18ebb72f" aria-label="播放" title="点击播放">🔊</button></span></td><td>设计师倾听用户很重要。</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_3b819687"><strong>Bisogna che...</strong><button class="play-btn play-btn-block" data-audio="flagship_3b819687" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_2da4f7e4"><span class="it-word">Bisogna che il progetto &lt;strong&gt;abbia&lt;/strong&gt; un impatto sociale.</span><button class="play-btn" data-audio="flagship_2da4f7e4" aria-label="播放" title="点击播放">🔊</button></span></td><td>项目需要有社会影响。</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_52e61504"><strong>Non penso che...</strong><button class="play-btn play-btn-block" data-audio="flagship_52e61504" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_cc489cd9"><span class="it-word">Non penso che la forma &lt;strong&gt;segua&lt;/strong&gt; sempre la funzione.</span><button class="play-btn" data-audio="flagship_cc489cd9" aria-label="播放" title="点击播放">🔊</button></span></td><td>我不认为形式永远追随功能。</td></tr></tbody></table></div>
-<p class="paragraph"><strong>💡 A2水平的你优先掌握：</strong> <span class="it-text" data-audio="flagship_e7f893cd"><span class="it-word">Penso che / Credo che</span><button class="play-btn" data-audio="flagship_e7f893cd" aria-label="播放" title="点击播放">🔊</button></span> + 虚拟式就够用了！</p>
-<p class="paragraph"><strong>💬 面试用法：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_06750481"><span class="it-word">Penso che il design &lt;strong&gt;debba&lt;/strong&gt; rispondere a bisogni reali, ma &lt;strong&gt;possa&lt;/strong&gt; anche essere bello. Credo che l&#x27;Italia &lt;strong&gt;sia&lt;/strong&gt; il paese ideale per sviluppare questa visione.</span><button class="play-btn" data-audio="flagship_06750481" aria-label="播放" title="点击播放">🔊</button></span>（我认为设计应该回应真实需求，但也可以很美。我相信意大利是发展这个愿景的理想国家。）</blockquote>
-<div class="divider"></div>
-<h2 id="sec-34" class="subsection-title">4.3 "Ci" 在设计语境中的使用</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>用法</th><th>例句</th><th>中文</th></tr></thead><tbody><tr><td><strong>Ci 代指项目/话题</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_44835905"><span class="it-word">C&lt;strong&gt;i&lt;/strong&gt; ho lavorato per tre mesi.</span><button class="play-btn" data-audio="flagship_44835905" aria-label="播放" title="点击播放">🔊</button></span></td><td>我在它上面花了三个月。</td></tr><tr><td><strong>Ci 表示&quot;在这里&quot;</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_767fc90c"><span class="it-word">In Italia &lt;strong&gt;ci&lt;/strong&gt; sono molte opportunità.</span><button class="play-btn" data-audio="flagship_767fc90c" aria-label="播放" title="点击播放">🔊</button></span></td><td>在意大利有很多机会。</td></tr><tr><td><strong>Ci 表示&quot;有&quot;</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_b19fae95"><span class="it-word">Nel progetto &lt;strong&gt;ci&lt;/strong&gt; sono tre elementi chiave.</span><button class="play-btn" data-audio="flagship_b19fae95" aria-label="播放" title="点击播放">🔊</button></span></td><td>在这个项目里有三个关键元素。</td></tr><tr><td><strong>Pensarci</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_1f099bc2"><span class="it-word">&lt;strong&gt;Ci&lt;/strong&gt; ho pensato molto prima di scegliere questo materiale.</span><button class="play-btn" data-audio="flagship_1f099bc2" aria-label="播放" title="点击播放">🔊</button></span></td><td>在选择这个材料之前我考虑了很多。</td></tr><tr><td><strong>Riuscirci</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_1bf9cd4e"><span class="it-word">Alla fine &lt;strong&gt;ci&lt;/strong&gt; sono riuscito.</span><button class="play-btn" data-audio="flagship_1bf9cd4e" aria-label="播放" title="点击播放">🔊</button></span></td><td>最后我做到了。</td></tr></tbody></table></div>
-<div class="divider"></div>
-<h2 id="sec-35" class="subsection-title">4.4 "Ne" 在设计语境中的使用</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>用法</th><th>例句</th><th>中文</th></tr></thead><tbody><tr><td><strong>Ne 代指&quot;关于某事&quot;</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_f8c12cd4"><span class="it-word">&lt;strong&gt;Ne&lt;/strong&gt; parlerò nella presentazione.</span><button class="play-btn" data-audio="flagship_f8c12cd4" aria-label="播放" title="点击播放">🔊</button></span></td><td>我会在展示中讲到它。</td></tr><tr><td><strong>Ne 代指&quot;从中&quot;</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_b0cd38c0"><span class="it-word">Dalla ricerca &lt;strong&gt;ne&lt;/strong&gt; ho ricavato tre insight.</span><button class="play-btn" data-audio="flagship_b0cd38c0" aria-label="播放" title="点击播放">🔊</button></span></td><td>从调研中我得出三个洞察。</td></tr><tr><td><strong>Ne 代指&quot;其中的&quot;</strong></td><td class="it-cell"><span class="it-text" data-audio="flagship_dabb59df"><span class="it-word">Ho realizzato 10 prototipi, &lt;strong&gt;ne&lt;/strong&gt; ho selezionati 3.</span><button class="play-btn" data-audio="flagship_dabb59df" aria-label="播放" title="点击播放">🔊</button></span></td><td>我做了10个原型，选了其中3个。</td></tr></tbody></table></div>
-<div class="divider"></div>
-<h2 id="sec-36" class="subsection-title">4.5 设计假设句 · Periodo Ipotetico</h2>
-<p class="paragraph"><strong>真实假设（现实可能）</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_40224972"><span class="it-word">Se il materiale è riciclabile, il progetto è sostenibile.</span><button class="play-btn" data-audio="flagship_40224972" aria-label="播放" title="点击播放">🔊</button></span>&#x5982;果材料是可回收的，这个项目就是可持续的。</blockquote>
-<p class="paragraph"><strong>可能假设（可能但不一定）</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_19d12bdd"><span class="it-word">Se usassi un materiale più leggero, il prodotto sarebbe più trasportabile.</span><button class="play-btn" data-audio="flagship_19d12bdd" aria-label="播放" title="点击播放">🔊</button></span>&#x5982;果我用更轻的材料，产品会更便于运输。</blockquote>
-<p class="paragraph"><strong>💡 A2阶段先用第一种就够了！</strong></p>
-<div class="divider"></div>
-<h2 id="sec-37" class="subsection-title">4.6 设计描述的比较级与最高级</h2>
-<h3 id="sec-38" class="subsubsection-title">Comparativo 比较级</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>句型</th><th>例句</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_b935483d"><strong>più + agg. + di</strong><button class="play-btn play-btn-block" data-audio="flagship_b935483d" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_6868556b"><span class="it-word">Questo prototipo è &lt;strong&gt;più leggero del&lt;/strong&gt; precedente.</span><button class="play-btn" data-audio="flagship_6868556b" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_40078e40"><strong>meno + agg. + di</strong><button class="play-btn play-btn-block" data-audio="flagship_40078e40" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell">\<span class="it-text" data-audio="flagship_6e90c013"><span class="it-word">Questa soluzione è \</span><button class="play-btn" data-audio="flagship_6e90c013" aria-label="播放" title="点击播放">🔊</button></span>\<em>meno costosa dell&#x27;\</em><em>altra.</em></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_a2cd3197"><strong>così + agg. + come</strong><button class="play-btn play-btn-block" data-audio="flagship_a2cd3197" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_32f748cb"><span class="it-word">Il nuovo design è &lt;strong&gt;così funzionale come&lt;/strong&gt; l&#x27;originale.</span><button class="play-btn" data-audio="flagship_32f748cb" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h3 id="sec-39" class="subsubsection-title">Superlativo 最高级</h3>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>句型</th><th>例句</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_fdc6df28"><strong>il/la più + agg.</strong><button class="play-btn play-btn-block" data-audio="flagship_fdc6df28" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_5a14fdee"><span class="it-word">È &lt;strong&gt;il progetto più ambizioso&lt;/strong&gt; che abbia mai fatto.</span><button class="play-btn" data-audio="flagship_5a14fdee" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_1c797411"><strong>molto + agg.</strong><button class="play-btn play-btn-block" data-audio="flagship_1c797411" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td class="it-cell"><span class="it-text" data-audio="flagship_05061572"><span class="it-word">Il risultato è &lt;strong&gt;molto soddisfacente.&lt;/strong&gt;</span><button class="play-btn" data-audio="flagship_05061572" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<div class="divider"></div>
-<h1 id="sec-40" class="section-title"><span class="section-number">05</span><span class="section-title-text">MODULE 5 · 设计批评与学术高阶词汇 🎓</span></h1>
-<h2 id="sec-41" class="subsection-title">5.1 结构批评 —— Struttura</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th><th>设计语境</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_306cbbad"><strong>la coerenza formale</strong><button class="play-btn play-btn-block" data-audio="flagship_306cbbad" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>形式的一致性</td><td class="it-cell"><span class="it-text" data-audio="flagship_f2e45cbf"><span class="it-word">Il progetto mantiene una forte coerenza formale.</span><button class="play-btn" data-audio="flagship_f2e45cbf" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_d17e09d8"><strong>l&#x27;equilibrio compositivo</strong><button class="play-btn play-btn-block" data-audio="flagship_d17e09d8" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>构图平衡</td><td class="it-cell"><span class="it-text" data-audio="flagship_98cf624a"><span class="it-word">L&#x27;equilibrio compositivo è ben studiato.</span><button class="play-btn" data-audio="flagship_98cf624a" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_8c2c7621"><strong>la gerarchia visiva</strong><button class="play-btn play-btn-block" data-audio="flagship_8c2c7621" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>视觉层级</td><td class="it-cell"><span class="it-text" data-audio="flagship_033f89d6"><span class="it-word">C&#x27;è una chiara gerarchia visiva.</span><button class="play-btn" data-audio="flagship_033f89d6" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_069a5782"><strong>il ritmo</strong><button class="play-btn play-btn-block" data-audio="flagship_069a5782" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>节奏</td><td class="it-cell"><span class="it-text" data-audio="flagship_616b8e50"><span class="it-word">Il ritmo visivo guida l&#x27;occhio dell&#x27;osservatore.</span><button class="play-btn" data-audio="flagship_616b8e50" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_5c48e9de"><strong>la tensione</strong><button class="play-btn play-btn-block" data-audio="flagship_5c48e9de" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>张力</td><td class="it-cell"><span class="it-text" data-audio="flagship_d09aa60a"><span class="it-word">C&#x27;è una bella tensione tra pieni e vuoti.</span><button class="play-btn" data-audio="flagship_d09aa60a" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_40be1d42"><strong>la proporzione aurea</strong><button class="play-btn play-btn-block" data-audio="flagship_40be1d42" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>黄金比例</td><td class="it-cell"><span class="it-text" data-audio="flagship_b5fa98fe"><span class="it-word">Ho usato la proporzione aurea per definire le dimensioni.</span><button class="play-btn" data-audio="flagship_b5fa98fe" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_7fe0552c"><strong>la modularità</strong><button class="play-btn play-btn-block" data-audio="flagship_7fe0552c" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>模块化</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_2489a1ce"><strong>la serialità</strong><button class="play-btn play-btn-block" data-audio="flagship_2489a1ce" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>系列性</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_742c9315"><strong>la ripetizione</strong><button class="play-btn play-btn-block" data-audio="flagship_742c9315" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>重复</td><td class="it-cell">​</td></tr></tbody></table></div>
-<h2 id="sec-42" class="subsection-title">5.2 概念批评 —— Concetto</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th><th>设计语境</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_5a2c9c6b"><strong>l&#x27;intento progettuale</strong><button class="play-btn play-btn-block" data-audio="flagship_5a2c9c6b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>设计意图</td><td class="it-cell"><span class="it-text" data-audio="flagship_adf9e353"><span class="it-word">L&#x27;intento progettuale è chiaro e ben argomentato.</span><button class="play-btn" data-audio="flagship_adf9e353" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_f9bb53cd"><strong>la narrazione</strong><button class="play-btn play-btn-block" data-audio="flagship_f9bb53cd" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>叙事</td><td class="it-cell"><span class="it-text" data-audio="flagship_606ab76d"><span class="it-word">Il progetto racconta una narrazione coerente.</span><button class="play-btn" data-audio="flagship_606ab76d" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_7633cda3"><strong>il messaggio</strong><button class="play-btn play-btn-block" data-audio="flagship_7633cda3" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>信息/讯息</td><td class="it-cell"><span class="it-text" data-audio="flagship_f6de3573"><span class="it-word">Il messaggio che il design vuole comunicare è...</span><button class="play-btn" data-audio="flagship_f6de3573" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_58ab8b57"><strong>la poetica</strong><button class="play-btn play-btn-block" data-audio="flagship_58ab8b57" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>诗学/美学理念</td><td class="it-cell"><span class="it-text" data-audio="flagship_cdf74378"><span class="it-word">La poetica del designer si riflette nei dettagli.</span><button class="play-btn" data-audio="flagship_cdf74378" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_aea890c7"><strong>l&#x27;ambiguità</strong><button class="play-btn play-btn-block" data-audio="flagship_aea890c7" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>模糊性</td><td class="it-cell"><span class="it-text" data-audio="flagship_3715c2b8"><span class="it-word">L&#x27;ambiguità voluta invita l&#x27;utente a interpretare.</span><button class="play-btn" data-audio="flagship_3715c2b8" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_eab43878"><strong>la stratificazione semantica</strong><button class="play-btn play-btn-block" data-audio="flagship_eab43878" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>语义分层</td><td class="it-cell"><span class="it-text" data-audio="flagship_91553288"><span class="it-word">Il progetto ha una ricca stratificazione semantica.</span><button class="play-btn" data-audio="flagship_91553288" aria-label="播放" title="点击播放">🔊</button></span></td></tr></tbody></table></div>
-<h2 id="sec-43" class="subsection-title">5.3 感知批评 —— Percezione</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_05bd3f25"><strong>la percezione tattile</strong><button class="play-btn play-btn-block" data-audio="flagship_05bd3f25" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>触觉感知</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_070b142d"><strong>la qualità sensoriale</strong><button class="play-btn play-btn-block" data-audio="flagship_070b142d" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>感官品质</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_01059d77"><strong>l&#x27;esperienza estetica</strong><button class="play-btn play-btn-block" data-audio="flagship_01059d77" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>审美体验</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_c99d0c62"><strong>l&#x27;impatto emotivo</strong><button class="play-btn play-btn-block" data-audio="flagship_c99d0c62" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>情感冲击</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_46ac798b"><strong>il comfort psicologico</strong><button class="play-btn play-btn-block" data-audio="flagship_46ac798b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>心理舒适度</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_e6c5dbfb"><strong>il senso di familiarità</strong><button class="play-btn play-btn-block" data-audio="flagship_e6c5dbfb" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>熟悉感</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_366bfb5b"><strong>l&#x27;effetto sorpresa</strong><button class="play-btn play-btn-block" data-audio="flagship_366bfb5b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>惊喜效果</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_9ae76389"><strong>l&#x27;attrattiva visiva</strong><button class="play-btn play-btn-block" data-audio="flagship_9ae76389" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>视觉吸引力</td></tr></tbody></table></div>
-<h2 id="sec-44" class="subsection-title">5.4 学术批评句型模版</h2>
-<p class="paragraph"><strong>💬 正面批评（赞扬+理由）：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_ec411a56"><span class="it-word">Ciò che apprezzo di più di questo progetto è la &lt;strong&gt;coerenza formale&lt;/strong&gt;: ogni elemento, dal colore alla texture, contribuisce a creare un&#x27;identità visiva unitaria.</span><button class="play-btn" data-audio="flagship_ec411a56" aria-label="播放" title="点击播放">🔊</button></span>（我最欣赏这个项目的是它形式的一致性：每个元素，从颜色到纹理，都在构建统一的视觉识别。）</blockquote>
-<p class="paragraph"><strong>💬 建设性批评（指出不足+建议方向）：</strong></p>
-<blockquote class="quote-block quote-italian"><span class="it-text" data-audio="flagship_a8998a2c"><span class="it-word">Il concept è interessante, ma forse la &lt;strong&gt;gerarchia visiva&lt;/strong&gt; potrebbe essere migliorata. Suggerirei di dare più enfasi all&#x27;elemento principale.</span><button class="play-btn" data-audio="flagship_a8998a2c" aria-label="播放" title="点击播放">🔊</button></span>（概念很有意思，但视觉层级或许可以改进。我建议突出主要元素。）</blockquote>
-<p class="paragraph"><strong>💬 自评反思（面试杀手锏！）：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_0a92720e"><span class="it-word">Rivedendo questo progetto, mi rendo conto che l&#x27;&lt;strong&gt;intento progettuale&lt;/strong&gt; era chiaro, ma la &lt;strong&gt;narrazione&lt;/strong&gt; avrebbe potuto essere più coinvolgente. In futuro, vorrei dedicare più tempo allo sviluppo del concept prima di passare alla fase esecutiva.</span><button class="play-btn" data-audio="flagship_0a92720e" aria-label="播放" title="点击播放">🔊</button></span>（回顾这个项目，我意识到设计意图是清晰的，但叙事本可以更引人入胜。未来我想花更多时间在概念发展阶段，再进入执行阶段。）</blockquote>
-<div class="divider"></div>
-<h1 id="sec-45" class="section-title"><span class="section-number">06</span><span class="section-title-text">MODULE 6 · 排版印刷专业技术术语 🔍</span></h1>
-<h2 id="sec-46" class="subsection-title">6.1 字体设计 Typography</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th><th>说明</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_644f3ec2"><strong>il carattere tipografico</strong><button class="play-btn play-btn-block" data-audio="flagship_644f3ec2" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>字体（总称）</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_175f59d6"><strong>il font / il tipo</strong><button class="play-btn play-btn-block" data-audio="flagship_175f59d6" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>字体</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_41a7988b"><strong>il carattere con grazie (serif)</strong><button class="play-btn play-btn-block" data-audio="flagship_41a7988b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>衬线字体</td><td class="it-cell">Grazia = 衬线</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_eae1bd6e"><strong>il carattere senza grazie (sans-serif)</strong><button class="play-btn play-btn-block" data-audio="flagship_eae1bd6e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>无衬线字体</td><td class="it-cell"><span class="it-text" data-audio="flagship_d4b91cad"><span class="it-word">Sans-serif è più moderno.</span><button class="play-btn" data-audio="flagship_d4b91cad" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_fcb27ba3"><strong>il carattere script</strong><button class="play-btn play-btn-block" data-audio="flagship_fcb27ba3" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>手写体</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_84f6b9bb"><strong>il carattere decorativo</strong><button class="play-btn play-btn-block" data-audio="flagship_84f6b9bb" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>装饰字体</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_775d9c87"><strong>il grassetto</strong><button class="play-btn play-btn-block" data-audio="flagship_775d9c87" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>粗体</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_a0d73818"><strong>il corsivo</strong><button class="play-btn play-btn-block" data-audio="flagship_a0d73818" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>斜体</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_98fb0334"><strong>il maiuscolo / il minuscolo</strong><button class="play-btn play-btn-block" data-audio="flagship_98fb0334" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>大写/小写</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_1ea44ac4"><strong>la maiuscoletto</strong><button class="play-btn play-btn-block" data-audio="flagship_1ea44ac4" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>小型大写字母</td><td class="it-cell">很高级的排版用法</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_f4a85fbe"><strong>la grandezza / il corpo</strong><button class="play-btn play-btn-block" data-audio="flagship_f4a85fbe" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>字号</td><td class="it-cell"><span class="it-text" data-audio="flagship_660b941d"><span class="it-word">Corpo 12 è leggibile.</span><button class="play-btn" data-audio="flagship_660b941d" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_7674e04d"><strong>l&#x27;interlinea</strong><button class="play-btn play-btn-block" data-audio="flagship_7674e04d" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>行距</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_bcc896b5"><strong>la crenatura / il kerning</strong><button class="play-btn play-btn-block" data-audio="flagship_bcc896b5" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>字距调整</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_0c2767b7"><strong>la spaziatura</strong><button class="play-btn play-btn-block" data-audio="flagship_0c2767b7" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>间距</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_cd3d60cf"><strong>la legatura</strong><button class="play-btn play-btn-block" data-audio="flagship_cd3d60cf" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>连字（如 fi, fl 连写）</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_89a4eafb"><strong>il font display</strong><button class="play-btn play-btn-block" data-audio="flagship_89a4eafb" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>标题字体</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_bf7ea7ce"><strong>il font per il corpo del testo</strong><button class="play-btn play-btn-block" data-audio="flagship_bf7ea7ce" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>正文字体</td><td class="it-cell">​</td></tr></tbody></table></div>
-<h2 id="sec-47" class="subsection-title">6.2 版面 Grid & Layout</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_c25f7104"><strong>la griglia</strong><button class="play-btn play-btn-block" data-audio="flagship_c25f7104" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>网格</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_7b7abd62"><strong>la griglia modulare</strong><button class="play-btn play-btn-block" data-audio="flagship_7b7abd62" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>模块化网格</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_2d8f11da"><strong>la colonna</strong><button class="play-btn play-btn-block" data-audio="flagship_2d8f11da" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>栏/列</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_cf3ff72e"><strong>la gabbia</strong><button class="play-btn play-btn-block" data-audio="flagship_cf3ff72e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>版心</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_37de0775"><strong>il margine</strong><button class="play-btn play-btn-block" data-audio="flagship_37de0775" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>页边距</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_670ca44d"><strong>il bianco / lo spazio bianco</strong><button class="play-btn play-btn-block" data-audio="flagship_670ca44d" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>留白</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_4412d87b"><strong>il flusso visivo</strong><button class="play-btn play-btn-block" data-audio="flagship_4412d87b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>视觉流向</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_5cf43202"><strong>la sequenza</strong><button class="play-btn play-btn-block" data-audio="flagship_5cf43202" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>序列</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_5cec0e2f"><strong>l&#x27;allineamento</strong><button class="play-btn play-btn-block" data-audio="flagship_5cec0e2f" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>对齐</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_6e243747"><strong>l&#x27;allineamento a sinistra/destra</strong><button class="play-btn play-btn-block" data-audio="flagship_6e243747" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>左/右对齐</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_d963fc64"><strong>la giustificazione</strong><button class="play-btn play-btn-block" data-audio="flagship_d963fc64" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>两端对齐</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_cd463cff"><strong>la centratura</strong><button class="play-btn play-btn-block" data-audio="flagship_cd463cff" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>居中对齐</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_23828449"><strong>il salto di pagina</strong><button class="play-btn play-btn-block" data-audio="flagship_23828449" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>分页</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_0a908152"><strong>la colonna spezzata</strong><button class="play-btn play-btn-block" data-audio="flagship_0a908152" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>断栏（文字从一栏到另一栏）</td></tr></tbody></table></div>
-<h2 id="sec-48" class="subsection-title">6.3 色彩 Color</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th><th>说明</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_e4efc787"><strong>il sistema colore</strong><button class="play-btn play-btn-block" data-audio="flagship_e4efc787" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>色彩系统</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_944a20d2"><strong>la tinta</strong><button class="play-btn play-btn-block" data-audio="flagship_944a20d2" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>色调/色相</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_a189e0f7"><strong>la saturazione</strong><button class="play-btn play-btn-block" data-audio="flagship_a189e0f7" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>饱和度</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_01816a1c"><strong>la luminosità</strong><button class="play-btn play-btn-block" data-audio="flagship_01816a1c" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>明度</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_0c6412ff"><strong>il colore primario</strong><button class="play-btn play-btn-block" data-audio="flagship_0c6412ff" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>原色</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_0756dbb1"><strong>il colore secondario</strong><button class="play-btn play-btn-block" data-audio="flagship_0756dbb1" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>间色</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_a2b52fff"><strong>il colore complementare</strong><button class="play-btn play-btn-block" data-audio="flagship_a2b52fff" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>互补色</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_388c484e"><strong>il colore analogo</strong><button class="play-btn play-btn-block" data-audio="flagship_388c484e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>类似色</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_491f11e5"><strong>la gradazione / il gradiente</strong><button class="play-btn play-btn-block" data-audio="flagship_491f11e5" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>渐变</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_2a84f8de"><strong>Pantone</strong><button class="play-btn play-btn-block" data-audio="flagship_2a84f8de" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>潘通色卡</td><td class="it-cell"><span class="it-text" data-audio="flagship_6d6e97e5"><span class="it-word">Ho usato i colori Pantone per la stampa.</span><button class="play-btn" data-audio="flagship_6d6e97e5" aria-label="播放" title="点击播放">🔊</button></span></td></tr><tr><td class="it-cell"><strong>CMYK</strong></td><td>CMYK（印刷色）</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><strong>RGB</strong></td><td>RGB（屏幕色）</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_529128ed"><strong>il colore spot</strong><button class="play-btn play-btn-block" data-audio="flagship_529128ed" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>专色</td><td class="it-cell">​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_c18cef6a"><strong>la quadricromia</strong><button class="play-btn play-btn-block" data-audio="flagship_c18cef6a" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>四色印刷</td><td class="it-cell">​</td></tr></tbody></table></div>
-<h2 id="sec-49" class="subsection-title">6.4 印刷工艺 Stampa</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意大利语</th><th>中文</th><th>说明</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_dc56605a"><strong>la stampa offset</strong><button class="play-btn play-btn-block" data-audio="flagship_dc56605a" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>胶印</td><td>大量印刷用</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_60495802"><strong>la stampa digitale</strong><button class="play-btn play-btn-block" data-audio="flagship_60495802" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>数码打印</td><td>小批量/作品集</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_83aaf06b"><strong>la serigrafia</strong><button class="play-btn play-btn-block" data-audio="flagship_83aaf06b" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>丝网印刷</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_44777a42"><strong>la stampa in rilievo / l&#x27;incisione</strong><button class="play-btn play-btn-block" data-audio="flagship_44777a42" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>凸版/凹版</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_27c5f5cb"><strong>la fustellatura</strong><button class="play-btn play-btn-block" data-audio="flagship_27c5f5cb" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>模切</td><td>裁切成异形</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_c292de2f"><strong>la piegatura</strong><button class="play-btn play-btn-block" data-audio="flagship_c292de2f" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>折页/折痕</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_16907fb0"><strong>la rilegatura</strong><button class="play-btn play-btn-block" data-audio="flagship_16907fb0" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>装订</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_06572913"><strong>la cucitura a punto metallico</strong><button class="play-btn play-btn-block" data-audio="flagship_06572913" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>骑马钉</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_00f17c2e"><strong>la rilegatura a filo refe</strong><button class="play-btn play-btn-block" data-audio="flagship_00f17c2e" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>线装</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_bfcc4150"><strong>la brossura</strong><button class="play-btn play-btn-block" data-audio="flagship_bfcc4150" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>平装/胶装</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_2e844bce"><strong>la cartonato</strong><button class="play-btn play-btn-block" data-audio="flagship_2e844bce" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>精装</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_4474d4ad"><strong>la spirale</strong><button class="play-btn play-btn-block" data-audio="flagship_4474d4ad" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>线圈装</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_b38c8073"><strong>la laminazione opaca/lucida</strong><button class="play-btn play-btn-block" data-audio="flagship_b38c8073" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>哑膜/亮膜覆膜</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_26640c0a"><strong>la verniciatura</strong><button class="play-btn play-btn-block" data-audio="flagship_26640c0a" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>上光</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_a4172693"><strong>la goffratura</strong><button class="play-btn play-btn-block" data-audio="flagship_a4172693" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>压凹/浮雕</td><td>​</td></tr><tr><td class="it-cell"><span class="it-text it-text-block" data-audio="flagship_7e575ebf"><strong>lo stampaggio a caldo</strong><button class="play-btn play-btn-block" data-audio="flagship_7e575ebf" aria-label="播放整段" title="点击播放整段">🔊</button></span></td><td>烫金/烫银</td><td>​</td></tr></tbody></table></div>
-<p class="paragraph"><strong>💬 实用句：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_cbaf7839"><span class="it-word">Per il mio portfolio ho scelto una rilegatura a filo refe con carta opaca riciclata, perché volevo dare un senso artigianale e sostenibile.</span><button class="play-btn" data-audio="flagship_cbaf7839" aria-label="播放" title="点击播放">🔊</button></span>（我的作品集用了线装+再生哑光纸，因为想营造手工感和可持续的感觉。）</blockquote>
-<div class="divider"></div>
-<h1 id="sec-50" class="section-title"><span class="section-number">07</span><span class="section-title-text">MODULE 7 · 意中设计对比与文化差异 🌏</span></h1>
-<h2 id="sec-51" class="subsection-title">7.1 对比常用句型</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text" data-audio="flagship_70a08855"><span class="it-word">In Cina... mentre in Italia...</span><button class="play-btn" data-audio="flagship_70a08855" aria-label="播放" title="点击播放">🔊</button></span></td><td>在中国……而在意大利……</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="flagship_9d8d5edf"><span class="it-word">A differenza della Cina, in Italia...</span><button class="play-btn" data-audio="flagship_9d8d5edf" aria-label="播放" title="点击播放">🔊</button></span></td><td>与中国不同，在意大利……</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="flagship_d835a2b9"><span class="it-word">Rispetto al design cinese, quello italiano è...</span><button class="play-btn" data-audio="flagship_d835a2b9" aria-label="播放" title="点击播放">🔊</button></span></td><td>与中国设计相比，意大利设计……</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="flagship_f83c3baf"><span class="it-word">La mia cultura cinese mi ha dato una prospettiva diversa su...</span><button class="play-btn" data-audio="flagship_f83c3baf" aria-label="播放" title="点击播放">🔊</button></span></td><td>我的中国文化给了我关于……的不同视角。</td></tr></tbody></table></div>
-<h2 id="sec-52" class="subsection-title">7.2 意中设计差异表达</h2>
-<p class="paragraph"><strong>💬 文化对比例句：</strong></p>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_5a49127e"><span class="it-word">In Cina, il design spesso enfatizza la funzionalità e l&#x27;efficienza, mentre in Italia c&#x27;è una maggiore attenzione all&#x27;estetica e all&#x27;esperienza emotiva. Il mio obiettivo è unire questi due approcci.</span><button class="play-btn" data-audio="flagship_5a49127e" aria-label="播放" title="点击播放">🔊</button></span>（在中国，设计通常强调功能和效率，而在意大利人们更注重美学和情感体验。我的目标是结合这两种方式。）</blockquote>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_c923d15c"><span class="it-word">La cultura cinese mi ha insegnato l&#x27;importanza del contesto, dello spazio vuoto e dell&#x27;armonia. Questi elementi li vedo anche nel design italiano, ma espressi in modo diverso.</span><button class="play-btn" data-audio="flagship_c923d15c" aria-label="播放" title="点击播放">🔊</button></span>（中国文化教会我语境、留白与和谐的重要性。这些元素在意大利设计中我也能看到，但以不同的方式表达。）</blockquote>
-<blockquote class="quote-block"><span class="it-text" data-audio="flagship_05041313"><span class="it-word">Unire la tradizione artigianale cinese con l&#x27;innovazione italiana: questa è la mia visione del design.</span><button class="play-btn" data-audio="flagship_05041313" aria-label="播放" title="点击播放">🔊</button></span>（把中国传统手工艺和意大利创新结合起来——这就是我的设计愿景。）</blockquote>
-<h2 id="sec-53" class="subsection-title">7.3 文化融合·作品集加分表达</h2>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>意语</th><th>中文</th></tr></thead><tbody><tr><td class="it-cell"><span class="it-text" data-audio="flagship_e72b70f9"><span class="it-word">Ho reinterpretato un elemento tradizionale cinese in chiave contemporanea.</span><button class="play-btn" data-audio="flagship_e72b70f9" aria-label="播放" title="点击播放">🔊</button></span></td><td>我以当代方式重新诠释了一个中国传统元素。</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="flagship_1c207755"><span class="it-word">Il progetto dialoga con entrambe le culture, orientale e occidentale.</span><button class="play-btn" data-audio="flagship_1c207755" aria-label="播放" title="点击播放">🔊</button></span></td><td>这个项目与东西方两种文化对话。</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="flagship_aa18a4ae"><span class="it-word">Voglio portare una sensibilità orientale nel contesto del design italiano.</span><button class="play-btn" data-audio="flagship_aa18a4ae" aria-label="播放" title="点击播放">🔊</button></span></td><td>我想把东方的感受力带入意大利设计语境中。</td></tr><tr><td class="it-cell"><span class="it-text" data-audio="flagship_82ea40ce"><span class="it-word">L&#x27;incontro tra due culture ha generato una soluzione inaspettata.</span><button class="play-btn" data-audio="flagship_82ea40ce" aria-label="播放" title="点击播放">🔊</button></span></td><td>两种文化的相遇产生了一个出乎意料的解决方案。</td></tr></tbody></table></div>
-<div class="divider"></div>
-<h1 id="sec-54" class="section-title"><span class="section-number">08</span><span class="section-title-text">🔥 终极彩蛋：30天冲刺升级版</span></h1>
-<p class="paragraph">结合这七大神器，调整30天计划：</p>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>周次</th><th>强化任务</th><th>重点模块</th></tr></thead><tbody><tr><td><strong>Week 1</strong></td><td>确定目标院校，研究该校风格偏好</td><td><strong>Module 1</strong></td></tr><tr><td><strong>Week 2</strong></td><td>按黄金结构重写每个项目的Descrizione</td><td><strong>Module 2</strong></td></tr><tr><td><strong>Week 3</strong></td><td>背3位意大利设计师+1个设计运动+2个品牌</td><td><strong>Module 3</strong></td></tr><tr><td><strong>Week 4</strong></td><td>掌握Condizionale+Congiuntivo基础用法，练完整面试</td><td><strong>Module 4</strong></td></tr></tbody></table></div>
-<p class="paragraph"><strong>🚀 临门一脚：</strong></p>
-<ul class="list-block"><li>面试前三天：把 <strong>Module 2 范例</strong> 改成你自己的项目内容</li><li>面试前一天：对着镜子穿得体面，计时讲一遍完整的5分钟presentation</li><li>面试当天：带上打印出来的作品集（意大利教授很看重纸质版！）</li></ul>
-<div class="divider"></div>
-<blockquote class="quote-block"><strong>这份深度版加上前两版，你的作品集意语准备已经超过99%的竞争对手了。剩下的就是每天开口说！🎯</strong><span class="it-text" data-audio="flagship_25ea5e16"><span class="it-word">Se puoi sognarlo, puoi progettarlo. Se puoi progettarlo, puoi realizzarlo.</span><button class="play-btn" data-audio="flagship_25ea5e16" aria-label="播放" title="点击播放">🔊</button></span>（如果你能梦到它，你就能设计它；如果你能设计它，你就能实现它。）— <span class="it-text" data-audio="flagship_b62b3774"><span class="it-word">Ispirato a Bruno Munari</span><button class="play-btn" data-audio="flagship_b62b3774" aria-label="播放" title="点击播放">🔊</button></span></blockquote>
-<p class="paragraph"><strong>In bocca al lupo,! 🐺🔥 Che il design sia con te!</strong></p>
+    <div class="school-tip">🎯 米理教授喜欢问 "Why this material?" "What's the user problem?" 准备好从功能逻辑角度回答。</div>
+  </div>
+
+  <div class="school-card">
+    <div class="school-name">🏫 IUAV — 威尼斯建筑大学</div>
+    <div class="school-grid">
+      <span class="label">特色</span><span class="val">实验性、前卫、艺术感强</span>
+      <span class="label">作品集偏好</span><span class="val">🎭 有艺术张力、概念驱动</span>
+      <span class="label">教授最看重</span><span class="val">独特视角、批判性思维、跨媒介实验</span>
+      <span class="label">加分项</span><span class="val">装置艺术、多媒体、非常规材料</span>
+      <span class="label">雷区</span><span class="val">过于商业化的设计</span>
+      <span class="label">一句话总结</span><span class="val"><span class="it" data-speak="Rompi le regole, usa il design per porre domande.">"打破常规，用设计提出问题。"</span></span>
     </div>
   </div>
-</main>
 
-    <nav class="bottom-nav">
-      <a href="index.html" class="bn-home">
-        <span class="bn-icon">🏠</span>
-        <span class="bn-text">返回导航页</span>
-      </a>
-      <div class="bn-others">
-        <a href="basic.html" class="bn-other" style="--btn-accent: #10b981;"><span class="bno-icon">🌱</span><span class="bno-name">前往基础版</span><span class="bno-arrow">→</span></a><a href="enhanced.html" class="bn-other" style="--btn-accent: #f59e0b;"><span class="bno-icon">🚀</span><span class="bno-name">前往加强版</span><span class="bno-arrow">→</span></a>
+  <div class="school-card">
+    <div class="school-name">🏫 NABA — 米兰新美术学院</div>
+    <div class="school-grid">
+      <span class="label">特色</span><span class="val">私立，名校+名企合作，就业导向</span>
+      <span class="label">王牌专业</span><span class="val">平面设计、服装设计、室内设计</span>
+      <span class="label">作品集偏好</span><span class="val">💡 概念+商业的平衡，要有故事性</span>
+      <span class="label">教授最看重</span><span class="val">创意潜力、可塑性、跨界能力</span>
+      <span class="label">加分项</span><span class="val">品牌合作项目、社会议题设计</span>
+      <span class="label">一句话总结</span><span class="val"><span class="it" data-speak="Tell me a story through your design.">"Tell me a story through your design."</span></span>
+    </div>
+  </div>
+
+  <div class="school-card">
+    <div class="school-name">🏫 Istituto Marangoni — 马兰欧尼学院</div>
+    <div class="school-grid">
+      <span class="label">特色</span><span class="val">时尚界"哈佛"，人脉资源天花板</span>
+      <span class="label">王牌专业</span><span class="val">服装设计、配饰设计、时尚管理</span>
+      <span class="label">作品集偏好</span><span class="val">👗 审美在线、工艺讲究、有态度</span>
+      <span class="label">教授最看重</span><span class="val">手绘能力、对时尚趋势的敏感度</span>
+      <span class="label">加分项</span><span class="val">完整系列设计、面料实验、时尚大片</span>
+      <span class="label">雷区</span><span class="val">只有灵感板没有成品</span>
+      <span class="label">面试建议</span><span class="val">穿得有设计感一点——他们看整体感觉！</span>
+    </div>
+  </div>
+
+  <div class="school-card">
+    <div class="school-name">🏫 Domus Academy — 多莫斯设计学院</div>
+    <div class="school-grid">
+      <span class="label">特色</span><span class="val">研究生院，导师联盟制（学术+行业双导师）</span>
+      <span class="label">作品集偏好</span><span class="val">🌍 社会议题驱动、实验性、跨学科</span>
+      <span class="label">教授最看重</span><span class="val">批判性思维、研究深度、全球视野</span>
+      <span class="label">加分项</span><span class="val">与社会议题结合的设计（难民/环保/城市问题）</span>
+      <span class="label">一句话总结</span><span class="val"><span class="it" data-speak="Design as a tool for social change.">"Design as a tool for social change."</span></span>
+    </div>
+  </div>
+
+  <div class="school-card">
+    <div class="school-name">🏫 Politecnico di Torino — 都灵理工大学</div>
+    <div class="school-grid">
+      <span class="label">特色</span><span class="val">工程与设计结合紧密，偏向系统性思维</span>
+      <span class="label">作品集偏好</span><span class="val">技术与美学的平衡，逻辑严谨</span>
+      <span class="label">加分项</span><span class="val">技术图纸规范、材料研究深入、可持续设计</span>
+      <span class="label">面试风格</span><span class="val">偏学术，会问很多技术细节</span>
+    </div>
+  </div>
+
+  <h3>1.2 面试中聊院校的加分句型</h3>
+  <div class="quote-box">
+    <p class="it-text"><strong>🔰 基础版：</strong> <span class="it" data-speak="Ho scelto il Politecnico di Milano perché è una delle migliori università di design al mondo.">Ho scelto il Politecnico di Milano perché è una delle migliori università di design al mondo.</span></p>
+    <p class="zh-text">我选米兰理工因为它是世界顶级设计学府之一。</p>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><strong>🟡 进阶版：</strong> <span class="it" data-speak="Ho scelto NABA perché il vostro approccio pratico e le collaborazioni con aziende mi offrono l'opportunità di crescere sia come designer che come professionista.">Ho scelto NABA perché il vostro approccio pratico e le collaborazioni con aziende come [品牌名] mi offrono l'opportunità di crescere sia come designer che come professionista.</span></p>
+    <p class="zh-text">我选NABA因为你们的实践导向和与企业的合作，让我有机会既作为设计师也作为专业人士成长。</p>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><strong>🔴 高阶版：</strong> <span class="it" data-speak="Sono attratto dal Politecnico di Milano perché il vostro metodo di insegnamento unisce rigore tecnico e libertà creativa. Credo che la mia formazione in Cina, combinata con l'esperienza qui, possa darmi una prospettiva unica nel mondo del design contemporaneo.">Sono attratto dal Politecnico di Milano perché il vostro metodo di insegnamento unisce rigore tecnico e libertà creativa. In particolare, il corso di [专业名] affronta il design in modo sistemico, che è esattamente l'approccio che voglio approfondire.</span></p>
+    <p class="zh-text">米兰理工吸引我，是因为你们的教学方法把技术严谨和创作自由结合起来了。我相信我在中国的教育背景，加上在这里的经历，能给我在当代设计领域带来独特的视角。</p>
+  </div>
+</section>
+
+<!-- MODULE 2: 专业写作模版 -->
+<section>
+  <h2>MODULE 2 · 作品集 Descrizione 专业写作模版 ✍️</h2>
+  <h3>2.1 项目卡片的黄金结构</h3>
+  <div class="structure">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">🟢 项目概览 — L'apertura（1-2句）</div>
+        <div class="step-desc">Titolo + Cosa + Per chi</div>
       </div>
-    </nav>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">🟢 灵感与动机 — L'ispirazione（2-3句）</div>
+        <div class="step-desc">Ispirazione + Problema + Domanda</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">🟢 过程与方法 — Il processo（3-4句）</div>
+        <div class="step-desc">Ricerca → Concept → Iterazioni → Test</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">🟢 成果与反思 — Il risultato（2-3句）</div>
+        <div class="step-desc">Risultato + Impatto + Cosa ho imparato</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>2.2 完整 Descrizione 范例</h3>
+  <div class="example-box">
+    <h4>🟢 产品设计·范例：CleanSip</h4>
+    <p><span class="it" data-speak="CleanSip è un progetto di product design sviluppato durante il mio secondo anno di università. L'obiettivo era creare un'alternativa sostenibile alle bottiglie di plastica monouso, pensata per studenti universitari tra i 18 e i 25 anni.">CleanSip è un progetto di product design sviluppato durante il mio secondo anno di università. L'obiettivo era creare un'alternativa sostenibile alle bottiglie di plastica monouso, pensata per studenti universitari tra i 18 e i 25 anni.</span></p>
+    <p class="ex-zh">CleanSip是我大二时做的产品设计项目，目标是创造一个可持续替代一次性塑料瓶的方案，面向18-25岁的大学生。</p>
+    <p style="margin-top:12px;"><span class="it" data-speak="L'ispirazione è nata dall'osservazione del consumo di plastica nel mio campus: ogni giorno venivano gettate via migliaia di bottiglie. Mi sono chiesto: come può il design rendere più conveniente e desiderabile l'uso di una borraccia riutilizzabile?">L'ispirazione è nata dall'osservazione del consumo di plastica nel mio campus: ogni giorno venivano gettate via migliaia di bottiglie. Mi sono chiesto: come può il design rendere più conveniente e desiderabile l'uso di una borraccia riutilizzabile?</span></p>
+    <p class="ex-zh">灵感来自对校园塑料消耗的观察：每天数千个瓶子被扔掉。我问自己：设计如何能让可重复使用水瓶变得更方便、更让人想用？</p>
+    <p style="margin-top:12px;"><span class="it" data-speak="Ho iniziato con interviste a 30 studenti, seguite da un'analisi dei competitor. Dopo vari schizzi e modelli 3D, ho realizzato tre prototipi funzionali. Il risultato è una borraccia in acciaio inox con filtro al carbone integrato.">Ho iniziato con interviste a 30 studenti, seguite da un'analisi dei competitor. Dopo vari schizzi e modelli 3D, ho realizzato tre prototipi funzionali. Il risultato è una borraccia in acciaio inox con filtro al carbone integrato, display della temperatura e un design minimalista.</span></p>
+  </div>
+
+  <div class="example-box">
+    <h4>🟡 服装设计·范例：Ricucire</h4>
+    <p><span class="it" data-speak="Ricucire è una collezione di 5 outfit che ho progettato per il mio progetto di diploma. Il target è una donna moderna tra i 25 e i 40 anni, che cerca un guardaroba consapevole e senza tempo.">Ricucire è una collezione di 5 outfit che ho progettato per il mio progetto di diploma. Il target è una donna moderna tra i 25 e i 40 anni, che cerca un guardaroba consapevole e senza tempo.</span></p>
+    <p class="ex-zh">Ricucire 是我毕设的5套时装系列。目标受众是追求有意识、永不过时衣橱的25-40岁现代女性。</p>
+    <p style="margin-top:12px;"><span class="it" data-speak="L'ispirazione viene dalla tecnica tradizionale cinese del ricamo di Suzhou. Volevo portare questa tradizione artigianale in un contesto contemporaneo.">L'ispirazione viene dalla tecnica tradizionale cinese del "ricamo di Suzhou", che ho avuto modo di studiare durante un viaggio nella regione del Jiangsu. Volevo portare questa tradizione artigianale in un contesto contemporaneo.</span></p>
+    <p class="ex-zh">灵感来自中国传统苏绣工艺。我想把这种手工传统带入当代语境。</p>
+  </div>
+
+  <h3>2.3 🔴 高阶：设计方法论词汇</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:40%">
+      <col style="width:30%">
+      <col style="width:30%">
+    </colgroup>
     
-<button class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
-  <span>↑</span>
-</button>
-<div class="audio-player-toast" id="playerToast" hidden>
-  <span class="toast-icon">🔊</span>
-  <span class="toast-text">正在播放...</span>
+      <thead><tr><th >意大利语</th><th>中文</th><th>解释</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="l'approccio human-centered"><strong>l'approccio human-centered</strong></td><td>人本设计</td><td><em>Ho adottato un approccio human-centered...</em></td></tr>
+        <tr><td class="it" data-speak="il design thinking"><strong>il design thinking</strong></td><td>设计思维</td><td><em>Seguendo il processo di design thinking...</em></td></tr>
+        <tr><td class="it" data-speak="la metodologia"><strong>la metodologia</strong></td><td>方法论</td><td><em>La metodologia utilizzata è...</em></td></tr>
+        <tr><td class="it" data-speak="la user journey map"><strong>la user journey map</strong></td><td>用户旅程图</td><td></td></tr>
+        <tr><td class="it" data-speak="la persona, l'utente tipo"><strong>la persona / l'utente tipo</strong></td><td>用户画像</td><td><em>Ho definito tre personas target.</em></td></tr>
+        <tr><td class="it" data-speak="lo scenario d'uso"><strong>lo scenario d'uso</strong></td><td>使用场景</td><td><em>Ho immaginato diversi scenari d'uso.</em></td></tr>
+        <tr><td class="it" data-speak="il brainstorming"><strong>il brainstorming</strong></td><td>头脑风暴</td><td></td></tr>
+        <tr><td class="it" data-speak="la validazione"><strong>la validazione</strong></td><td>验证</td><td><em>Per validare il concept...</em></td></tr>
+        <tr><td class="it" data-speak="l'analisi SWOT"><strong>l'analisi SWOT</strong></td><td>SWOT分析</td><td><em>Ho condotto un'analisi SWOT.</em></td></tr>
+        <tr><td class="it" data-speak="lo sviluppo iterativo"><strong>lo sviluppo iterativo</strong></td><td>迭代开发</td><td><em>Lo sviluppo è stato iterativo...</em></td></tr>
+        <tr><td class="it" data-speak="l'ottimizzazione"><strong>l'ottimizzazione</strong></td><td>优化</td><td></td></tr>
+        <tr><td class="it" data-speak="la fattibilità"><strong>la fattibilità</strong></td><td>可行性</td><td><em>Ho valutato la fattibilità tecnica.</em></td></tr>
+        <tr><td class="it" data-speak="l'implementazione"><strong>l'implementazione</strong></td><td>实施/落地</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MODULE 3: 意大利设计文化 -->
+<section>
+  <h2>MODULE 3 · 意大利设计文化必知 🇮🇹</h2>
+  <h3>3.1 设计大师·面试谈资</h3>
+
+  <div class="master-card">
+    <div class="master-name">🏆 Gio Ponti (1891-1979)</div>
+    <div class="master-grid">
+      <span class="label">称号</span><span class="val">意大利现代设计之父</span>
+      <span class="label">代表作</span><span class="val">Pirelli Tower、Superleggera椅子</span>
+      <span class="label">名言</span><span class="val"><span class="it" data-speak="L'architettura è un gioco di luce e spazio.">"L'architettura è un gioco di luce e spazio."</span></span>
+    </div>
+    <div class="master-interview"><span class="it" data-speak="Ammiro Gio Ponti per la sua capacità di unire architettura, design e arte in un'unica visione.">Ammiro Gio Ponti per la sua capacità di unire architettura, design e arte in un'unica visione.</span></div>
+  </div>
+
+  <div class="master-card">
+    <div class="master-name">🏆 Achille Castiglioni (1918-2002)</div>
+    <div class="master-grid">
+      <span class="label">称号</span><span class="val">意大利设计"鬼才"</span>
+      <span class="label">代表作</span><span class="val">Arco灯、Snoopy灯、Mezzadro凳（拖拉机座椅改的）</span>
+      <span class="label">风格</span><span class="val">幽默、功能主义、对"已有之物"的再创造</span>
+    </div>
+    <div class="master-interview"><span class="it" data-speak="Castiglioni mi ha insegnato che il design può avere senso dell'umorismo. La sedia Mezzadro è un perfetto esempio: prende un oggetto esistente e lo trasforma in qualcosa di nuovo e sorprendente.">Castiglioni mi ha insegnato che il design può avere senso dell'umorismo. La sedia Mezzadro prende un oggetto esistente e lo trasforma in qualcosa di nuovo e sorprendente.</span></div>
+  </div>
+
+  <div class="master-card">
+    <div class="master-name">🏆 Ettore Sottsass (1917-2007)</div>
+    <div class="master-grid">
+      <span class="label">称号</span><span class="val">Memphis Group创始人，反叛者</span>
+      <span class="label">代表作</span><span class="val">Carlton书架、红色打字机Valentine</span>
+      <span class="label">风格</span><span class="val">大胆配色、不规则几何、反功能主义</span>
+    </div>
+    <div class="master-interview"><span class="it" data-speak="Sottsass ha rotto le regole del design modernista. Con Memphis ha dimostrato che il design può essere giocoso, espressivo e ironico.">Sottsass ha rotto le regole del design modernista. Con Memphis ha dimostrato che il design può essere giocoso, espressivo e ironico.</span></div>
+  </div>
+
+  <div class="master-card">
+    <div class="master-name">🏆 Bruno Munari (1907-1998)</div>
+    <div class="master-grid">
+      <span class="label">称号</span><span class="val">全能艺术家，设计教育家</span>
+      <span class="label">代表作</span><span class="val">Libri illeggibili（不可读的书）、Abitacolo床</span>
+      <span class="label">名言</span><span class="val"><span class="it" data-speak="La creatività è immaginazione più intelligenza e azione.">"La creatività è immaginazione più intelligenza e azione."</span></span>
+    </div>
+  </div>
+
+  <div class="master-card">
+    <div class="master-name">🏆 Patricia Urquiola (1961-)</div>
+    <div class="master-grid">
+      <span class="label">称号</span><span class="val">当代最著名的女性设计师之一</span>
+      <span class="label">代表作</span><span class="val">为Moroso/Kartell设计的家具系列</span>
+      <span class="label">风格</span><span class="val">色彩丰富、柔软形态、手工质感</span>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <p class="it-text"><strong>💬 万能聊天句型：</strong> <span class="it" data-speak="Il designer italiano che mi ha più influenzato è [nome], perché [motivo]. In particolare, il suo progetto [opera] mi ha fatto capire che [riflessione].">Il designer italiano che mi ha più influenzato è [名字], perché [原因]. In particolare, il suo progetto [代表作] mi ha fatto capire che [感悟].</span></p>
+  </div>
+
+  <h3>3.2 意大利设计运动·时间线</h3>
+  <div class="timeline">
+    <div class="timeline-item"><div class="period">1950s</div><div class="movement">Ricostruzione 战后重建</div><div class="keywords"><span class="it" data-speak="funzionale, industriale, moderno">funzionale, industriale, moderno</span></div></div>
+    <div class="timeline-item"><div class="period">1960s</div><div class="movement">Radical Design 激进设计</div><div class="keywords"><span class="it" data-speak="sperimentale, provocatorio">sperimentale, provocatorio</span></div></div>
+    <div class="timeline-item"><div class="period">1980s</div><div class="movement">Memphis 孟菲斯集团</div><div class="keywords"><span class="it" data-speak="colorato, ironico, giocoso">colorato, ironico, giocoso</span></div></div>
+    <div class="timeline-item"><div class="period">1990s</div><div class="movement">Minimalismo Italiano</div><div class="keywords"><span class="it" data-speak="essenziale, di qualità">essenziale, di qualità</span></div></div>
+    <div class="timeline-item"><div class="period">2000s+</div><div class="movement">Sostenibilità 可持续</div><div class="keywords"><span class="it" data-speak="sostenibile, etico, circolare">sostenibile, etico, circolare</span></div></div>
+  </div>
+
+  <h3>3.3 不可不知的意大利设计品牌</h3>
+  <div class="brand-grid">
+    <div class="brand-item"><div class="b-name">Alessi</div><div class="b-desc">厨房用品、红酒开瓶器</div><div class="b-tag"><span class="it" data-speak="giocoso, iconico, casalingo">giocoso, iconico, casalingo</span></div></div>
+    <div class="brand-item"><div class="b-name">Kartell</div><div class="b-desc">Louis Ghost椅（透明椅）</div><div class="b-tag"><span class="it" data-speak="plastica, trasparente, innovativo">plastica, trasparente, innovativo</span></div></div>
+    <div class="brand-item"><div class="b-name">Artemide</div><div class="b-desc">灯具</div><div class="b-tag"><span class="it" data-speak="illuminazione, elegante">illuminazione, elegante</span></div></div>
+    <div class="brand-item"><div class="b-name">Flos</div><div class="b-desc">Arco灯、灯具</div><div class="b-tag"><span class="it" data-speak="scultoreo, luce">scultoreo, luce</span></div></div>
+    <div class="brand-item"><div class="b-name">Cassina</div><div class="b-desc">LC系列、家具</div><div class="b-tag"><span class="it" data-speak="storico, di lusso, senza tempo">storico, di lusso, senza tempo</span></div></div>
+    <div class="brand-item"><div class="b-name">B&B Italia</div><div class="b-desc">沙发、现代家具</div><div class="b-tag"><span class="it" data-speak="contemporaneo, comfort">contemporaneo, comfort</span></div></div>
+    <div class="brand-item"><div class="b-name">Moroso</div><div class="b-desc">彩色沙发、时尚家具</div><div class="b-tag"><span class="it" data-speak="colorato, audace">colorato, audace</span></div></div>
+    <div class="brand-item"><div class="b-name">Prada / Gucci</div><div class="b-desc">时装</div><div class="b-tag"><span class="it" data-speak="lussuoso, artigianale">lussuoso, artigianale</span></div></div>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Ammiro molto Kartell per la sua capacità di innovare con i materiali. La sedia Louis Ghost ha dimostrato che la plastica può essere elegante e senza tempo.">Ammiro molto Kartell per la sua capacità di innovare con i materiali. La sedia Louis Ghost ha dimostrato che la plastica può essere elegante e senza tempo.</span></p>
+    <p class="zh-text">我特别欣赏Kartell在材料上的创新能力。Louis Ghost椅证明了塑料也可以优雅且永不过时。</p>
+  </div>
+</section>
+
+<!-- MODULE 4: 高级语法 -->
+<section>
+  <h2>MODULE 4 · 设计语境下的高级语法 🧠</h2>
+
+  <h3>4.1 Condizionale 条件式 — 表达假设与建议</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:18%">
+      <col style="width:50%">
+      <col style="width:32%">
+    </colgroup>
+    
+      <thead><tr><th >用法</th><th >例句</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td>礼貌建议</td><td class="it" data-speak="Io sceglierei un materiale più leggero."><em>Io <strong>sceglierei</strong> un materiale più leggero.</em></td><td>我会选择更轻的材料。</td></tr>
+        <tr><td>理想方案</td><td class="it" data-speak="L'ideale sarebbe creare un sistema modulare."><em>L'ideale <strong>sarebbe</strong> creare un sistema modulare.</em></td><td>理想方案是做一个模块化系统。</td></tr>
+        <tr><td>假设场景</td><td class="it" data-speak="Si potrebbe migliorare l'ergonomia con una maniglia curva."><em><strong>Si potrebbe</strong> migliorare l'ergonomia con una maniglia curva.</em></td><td>可以用弯曲把手改善人机工学。</td></tr>
+        <tr><td>愿望/目标</td><td class="it" data-speak="In futuro, vorrei sviluppare questo concept."><em>In futuro, <strong>vorrei</strong> sviluppare questo concept.</em></td><td>未来我想发展这个概念。</td></tr>
+        <tr><td>可能性</td><td class="it" data-speak="Un'altra soluzione potrebbe essere l'uso della ceramica."><em>Un'altra soluzione <strong>potrebbe essere</strong> l'uso della ceramica.</em></td><td>另一种方案可能是使用陶瓷。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Se potessi migliorare questo progetto, cercherei di ridurre ulteriormente l'impatto ambientale. L'ideale sarebbe utilizzare materiali completamente biodegradabili.">Se potessi migliorare questo progetto, <strong>cercherei</strong> di ridurre ulteriormente l'impatto ambientale. L'ideale <strong>sarebbe</strong> utilizzare materiali completamente biodegradabili.</span></p>
+    <p class="zh-text">如果我能改进这个项目，我会进一步减少环境影响。理想方案是完全使用可生物降解的材料。</p>
+  </div>
+
+  <h3>4.2 Congiuntivo 虚拟式 — 表达看法与观点</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:22%">
+      <col style="width:50%">
+      <col style="width:28%">
+    </colgroup>
+    
+      <thead><tr><th >触发词</th><th >例句</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="Penso che">Penso che...</td><td class="it" data-speak="Penso che il design debba essere funzionale."><em>Penso che il design <strong>debba</strong> essere funzionale.</em></td><td>我认为设计应该是功能性的。</td></tr>
+        <tr><td class="it" data-speak="Credo che">Credo che...</td><td class="it" data-speak="Credo che l'Italia sia il posto giusto per studiare design."><em>Credo che l'Italia <strong>sia</strong> il posto giusto per studiare design.</em></td><td>我相信意大利是学设计的正确地方。</td></tr>
+        <tr><td class="it" data-speak="È importante che">È importante che...</td><td class="it" data-speak="È importante che il designer ascolti l'utente."><em>È importante che il designer <strong>ascolti</strong> l'utente.</em></td><td>设计师倾听用户很重要。</td></tr>
+        <tr><td class="it" data-speak="Bisogna che">Bisogna che...</td><td class="it" data-speak="Bisogna che il progetto abbia un impatto sociale."><em>Bisogna che il progetto <strong>abbia</strong> un impatto sociale.</em></td><td>项目需要有社会影响。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Penso che il design debba rispondere a bisogni reali, ma possa anche essere bello. Credo che l'Italia sia il paese ideale per sviluppare questa visione.">Penso che il design <strong>debba</strong> rispondere a bisogni reali, ma <strong>possa</strong> anche essere bello. Credo che l'Italia <strong>sia</strong> il paese ideale per sviluppare questa visione.</span></p>
+    <p class="zh-text">我认为设计应该回应真实需求，但也可以很美。我相信意大利是发展这个愿景的理想国家。</p>
+  </div>
+
+  <h3>4.3 "Ci" 和 "Ne" 在设计语境中的使用</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:20%">
+      <col style="width:55%">
+      <col style="width:25%">
+    </colgroup>
+    
+      <thead><tr><th >用法</th><th >例句</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td>Ci 代指项目</td><td class="it" data-speak="Ci ho lavorato per tre mesi."><em><strong>Ci</strong> ho lavorato per tre mesi.</em></td><td>我在它上面花了三个月。</td></tr>
+        <tr><td>Pensarci</td><td class="it" data-speak="Ci ho pensato molto prima di scegliere questo materiale."><em><strong>Ci</strong> ho pensato molto prima di scegliere questo materiale.</em></td><td>在选择这个材料之前我考虑了很多。</td></tr>
+        <tr><td>Ne 代指"关于某事"</td><td class="it" data-speak="Ne parlerò nella presentazione."><em><strong>Ne</strong> parlerò nella presentazione.</em></td><td>我会在展示中讲到它。</td></tr>
+        <tr><td>Ne 代指"其中的"</td><td class="it" data-speak="Ho realizzato 10 prototipi, ne ho selezionati 3."><em>Ho realizzato 10 prototipi, <strong>ne</strong> ho selezionati 3.</em></td><td>我做了10个原型，选了其中3个。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4.6 设计描述的比较级与最高级</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:22%">
+      <col style="width:78%">
+    </colgroup>
+    
+      <thead><tr><th >句型</th><th >例句</th></tr></thead>
+      <tbody>
+        <tr><td>più + agg. + di</td><td class="it" data-speak="Questo prototipo è più leggero del precedente."><em>Questo prototipo è <strong>più leggero del</strong> precedente.</em></td></tr>
+        <tr><td>meno + agg. + di</td><td class="it" data-speak="Questa soluzione è meno costosa dell'altra."><em>Questa soluzione è <strong>meno costosa dell'</strong>altra.</em></td></tr>
+        <tr><td>il/la più + agg.</td><td class="it" data-speak="È il progetto più ambizioso che abbia mai fatto."><em>È <strong>il progetto più ambizioso</strong> che abbia mai fatto.</em></td></tr>
+        <tr><td>molto + agg.</td><td class="it" data-speak="Il risultato è molto soddisfacente."><em>Il risultato è <strong>molto soddisfacente</strong>.</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MODULE 5: 设计批评高阶词汇 -->
+<section>
+  <h2>MODULE 5 · 设计批评与学术高阶词汇 🎓</h2>
+
+  <h3>5.1 结构批评 — Struttura</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la coerenza formale"><strong>la coerenza formale</strong></td><td>形式的一致性</td></tr>
+        <tr><td class="it" data-speak="l'equilibrio compositivo"><strong>l'equilibrio compositivo</strong></td><td>构图平衡</td></tr>
+        <tr><td class="it" data-speak="la gerarchia visiva"><strong>la gerarchia visiva</strong></td><td>视觉层级</td></tr>
+        <tr><td class="it" data-speak="il ritmo"><strong>il ritmo</strong></td><td>节奏</td></tr>
+        <tr><td class="it" data-speak="la tensione"><strong>la tensione</strong></td><td>张力</td></tr>
+        <tr><td class="it" data-speak="la proporzione aurea"><strong>la proporzione aurea</strong></td><td>黄金比例</td></tr>
+        <tr><td class="it" data-speak="la modularità"><strong>la modularità</strong></td><td>模块化</td></tr>
+        <tr><td class="it" data-speak="la serialità"><strong>la serialità</strong></td><td>系列性</td></tr>
+        <tr><td class="it" data-speak="la ripetizione"><strong>la ripetizione</strong></td><td>重复</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.2 概念批评 — Concetto</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="l'intento progettuale"><strong>l'intento progettuale</strong></td><td>设计意图</td></tr>
+        <tr><td class="it" data-speak="la narrazione"><strong>la narrazione</strong></td><td>叙事</td></tr>
+        <tr><td class="it" data-speak="il messaggio"><strong>il messaggio</strong></td><td>信息/讯息</td></tr>
+        <tr><td class="it" data-speak="la poetica"><strong>la poetica</strong></td><td>诗学/美学理念</td></tr>
+        <tr><td class="it" data-speak="l'ambiguità"><strong>l'ambiguità</strong></td><td>模糊性</td></tr>
+        <tr><td class="it" data-speak="la stratificazione semantica"><strong>la stratificazione semantica</strong></td><td>语义分层</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.3 感知批评 — Percezione</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la percezione tattile">la percezione tattile</td><td>触觉感知</td></tr>
+        <tr><td class="it" data-speak="la qualità sensoriale">la qualità sensoriale</td><td>感官品质</td></tr>
+        <tr><td class="it" data-speak="l'esperienza estetica">l'esperienza estetica</td><td>审美体验</td></tr>
+        <tr><td class="it" data-speak="l'impatto emotivo">l'impatto emotivo</td><td>情感冲击</td></tr>
+        <tr><td class="it" data-speak="il comfort psicologico">il comfort psicologico</td><td>心理舒适度</td></tr>
+        <tr><td class="it" data-speak="il senso di familiarità">il senso di familiarità</td><td>熟悉感</td></tr>
+        <tr><td class="it" data-speak="l'effetto sorpresa">l'effetto sorpresa</td><td>惊喜效果</td></tr>
+        <tr><td class="it" data-speak="l'attrattiva visiva">l'attrattiva visiva</td><td>视觉吸引力</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.4 学术批评句型模版</h3>
+  <div class="quote-box">
+    <p class="it-text"><strong>💬 正面批评：</strong> <span class="it" data-speak="Ciò che apprezzo di più di questo progetto è la coerenza formale: ogni elemento, dal colore alla texture, contribuisce a creare un'identità visiva unitaria.">Ciò che apprezzo di più di questo progetto è la <strong>coerenza formale</strong>: ogni elemento, dal colore alla texture, contribuisce a creare un'identità visiva unitaria.</span></p>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><strong>💬 建设性批评：</strong> <span class="it" data-speak="Il concept è interessante, ma forse la gerarchia visiva potrebbe essere migliorata. Suggerirei di dare più enfasi all'elemento principale.">Il concept è interessante, ma forse la <strong>gerarchia visiva</strong> potrebbe essere migliorata. Suggerirei di dare più enfasi all'elemento principale.</span></p>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><strong>💬 自评反思（面试杀手锏！）：</strong> <span class="it" data-speak="Rivedendo questo progetto, mi rendo conto che l'intento progettuale era chiaro, ma la narrazione avrebbe potuto essere più coinvolgente. In futuro, vorrei dedicare più tempo allo sviluppo del concept prima di passare alla fase esecutiva.">Rivedendo questo progetto, mi rendo conto che l'<strong>intento progettuale</strong> era chiaro, ma la <strong>narrazione</strong> avrebbe potuto essere più coinvolgente. In futuro, vorrei dedicare più tempo allo sviluppo del concept prima di passare alla fase esecutiva.</span></p>
+    <p class="zh-text">回顾这个项目，我意识到设计意图是清晰的，但叙事本可以更引人入胜。未来我想花更多时间在概念发展阶段，再进入执行阶段。</p>
+  </div>
+</section>
+
+<!-- MODULE 6: 排版印刷专业术语 -->
+<section>
+  <h2>MODULE 6 · 排版印刷专业技术术语 🔍</h2>
+  <h3>6.1 字体设计 Typography</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:38%">
+      <col style="width:31%">
+      <col style="width:31%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="il carattere tipografico">il carattere tipografico</td><td>字体（总称）</td><td></td></tr>
+        <tr><td class="it" data-speak="il font">il font / il tipo</td><td>字体</td><td></td></tr>
+        <tr><td class="it" data-speak="il carattere con grazie">il carattere con grazie (serif)</td><td>衬线字体</td><td>Grazia = 衬线</td></tr>
+        <tr><td class="it" data-speak="il carattere senza grazie">il carattere senza grazie (sans-serif)</td><td>无衬线字体</td><td><em>Sans-serif è più moderno.</em></td></tr>
+        <tr><td class="it" data-speak="il grassetto">il grassetto</td><td>粗体</td><td></td></tr>
+        <tr><td class="it" data-speak="il corsivo">il corsivo</td><td>斜体</td><td></td></tr>
+        <tr><td class="it" data-speak="il maiuscolo">il maiuscolo / il minuscolo</td><td>大写/小写</td><td></td></tr>
+        <tr><td class="it" data-speak="il corpo">la grandezza / il corpo</td><td>字号</td><td><em>Corpo 12 è leggibile.</em></td></tr>
+        <tr><td class="it" data-speak="l'interlinea">l'interlinea</td><td>行距</td><td></td></tr>
+        <tr><td class="it" data-speak="la crenatura">la crenatura / il kerning</td><td>字距调整</td><td></td></tr>
+        <tr><td class="it" data-speak="la spaziatura">la spaziatura</td><td>间距</td><td></td></tr>
+        <tr><td class="it" data-speak="la legatura">la legatura</td><td>连字（如 fi, fl 连写）</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.2 版面 Grid & Layout</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:38%">
+      <col style="width:62%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la griglia">la griglia</td><td>网格</td></tr>
+        <tr><td class="it" data-speak="la griglia modulare">la griglia modulare</td><td>模块化网格</td></tr>
+        <tr><td class="it" data-speak="la colonna">la colonna</td><td>栏/列</td></tr>
+        <tr><td class="it" data-speak="la gabbia">la gabbia</td><td>版心</td></tr>
+        <tr><td class="it" data-speak="il margine">il margine</td><td>页边距</td></tr>
+        <tr><td class="it" data-speak="lo spazio bianco">il bianco / lo spazio bianco</td><td>留白</td></tr>
+        <tr><td class="it" data-speak="il flusso visivo">il flusso visivo</td><td>视觉流向</td></tr>
+        <tr><td class="it" data-speak="l'allineamento">l'allineamento</td><td>对齐</td></tr>
+        <tr><td class="it" data-speak="la giustificazione">la giustificazione</td><td>两端对齐</td></tr>
+        <tr><td class="it" data-speak="la centratura">la centratura</td><td>居中对齐</td></tr>
+        <tr><td class="it" data-speak="il salto di pagina">il salto di pagina</td><td>分页</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.3 色彩 Color</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:38%">
+      <col style="width:31%">
+      <col style="width:31%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la tinta">la tinta</td><td>色调/色相</td><td></td></tr>
+        <tr><td class="it" data-speak="la saturazione">la saturazione</td><td>饱和度</td><td></td></tr>
+        <tr><td class="it" data-speak="la luminosità">la luminosità</td><td>明度</td><td></td></tr>
+        <tr><td class="it" data-speak="il colore primario">il colore primario</td><td>原色</td><td></td></tr>
+        <tr><td class="it" data-speak="il colore complementare">il colore complementare</td><td>互补色</td><td></td></tr>
+        <tr><td class="it" data-speak="il colore analogo">il colore analogo</td><td>类似色</td><td></td></tr>
+        <tr><td class="it" data-speak="la gradazione">la gradazione / il gradiente</td><td>渐变</td><td></td></tr>
+        <tr><td class="it" data-speak="Pantone">Pantone</td><td>潘通色卡</td><td><em>Ho usato i colori Pantone per la stampa.</em></td></tr>
+        <tr><td class="it" data-speak="CMYK">CMYK</td><td>CMYK（印刷色）</td><td></td></tr>
+        <tr><td class="it" data-speak="RGB">RGB</td><td>RGB（屏幕色）</td><td></td></tr>
+        <tr><td class="it" data-speak="il colore spot">il colore spot</td><td>专色</td><td></td></tr>
+        <tr><td class="it" data-speak="la quadricromia">la quadricromia</td><td>四色印刷</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.4 印刷工艺 Stampa</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:38%">
+      <col style="width:62%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la stampa offset">la stampa offset</td><td>胶印</td></tr>
+        <tr><td class="it" data-speak="la stampa digitale">la stampa digitale</td><td>数码打印</td></tr>
+        <tr><td class="it" data-speak="la serigrafia">la serigrafia</td><td>丝网印刷</td></tr>
+        <tr><td class="it" data-speak="la fustellatura">la fustellatura</td><td>模切</td></tr>
+        <tr><td class="it" data-speak="la piegatura">la piegatura</td><td>折页/折痕</td></tr>
+        <tr><td class="it" data-speak="la rilegatura">la rilegatura</td><td>装订</td></tr>
+        <tr><td class="it" data-speak="la cucitura a punto metallico">la cucitura a punto metallico</td><td>骑马钉</td></tr>
+        <tr><td class="it" data-speak="la rilegatura a filo refe">la rilegatura a filo refe</td><td>线装</td></tr>
+        <tr><td class="it" data-speak="la brossura">la brossura</td><td>平装/胶装</td></tr>
+        <tr><td class="it" data-speak="la cartonato">la cartonato</td><td>精装</td></tr>
+        <tr><td class="it" data-speak="la spirale">la spirale</td><td>线圈装</td></tr>
+        <tr><td class="it" data-speak="la laminazione opaca">la laminazione opaca/lucida</td><td>哑膜/亮膜覆膜</td></tr>
+        <tr><td class="it" data-speak="la goffratura">la goffratura</td><td>压凹/浮雕</td></tr>
+        <tr><td class="it" data-speak="lo stampaggio a caldo">lo stampaggio a caldo</td><td>烫金/烫银</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Per il mio portfolio ho scelto una rilegatura a filo refe con carta opaca riciclata, perché volevo dare un senso artigianale e sostenibile.">Per il mio portfolio ho scelto una rilegatura a filo refe con carta opaca riciclata, perché volevo dare un senso artigianale e sostenibile.</span></p>
+    <p class="zh-text">我的作品集用了线装+再生哑光纸，因为想营造手工感和可持续的感觉。</p>
+  </div>
+</section>
+
+<!-- MODULE 7: 意中设计对比 -->
+<section>
+  <h2>MODULE 7 · 意中设计对比与文化差异 🌏</h2>
+
+  <h3>7.1 对比常用句型</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:50%">
+      <col style="width:50%">
+    </colgroup>
+    
+      <thead><tr><th >意语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="In Cina, mentre in Italia..."><em>In Cina... mentre in Italia...</em></td><td>在中国……而在意大利……</td></tr>
+        <tr><td class="it" data-speak="A differenza della Cina, in Italia..."><em>A differenza della Cina, in Italia...</em></td><td>与中国不同，在意大利……</td></tr>
+        <tr><td class="it" data-speak="Rispetto al design cinese, quello italiano è..."><em>Rispetto al design cinese, quello italiano è...</em></td><td>与中国设计相比，意大利设计……</td></tr>
+        <tr><td class="it" data-speak="La mia cultura cinese mi ha dato una prospettiva diversa."><em>La mia cultura cinese mi ha dato una prospettiva diversa su...</em></td><td>我的中国文化给了我关于……的不同视角。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>7.2 意中设计差异表达</h3>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="In Cina, il design spesso enfatizza la funzionalità e l'efficienza, mentre in Italia c'è una maggiore attenzione all'estetica e all'esperienza emotiva. Il mio obiettivo è unire questi due approcci.">In Cina, il design spesso enfatizza la funzionalità e l'efficienza, mentre in Italia c'è una maggiore attenzione all'estetica e all'esperienza emotiva. Il mio obiettivo è unire questi due approcci.</span></p>
+    <p class="zh-text">在中国，设计通常强调功能和效率，而在意大利人们更注重美学和情感体验。我的目标是结合这两种方式。</p>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Unire la tradizione artigianale cinese con l'innovazione italiana: questa è la mia visione del design.">Unire la tradizione artigianale cinese con l'innovazione italiana: questa è la mia visione del design.</span></p>
+    <p class="zh-text">把中国传统手工艺和意大利创新结合起来——这就是我的设计愿景。</p>
+  </div>
+
+  <h3>7.3 文化融合·作品集加分表达</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:50%">
+      <col style="width:50%">
+    </colgroup>
+    
+      <thead><tr><th >意语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="Ho reinterpretato un elemento tradizionale cinese in chiave contemporanea."><em>Ho reinterpretato un elemento tradizionale cinese in chiave contemporanea.</em></td><td>我以当代方式重新诠释了一个中国传统元素。</td></tr>
+        <tr><td class="it" data-speak="Il progetto dialoga con entrambe le culture, orientale e occidentale."><em>Il progetto dialoga con entrambe le culture, orientale e occidentale.</em></td><td>这个项目与东西方两种文化对话。</td></tr>
+        <tr><td class="it" data-speak="Voglio portare una sensibilità orientale nel contesto del design italiano."><em>Voglio portare una sensibilità orientale nel contesto del design italiano.</em></td><td>我想把东方的感受力带入意大利设计语境中。</td></tr>
+        <tr><td class="it" data-speak="L'incontro tra due culture ha generato una soluzione inaspettata."><em>L'incontro tra due culture ha generato una soluzione inaspettata.</em></td><td>两种文化的相遇产生了一个出乎意料的解决方案。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 终极彩蛋 -->
+<section>
+  <h2>🔥 终极彩蛋：30天冲刺升级版</h2>
+  <div class="table-wrap">
+    <table class="plan-table">
+    <colgroup>
+      <col style="width:18%">
+      <col style="width:60%">
+      <col style="width:22%">
+    </colgroup>
+    
+      <thead><tr><th >周次</th><th>强化任务</th><th >重点模块</th></tr></thead>
+      <tbody>
+        <tr><td>Week 1</td><td>确定目标院校，研究该校风格偏好</td><td>Module 1</td></tr>
+        <tr><td>Week 2</td><td>按黄金结构重写每个项目的Descrizione</td><td>Module 2</td></tr>
+        <tr><td>Week 3</td><td>背3位意大利设计师+1个设计运动+2个品牌</td><td>Module 3</td></tr>
+        <tr><td>Week 4</td><td>掌握Condizionale+Congiuntivo基础用法，练完整面试</td><td>Module 4</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:16px;padding:16px;background:var(--accent-dim);border-radius:10px;font-size:14px;color:var(--text-dim);">
+    <p><strong>🚀 临门一脚：</strong></p>
+    <p>• 面试前三天：把 Module 2 范例改成你自己的项目内容</p>
+    <p>• 面试前一天：对着镜子穿得体面，计时讲一遍完整的5分钟presentation</p>
+    <p>• 面试当天：带上打印出来的作品集（意大利教授很看重纸质版！）</p>
+  </div>
+</section>
+
 </div>
-<script>
-(function() {
-  "use strict";
 
-  // ============ 音频播放管理 ============
-  var audioCache = {};       // audio_id -> HTMLAudioElement
-  var currentAudio = null;   // 当前正在播放的 audio
-  var currentBtn = null;     // 当前正在播放的按钮
+<div class="page-footer">
+  <p class="end-quote"><span class="it" data-speak="Se puoi sognarlo, puoi progettarlo. Se puoi progettarlo, puoi realizzarlo.">Se puoi sognarlo, puoi progettarlo. Se puoi progettarlo, puoi realizzarlo.</span></p>
+  <p style="margin-bottom:8px;">如果你能梦到它，你就能设计它；如果你能设计它，你就能实现它。</p>
+  <p>— <em>Ispirato a Bruno Munari</em></p>
+  <p style="margin-top:12px;font-size:15px;"><strong><span class="it" data-speak="In bocca al lupo! Che il design sia con te!">In bocca al lupo! 🐺🔥 Che il design sia con te!</span></strong></p>
+</div>
 
-  function getAudioPath(id) {
-    // audio/basic/basic_0001.mp3 等
-    var version = document.body.dataset.version;
-    return "audio/" + version + "/" + id + ".mp3";
-  }
+<script src="edge_tts_audio.js"></script>
 
-  function playAudio(id, btn) {
-    // 如果当前正在播放同一个，暂停
-    if (currentAudio && currentAudio.dataset.id === id) {
-      currentAudio.pause();
-      resetPlayingUI();
-      return;
-    }
-    // 停止之前的
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    }
-    resetPlayingUI();
-
-    // 获取或创建 audio
-    var audio = audioCache[id];
-    if (!audio) {
-      audio = new Audio(getAudioPath(id));
-      audio.dataset.id = id;
-      audioCache[id] = audio;
-      audio.addEventListener("ended", function() {
-        resetPlayingUI();
-      });
-      audio.addEventListener("error", function() {
-        showToast("音频未生成：" + id, true);
-        resetPlayingUI();
-      });
-    }
-    // 重置时间
-    audio.currentTime = 0;
-    audio.play().then(function() {
-      currentAudio = audio;
-      currentBtn = btn;
-      // 标记所有同 id 的元素为 playing
-      document.querySelectorAll('[data-audio="' + id + '"]').forEach(function(el) {
-        el.classList.add("playing");
-      });
-      document.querySelectorAll('.play-btn[data-audio="' + id + '"]').forEach(function(b) {
-        b.classList.add("playing");
-      });
-      showToast("正在播放...");
-    }).catch(function(err) {
-      showToast("播放失败：" + (err.message || err), true);
-    });
-  }
-
-  function resetPlayingUI() {
-    document.querySelectorAll(".playing").forEach(function(el) {
-      el.classList.remove("playing");
-    });
-    currentAudio = null;
-    currentBtn = null;
-    hideToast();
-  }
-
-  // ============ Toast 提示 ============
-  var toastEl = document.getElementById("playerToast");
-  var toastTimer = null;
-  function showToast(msg, isError) {
-    if (!toastEl) return;
-    var textEl = toastEl.querySelector(".toast-text");
-    if (textEl) textEl.textContent = msg;
-    toastEl.hidden = false;
-    if (isError) {
-      toastEl.style.borderColor = "var(--danger)";
-    } else {
-      toastEl.style.borderColor = "";
-    }
-    if (toastTimer) clearTimeout(toastTimer);
-    toastTimer = setTimeout(hideToast, 3000);
-  }
-  function hideToast() {
-    if (toastEl) toastEl.hidden = true;
-  }
-
-  // ============ 绑定点击事件 ============
-  document.addEventListener("click", function(e) {
-    // 点击播放按钮
-    var btn = e.target.closest(".play-btn");
-    if (btn) {
-      e.preventDefault();
-      e.stopPropagation();
-      var id = btn.dataset.audio;
-      if (id) playAudio(id, btn);
-      return;
-    }
-    // 点击 it-text 整体也触发播放
-    var itText = e.target.closest(".it-text");
-    if (itText) {
-      var id2 = itText.dataset.audio;
-      if (id2) {
-        e.preventDefault();
-        var btn2 = itText.querySelector(".play-btn");
-        playAudio(id2, btn2 || itText);
-      }
-    }
-  });
-
-  // ============ 返回顶部 ============
-  var backToTop = document.getElementById("backToTop");
-  if (backToTop) {
-    window.addEventListener("scroll", function() {
-      if (window.scrollY > 400) {
-        backToTop.classList.add("visible");
-      } else {
-        backToTop.classList.remove("visible");
-      }
-    });
-    backToTop.addEventListener("click", function() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
-
-  // ============ 目录侧边栏（移动端） ============
-  var tocToggle = document.getElementById("tocToggle");
-  var tocSidebar = document.getElementById("tocSidebar");
-  if (tocToggle && tocSidebar) {
-    tocToggle.addEventListener("click", function() {
-      tocSidebar.classList.toggle("open");
-    });
-    // 点击目录项后关闭（移动端）
-    tocSidebar.querySelectorAll("a").forEach(function(a) {
-      a.addEventListener("click", function() {
-        if (window.innerWidth <= 1024) {
-          tocSidebar.classList.remove("open");
-        }
-      });
-    });
-  }
-
-  // ============ TOC 当前章节高亮 ============
-  var tocItems = tocSidebar ? tocSidebar.querySelectorAll(".toc-item") : [];
-  if (tocItems.length) {
-    var sections = [];
-    tocItems.forEach(function(item) {
-      var href = item.getAttribute("href");
-      if (href && href.startsWith("#")) {
-        var target = document.getElementById(href.slice(1));
-        if (target) sections.push({ el: target, link: item });
-      }
-    });
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          tocItems.forEach(function(i) { i.classList.remove("active"); });
-          var match = sections.find(function(s) { return s.el === entry.target; });
-          if (match) match.link.classList.add("active");
-        }
-      });
-    }, { rootMargin: "-80px 0px -70% 0px", threshold: 0 });
-    sections.forEach(function(s) { observer.observe(s.el); });
-  }
-
-  // ============ 键盘快捷键 ============
-  document.addEventListener("keydown", function(e) {
-    // ESC 关闭目录
-    if (e.key === "Escape" && tocSidebar) {
-      tocSidebar.classList.remove("open");
-    }
-    // 空格暂停/继续当前音频
-    if (e.key === " " && e.target === document.body) {
-      e.preventDefault();
-      if (currentAudio) {
-        if (currentAudio.paused) {
-          currentAudio.play();
-        } else {
-          currentAudio.pause();
-          resetPlayingUI();
-        }
-      }
-    }
-  });
-
-})();
-</script>
 </body>
 </html>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加强版 | 设计留学作品集·意语词汇</title>
+<style>
+  :root {
+    --bg: #f8f9fb; --surface: #fff; --surface2: #f1f3f6; --border: #e1e4e8;
+    --text: #1a1e23; --text-dim: #57606a; --text-faint: #8c959f;
+    --accent: #0550ae; --accent-dim: rgba(5,80,174,.08); --accent-l: #e8f0fe;
+    --yellow: #855f1c; --yellow-dim: rgba(133,95,28,.1); --yellow-l: #fef3e2;
+    --red: #cf222e; --red-dim: rgba(207,34,46,.1); --red-l: #ffeef0;
+    --green: #1a7f37; --green-dim: rgba(26,127,55,.1); --green-l: #e8f5e9;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04); --shadow-md: 0 4px 12px rgba(0,0,0,.06);
+    --radius: 10px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+  .flag-it{display:inline-block;width:22px;height:14px;background:linear-gradient(90deg,#009246 33.33%,#fff 33.33%,#fff 66.66%,#ce2b37 66.66%);border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.1);vertical-align:middle;margin-right:6px}
+
+  .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:56px;gap:4px}
+  .nav .logo{font-weight:700;font-size:14px;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
+  .nav .sep{flex:1}
+  .nav a.nav-link{text-decoration:none;color:var(--text-dim);font-size:13px;padding:6px 14px;border-radius:8px;transition:all .2s;font-weight:500}
+  .nav a.nav-link:hover{color:var(--text);background:var(--surface2)}
+  .nav a.nav-link.active{background:var(--accent-l);color:var(--accent);font-weight:600}
+
+  .container{max-width:960px;margin:0 auto;padding:0 24px 80px}
+
+  .page-header{text-align:center;padding:64px 0 36px}
+  .page-header .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-l);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:5px 16px;border-radius:6px;margin-bottom:16px}
+  .page-header h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+  .page-header .meta{color:var(--text-dim);font-size:15px;line-height:1.7}
+
+  .level-legend{display:flex;gap:16px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+  .level-legend span{font-size:12px;padding:4px 12px;border-radius:6px;font-weight:500}
+  .level-legend .l1{background:var(--green-l);color:var(--green)}
+  .level-legend .l2{background:var(--yellow-l);color:var(--yellow)}
+  .level-legend .l3{background:var(--red-l);color:var(--red)}
+
+  section{margin-bottom:44px}
+  section h2{font-size:20px;font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
+  section h3{font-size:17px;font-weight:600;margin:26px 0 12px;color:var(--accent);letter-spacing:-.1px}
+  section h4{font-size:15px;font-weight:600;color:var(--text-dim);margin:18px 0 8px}
+
+  .table-wrap{overflow-x:auto;margin:14px 0;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+  table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+  th{background:var(--surface2);color:var(--text-dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.6px;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);line-height:1.5;vertical-align:middle}
+  td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:middle;transition:background .15s;word-break:break-word;line-height:1.5;font-size:14px}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:var(--accent-l)}
+
+  .it{cursor:pointer;transition:color .15s}
+  .it:hover{color:var(--accent)}
+  .it.speaking{color:var(--accent);font-weight:600}
+
+  .quote-box{background:var(--accent-l);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0}
+  .quote-box p{font-size:14px;margin:3px 0}
+  .quote-box .it-text{font-weight:500;color:var(--text)}
+  .quote-box .zh-text{color:var(--text-dim);font-size:13px}
+
+  .question-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin:10px 0;box-shadow:var(--shadow-sm)}
+  .question-card .q{font-size:14px;font-weight:600;margin-bottom:3px}
+  .question-card .a{font-size:13px;color:var(--text-dim)}
+
+  .answer-box{background:var(--accent-l);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin:10px 0}
+  .answer-box .q-label{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px}
+  .answer-box .a-text{font-size:14px;margin-bottom:6px}
+  .answer-box .a-zh{color:var(--text-dim);font-size:13px}
+
+  .plan-table td:first-child{color:var(--accent);font-weight:600;white-space:nowrap}
+
+  .page-footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);color:var(--text-faint);font-size:13px;background:var(--surface)}
+  .page-footer .end-quote{font-size:15px;color:var(--text-dim);font-style:italic;margin-bottom:6px}
+
+  .audio-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);border-radius:8px;padding:10px 22px;font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+  .audio-toast.show{opacity:1}
+  .audio-toast .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  @media(max-width:768px){
+    .container{padding:0 16px 60px}
+    .nav-inner{gap:2px}
+    .nav a.nav-link{font-size:12px;padding:4px 9px}
+    table{font-size:13px}
+    th,td{padding:8px 10px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="flag-it"></span>设计留学·意语词汇</a>
+    <span class="sep"></span>
+    <a href="basic.html" class="nav-link">基础版</a>
+    <a href="intermediate.html" class="nav-link active">加强版</a>
+    <a href="flagship.html" class="nav-link">旗舰版</a>
+  </div>
+</nav>
+
+<div class="audio-toast" id="audioToast"><span class="dot"></span>正在朗读意大利语...</div>
+
+<div class="container">
+
+<div class="page-header">
+  <div class="badge">🟡 进阶级</div>
+  <h1>设计留学作品集·意语词汇（加强版）</h1>
+  <p class="meta">适用对象：准备去意大利留学设计专业、需要用意语介绍作品集的你<br>目标：面试/入学考试/课堂presentation 都能开口说！</p>
+</div>
+
+<div class="level-legend">
+  <span class="l1">🟢 基础必背 → 不背说不过去</span>
+  <span class="l2">🟡 进阶选修 → 根据方向选着背</span>
+  <span class="l3">🔴 高阶装逼 → 让教授觉得你有点东西</span>
+</div>
+
+<!-- PART 1: 设计方向分科词汇 -->
+<section>
+  <h2>PART 1 · 设计方向分科词汇 🎯</h2>
+
+  <!-- 1.1 通用 -->
+  <h3>1.1 🟢 通用设计词汇（所有方向通用）</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:35%">
+      <col style="width:20%">
+      <col style="width:45%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th >中文</th><th>例句</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="il design"><strong>il design</strong></td><td>设计</td><td class="it" data-speak="Studio design al Politecnico di Milano."><em>Studio design al Politecnico di Milano.</em></td></tr>
+        <tr><td class="it" data-speak="il designer"><strong>il/la designer</strong></td><td>设计师</td><td class="it" data-speak="Da grande voglio fare il designer."><em>Da grande voglio fare il designer.</em></td></tr>
+        <tr><td class="it" data-speak="la progettazione"><strong>la progettazione</strong></td><td>规划设计</td><td class="it" data-speak="La fase di progettazione è la più importante."><em>La fase di progettazione è la più importante.</em></td></tr>
+        <tr><td class="it" data-speak="il concept"><strong>il concept</strong></td><td>概念</td><td class="it" data-speak="Il concept del progetto è molto innovativo."><em>Il concept del progetto è molto innovativo.</em></td></tr>
+        <tr><td class="it" data-speak="la funzionalità"><strong>la funzionalità</strong></td><td>功能性</td><td class="it" data-speak="Cerco un equilibrio tra estetica e funzionalità."><em>Cerco un equilibrio tra estetica e funzionalità.</em></td></tr>
+        <tr><td class="it" data-speak="l'estetica"><strong>l'estetica</strong></td><td>美学</td><td class="it" data-speak="L'estetica del prodotto è minimalista."><em>L'estetica del prodotto è minimalista.</em></td></tr>
+        <tr><td class="it" data-speak="l'ergonomia"><strong>l'ergonomia</strong></td><td>人机工程学</td><td class="it" data-speak="Ho studiato l'ergonomia dell'oggetto."><em>Ho studiato l'ergonomia dell'oggetto.</em></td></tr>
+        <tr><td class="it" data-speak="l'utente"><strong>l'utente</strong></td><td>用户</td><td class="it" data-speak="Il progetto è pensato per l'utente finale."><em>Il progetto è pensato per l'utente finale.</em></td></tr>
+        <tr><td class="it" data-speak="il target"><strong>il target</strong></td><td>目标群体</td><td class="it" data-speak="Il target è giovani tra i 18 e i 30 anni."><em>Il target è giovani tra i 18 e i 30 anni.</em></td></tr>
+        <tr><td class="it" data-speak="il bisogno"><strong>il bisogno</strong></td><td>需求</td><td class="it" data-speak="Ho identificato un bisogno reale."><em>Ho identificato un bisogno reale.</em></td></tr>
+        <tr><td class="it" data-speak="la soluzione"><strong>la soluzione</strong></td><td>解决方案</td><td class="it" data-speak="La mia soluzione è semplice ma efficace."><em>La mia soluzione è semplice ma efficace.</em></td></tr>
+        <tr><td class="it" data-speak="il problema"><strong>il problema</strong></td><td>问题</td><td><em>Il problema principale era...</em></td></tr>
+        <tr><td class="it" data-speak="il vincolo"><strong>il vincolo</strong></td><td>约束/限制</td><td class="it" data-speak="C'erano vincoli di budget e di tempo."><em>C'erano vincoli di budget e di tempo.</em></td></tr>
+        <tr><td class="it" data-speak="la ricerca"><strong>la ricerca</strong></td><td>调研</td><td class="it" data-speak="La ricerca è durata due mesi."><em>La ricerca è durata due mesi.</em></td></tr>
+        <tr><td class="it" data-speak="l'analisi"><strong>l'analisi</strong></td><td>分析</td><td class="it" data-speak="Ho fatto un'analisi del mercato."><em>Ho fatto un'analisi del mercato.</em></td></tr>
+        <tr><td class="it" data-speak="la strategia"><strong>la strategia</strong></td><td>策略</td><td><em>La strategia di design si basa su...</em></td></tr>
+        <tr><td class="it" data-speak="il brief"><strong>il brief</strong></td><td>设计简报</td><td class="it" data-speak="Il brief del progetto era molto chiaro."><em>Il brief del progetto era molto chiaro.</em></td></tr>
+        <tr><td class="it" data-speak="lo sketch"><strong>lo sketch</strong></td><td>速写</td><td class="it" data-speak="Questi sono i miei primi sketch."><em>Questi sono i miei primi sketch.</em></td></tr>
+        <tr><td class="it" data-speak="il modello"><strong>il modello</strong></td><td>模型</td><td class="it" data-speak="Ho costruito un modello in scala."><em>Ho costruito un modello in scala.</em></td></tr>
+        <tr><td class="it" data-speak="il prototipo"><strong>il prototipo</strong></td><td>原型</td><td class="it" data-speak="Il prototipo è stato testato da 10 utenti."><em>Il prototipo è stato testato da 10 utenti.</em></td></tr>
+        <tr><td class="it" data-speak="la presentazione"><strong>la presentazione</strong></td><td>展示/陈述</td><td class="it" data-speak="La presentazione del portfolio dura 10 minuti."><em>La presentazione del portfolio dura 10 minuti.</em></td></tr>
+        <tr><td class="it" data-speak="il feedback"><strong>il feedback</strong></td><td>反馈</td><td class="it" data-speak="I feedback sono stati positivi."><em>I feedback sono stati positivi.</em></td></tr>
+        <tr><td class="it" data-speak="la mostra"><strong>la mostra</strong></td><td>展览</td><td class="it" data-speak="Il progetto è stato esposto in una mostra."><em>Il progetto è stato esposto in una mostra.</em></td></tr>
+        <tr><td class="it" data-speak="l'esposizione"><strong>l'esposizione</strong></td><td>展出</td><td class="it" data-speak="L'esposizione si è tenuta a Shanghai."><em>L'esposizione si è tenuta a Shanghai.</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 1.2 平面设计 -->
+  <h3>1.2 🟡 平面设计 / 视觉传达 <span class="it" data-speak="Design Grafico, Comunicazione Visiva">Design Grafico / Comunicazione Visiva</span></h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:45%">
+      <col style="width:55%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la grafica"><strong>la grafica</strong></td><td>平面设计/图形</td></tr>
+        <tr><td class="it" data-speak="la comunicazione visiva"><strong>la comunicazione visiva</strong></td><td>视觉传达</td></tr>
+        <tr><td class="it" data-speak="il marchio"><strong>il marchio / il logo</strong></td><td>标志/Logo</td></tr>
+        <tr><td class="it" data-speak="l'identità visiva"><strong>l'identità visiva</strong></td><td>视觉识别</td></tr>
+        <tr><td class="it" data-speak="il branding"><strong>il branding</strong></td><td>品牌设计</td></tr>
+        <tr><td class="it" data-speak="la tipografia"><strong>la tipografia</strong></td><td>字体设计/排版</td></tr>
+        <tr><td class="it" data-speak="il carattere tipografico"><strong>il carattere tipografico</strong></td><td>字体</td></tr>
+        <tr><td class="it" data-speak="il font"><strong>il font</strong></td><td>字体（英语借词）</td></tr>
+        <tr><td class="it" data-speak="il sans-serif, il serif"><strong>il sans-serif / il serif</strong></td><td>无衬线/衬线体</td></tr>
+        <tr><td class="it" data-speak="il layout"><strong>il layout</strong></td><td>版面布局</td></tr>
+        <tr><td class="it" data-speak="la griglia"><strong>la griglia</strong></td><td>网格</td></tr>
+        <tr><td class="it" data-speak="la composizione"><strong>la composizione</strong></td><td>构图</td></tr>
+        <tr><td class="it" data-speak="il colore"><strong>il colore</strong></td><td>颜色</td></tr>
+        <tr><td class="it" data-speak="la palette cromatica"><strong>la palette cromatica</strong></td><td>色彩调色板</td></tr>
+        <tr><td class="it" data-speak="il contrasto"><strong>il contrasto</strong></td><td>对比</td></tr>
+        <tr><td class="it" data-speak="la gerarchia visiva"><strong>la gerarchia visiva</strong></td><td>视觉层级</td></tr>
+        <tr><td class="it" data-speak="la spaziatura"><strong>la spaziatura</strong></td><td>间距</td></tr>
+        <tr><td class="it" data-speak="la copertina"><strong>la copertina</strong></td><td>封面</td></tr>
+        <tr><td class="it" data-speak="la locandina, il poster"><strong>la locandina / il poster</strong></td><td>海报</td></tr>
+        <tr><td class="it" data-speak="il volantino"><strong>il volantino</strong></td><td>传单</td></tr>
+        <tr><td class="it" data-speak="la brochure"><strong>la brochure</strong></td><td>宣传册</td></tr>
+        <tr><td class="it" data-speak="l'editoria"><strong>l'editoria</strong></td><td>出版</td></tr>
+        <tr><td class="it" data-speak="la rivista"><strong>la rivista</strong></td><td>杂志</td></tr>
+        <tr><td class="it" data-speak="il packaging"><strong>il packaging</strong></td><td>包装设计</td></tr>
+        <tr><td class="it" data-speak="l'illustrazione"><strong>l'illustrazione</strong></td><td>插画</td></tr>
+        <tr><td class="it" data-speak="l'infografica"><strong>l'infografica</strong></td><td>信息图</td></tr>
+        <tr><td class="it" data-speak="la segnaletica"><strong>la segnaletica</strong></td><td>导视系统</td></tr>
+        <tr><td class="it" data-speak="la fotografia"><strong>la fotografia</strong></td><td>摄影</td></tr>
+        <tr><td class="it" data-speak="il fotomontaggio"><strong>il fotomontaggio</strong></td><td>合成照片</td></tr>
+        <tr><td class="it" data-speak="la texture"><strong>la texture</strong></td><td>纹理</td></tr>
+        <tr><td class="it" data-speak="la campagna pubblicitaria"><strong>la campagna pubblicitaria</strong></td><td>广告宣传</td></tr>
+        <tr><td class="it" data-speak="il manifesto"><strong>il manifesto</strong></td><td>海报/宣言</td></tr>
+        <tr><td class="it" data-speak="l'annuncio stampa"><strong>l'annuncio stampa</strong></td><td>平面广告</td></tr>
+        <tr><td class="it" data-speak="la grafica in movimento"><strong>la grafica in movimento</strong></td><td>动态图形</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Ho progettato l'identità visiva completa per un brand di moda, dal logo alla campagna pubblicitaria.">Ho progettato l'identità visiva completa per un brand di moda, dal logo alla campagna pubblicitaria.</span></p>
+    <p class="zh-text">我为一家时尚品牌设计了完整的视觉识别系统，从Logo到广告宣传。</p>
+  </div>
+
+  <!-- 1.3 产品设计 -->
+  <h3>1.3 🟡 产品设计 / 工业设计 <span class="it" data-speak="Design del Prodotto, Industrial Design">Design del Prodotto / Industrial Design</span></h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="il design industriale"><strong>il design industriale</strong></td><td>工业设计</td></tr>
+        <tr><td class="it" data-speak="il prodotto"><strong>il prodotto</strong></td><td>产品</td></tr>
+        <tr><td class="it" data-speak="l'oggetto"><strong>l'oggetto</strong></td><td>物品/物件</td></tr>
+        <tr><td class="it" data-speak="l'arredo, il mobile"><strong>l'arredo / il mobile</strong></td><td>家具</td></tr>
+        <tr><td class="it" data-speak="la sedia"><strong>la sedia</strong></td><td>椅子</td></tr>
+        <tr><td class="it" data-speak="il tavolo"><strong>il tavolo</strong></td><td>桌子</td></tr>
+        <tr><td class="it" data-speak="la lampada"><strong>la lampada</strong></td><td>灯</td></tr>
+        <tr><td class="it" data-speak="l'illuminazione"><strong>l'illuminazione</strong></td><td>照明</td></tr>
+        <tr><td class="it" data-speak="la superficie"><strong>la superficie</strong></td><td>表面</td></tr>
+        <tr><td class="it" data-speak="la forma"><strong>la forma</strong></td><td>形态</td></tr>
+        <tr><td class="it" data-speak="la struttura"><strong>la struttura</strong></td><td>结构</td></tr>
+        <tr><td class="it" data-speak="la linea"><strong>la linea</strong></td><td>线条</td></tr>
+        <tr><td class="it" data-speak="la curva"><strong>la curva</strong></td><td>曲线</td></tr>
+        <tr><td class="it" data-speak="il volume"><strong>il volume</strong></td><td>体积</td></tr>
+        <tr><td class="it" data-speak="le dimensioni, la misura"><strong>le dimensioni / la misura</strong></td><td>尺寸</td></tr>
+        <tr><td class="it" data-speak="la scala"><strong>la scala</strong></td><td>比例/尺度</td></tr>
+        <tr><td class="it" data-speak="la proporzione"><strong>la proporzione</strong></td><td>比例关系</td></tr>
+        <tr><td class="it" data-speak="la texture superficiale"><strong>la texture superficiale</strong></td><td>表面纹理</td></tr>
+        <tr><td class="it" data-speak="la finitura"><strong>la finitura</strong></td><td>表面处理</td></tr>
+        <tr><td class="it" data-speak="la lavorazione"><strong>la lavorazione</strong></td><td>加工工艺</td></tr>
+        <tr><td class="it" data-speak="la produzione"><strong>la produzione</strong></td><td>生产</td></tr>
+        <tr><td class="it" data-speak="la produzione in serie"><strong>la produzione in serie</strong></td><td>批量生产</td></tr>
+        <tr><td class="it" data-speak="il processo produttivo"><strong>il processo produttivo</strong></td><td>生产工艺</td></tr>
+        <tr><td class="it" data-speak="il materiale"><strong>il materiale</strong></td><td>材料</td></tr>
+        <tr><td class="it" data-speak="la materia prima"><strong>la materia prima</strong></td><td>原材料</td></tr>
+        <tr><td class="it" data-speak="la plastica"><strong>la plastica</strong></td><td>塑料</td></tr>
+        <tr><td class="it" data-speak="il metallo"><strong>il metallo</strong></td><td>金属</td></tr>
+        <tr><td class="it" data-speak="l'acciaio"><strong>l'acciaio</strong></td><td>钢</td></tr>
+        <tr><td class="it" data-speak="l'alluminio"><strong>l'alluminio</strong></td><td>铝</td></tr>
+        <tr><td class="it" data-speak="il legno"><strong>il legno</strong></td><td>木头</td></tr>
+        <tr><td class="it" data-speak="il vetro"><strong>il vetro</strong></td><td>玻璃</td></tr>
+        <tr><td class="it" data-speak="la ceramica"><strong>la ceramica</strong></td><td>陶瓷</td></tr>
+        <tr><td class="it" data-speak="la resina"><strong>la resina</strong></td><td>树脂</td></tr>
+        <tr><td class="it" data-speak="il biocomposito"><strong>il biocomposito</strong></td><td>生物复合材料</td></tr>
+        <tr><td class="it" data-speak="il materiale riciclato"><strong>il materiale riciclato</strong></td><td>回收材料</td></tr>
+        <tr><td class="it" data-speak="la sostenibilità"><strong>la sostenibilità</strong></td><td>可持续性</td></tr>
+        <tr><td class="it" data-speak="il ciclo di vita"><strong>il ciclo di vita</strong></td><td>生命周期</td></tr>
+        <tr><td class="it" data-speak="la produzione artigianale"><strong>la produzione artigianale</strong></td><td>手工制作</td></tr>
+        <tr><td class="it" data-speak="la stampa 3D"><strong>la stampa 3D</strong></td><td>3D打印</td></tr>
+        <tr><td class="it" data-speak="la modellazione 3D"><strong>la modellazione 3D</strong></td><td>三维建模</td></tr>
+        <tr><td class="it" data-speak="il software CAD"><strong>il software CAD</strong></td><td>CAD软件</td></tr>
+        <tr><td class="it" data-speak="il rendering"><strong>il rendering</strong></td><td>渲染图</td></tr>
+        <tr><td class="it" data-speak="l'assemblaggio"><strong>l'assemblaggio</strong></td><td>装配</td></tr>
+        <tr><td class="it" data-speak="il meccanismo"><strong>il meccanismo</strong></td><td>机械结构</td></tr>
+        <tr><td class="it" data-speak="l'usabilità"><strong>l'usabilità</strong></td><td>可用性</td></tr>
+        <tr><td class="it" data-speak="l'esperienza d'uso"><strong>l'esperienza d'uso</strong></td><td>使用体验</td></tr>
+        <tr><td class="it" data-speak="il test utente"><strong>il test utente</strong></td><td>用户测试</td></tr>
+        <tr><td class="it" data-speak="l'iterazione"><strong>l'iterazione</strong></td><td>迭代</td></tr>
+        <tr><td class="it" data-speak="miglioramento"><strong>miglioramento</strong></td><td>改进</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Questo prodotto è pensato per essere sostenibile, realizzato interamente con materiali riciclati.">Questo prodotto è pensato per essere sostenibile, realizzato interamente con materiali riciclati.</span></p>
+    <p class="zh-text">这个产品以可持续为理念，完全由回收材料制成。</p>
+  </div>
+
+  <!-- 1.4 室内设计 -->
+  <h3>1.4 🟡 室内设计 / 空间设计 <span class="it" data-speak="Design d'Interni, Architettura d'Interni">Design d'Interni / Architettura d'Interni</span></h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="lo spazio"><strong>lo spazio</strong></td><td>空间</td></tr>
+        <tr><td class="it" data-speak="l'interno"><strong>l'interno</strong></td><td>室内</td></tr>
+        <tr><td class="it" data-speak="l'ambiente"><strong>l'ambiente</strong></td><td>环境</td></tr>
+        <tr><td class="it" data-speak="la stanza, la camera"><strong>la stanza / la camera</strong></td><td>房间</td></tr>
+        <tr><td class="it" data-speak="il soggiorno"><strong>il soggiorno</strong></td><td>客厅</td></tr>
+        <tr><td class="it" data-speak="la cucina"><strong>la cucina</strong></td><td>厨房</td></tr>
+        <tr><td class="it" data-speak="la camera da letto"><strong>la camera da letto</strong></td><td>卧室</td></tr>
+        <tr><td class="it" data-speak="il bagno"><strong>il bagno</strong></td><td>卫生间</td></tr>
+        <tr><td class="it" data-speak="l'ufficio"><strong>l'ufficio</strong></td><td>办公室</td></tr>
+        <tr><td class="it" data-speak="il negozio"><strong>il negozio</strong></td><td>商店</td></tr>
+        <tr><td class="it" data-speak="il ristorante"><strong>il ristorante</strong></td><td>餐厅</td></tr>
+        <tr><td class="it" data-speak="l'area"><strong>l'area</strong></td><td>区域</td></tr>
+        <tr><td class="it" data-speak="la zona"><strong>la zona</strong></td><td>分区</td></tr>
+        <tr><td class="it" data-speak="la pianta"><strong>la pianta</strong></td><td>平面图</td></tr>
+        <tr><td class="it" data-speak="la sezione"><strong>la sezione</strong></td><td>剖面图</td></tr>
+        <tr><td class="it" data-speak="il prospetto"><strong>il prospetto</strong></td><td>立面图</td></tr>
+        <tr><td class="it" data-speak="il rendering 3D"><strong>il rendering 3D</strong></td><td>3D效果图</td></tr>
+        <tr><td class="it" data-speak="l'arredamento"><strong>l'arredamento</strong></td><td>家具陈设</td></tr>
+        <tr><td class="it" data-speak="il mobilio"><strong>il mobilio</strong></td><td>家具（总称）</td></tr>
+        <tr><td class="it" data-speak="la parete"><strong>la parete</strong></td><td>墙壁</td></tr>
+        <tr><td class="it" data-speak="il pavimento"><strong>il pavimento</strong></td><td>地板</td></tr>
+        <tr><td class="it" data-speak="il soffitto"><strong>il soffitto</strong></td><td>天花板</td></tr>
+        <tr><td class="it" data-speak="la finestra"><strong>la finestra</strong></td><td>窗户</td></tr>
+        <tr><td class="it" data-speak="la porta"><strong>la porta</strong></td><td>门</td></tr>
+        <tr><td class="it" data-speak="l'illuminazione naturale"><strong>l'illuminazione naturale</strong></td><td>自然采光</td></tr>
+        <tr><td class="it" data-speak="l'illuminazione artificiale"><strong>l'illuminazione artificiale</strong></td><td>人工照明</td></tr>
+        <tr><td class="it" data-speak="l'atmosfera"><strong>l'atmosfera</strong></td><td>氛围</td></tr>
+        <tr><td class="it" data-speak="la percezione spaziale"><strong>la percezione spaziale</strong></td><td>空间感知</td></tr>
+        <tr><td class="it" data-speak="la luce"><strong>la luce</strong></td><td>光</td></tr>
+        <tr><td class="it" data-speak="l'ombra"><strong>l'ombra</strong></td><td>阴影</td></tr>
+        <tr><td class="it" data-speak="la trasparenza"><strong>la trasparenza</strong></td><td>通透感</td></tr>
+        <tr><td class="it" data-speak="la continuità visiva"><strong>la continuità visiva</strong></td><td>视觉连续性</td></tr>
+        <tr><td class="it" data-speak="il percorso"><strong>il percorso</strong></td><td>动线</td></tr>
+        <tr><td class="it" data-speak="la zona giorno, la zona notte"><strong>la zona giorno / la zona notte</strong></td><td>动区/静区</td></tr>
+        <tr><td class="it" data-speak="il comfort"><strong>il comfort</strong></td><td>舒适度</td></tr>
+        <tr><td class="it" data-speak="l'acustica"><strong>l'acustica</strong></td><td>声学</td></tr>
+        <tr><td class="it" data-speak="la ventilazione"><strong>la ventilazione</strong></td><td>通风</td></tr>
+        <tr><td class="it" data-speak="il colore delle pareti"><strong>il colore delle pareti</strong></td><td>墙面颜色</td></tr>
+        <tr><td class="it" data-speak="la tappezzeria"><strong>la tappezzeria</strong></td><td>墙纸/布艺</td></tr>
+        <tr><td class="it" data-speak="il rivestimento"><strong>il rivestimento</strong></td><td>饰面材料</td></tr>
+        <tr><td class="it" data-speak="il materiale di recupero"><strong>il materiale di recupero</strong></td><td>回收利用材料</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Ho ridisegnato gli interni di un appartamento di 80 metri quadri, ottimizzando la luce naturale e i percorsi.">Ho ridisegnato gli interni di un appartamento di 80 m², ottimizzando la luce naturale e i percorsi.</span></p>
+    <p class="zh-text">我重新设计了一套80平米公寓的室内，优化了自然采光和动线。</p>
+  </div>
+
+  <!-- 1.5 服装设计 -->
+  <h3>1.5 🟡 服装设计 / 时尚设计 <span class="it" data-speak="Design della Moda, Fashion Design">Design della Moda / Fashion Design</span></h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la moda"><strong>la moda</strong></td><td>时尚</td></tr>
+        <tr><td class="it" data-speak="la collezione"><strong>la collezione</strong></td><td>系列</td></tr>
+        <tr><td class="it" data-speak="il capo"><strong>il capo</strong></td><td>服装单品</td></tr>
+        <tr><td class="it" data-speak="il capospalla"><strong>il capospalla</strong></td><td>外套</td></tr>
+        <tr><td class="it" data-speak="l'abito"><strong>l'abito</strong></td><td>连衣裙/西装</td></tr>
+        <tr><td class="it" data-speak="la giacca"><strong>la giacca</strong></td><td>夹克</td></tr>
+        <tr><td class="it" data-speak="il pantalone"><strong>il pantalone</strong></td><td>裤子</td></tr>
+        <tr><td class="it" data-speak="la gonna"><strong>la gonna</strong></td><td>裙子</td></tr>
+        <tr><td class="it" data-speak="la camicia"><strong>la camicia</strong></td><td>衬衫</td></tr>
+        <tr><td class="it" data-speak="la maglia"><strong>la maglia</strong></td><td>针织衫</td></tr>
+        <tr><td class="it" data-speak="il tessuto"><strong>il tessuto</strong></td><td>面料/布料</td></tr>
+        <tr><td class="it" data-speak="la stoffa"><strong>la stoffa</strong></td><td>布料</td></tr>
+        <tr><td class="it" data-speak="la stampa"><strong>la stampa</strong></td><td>印花</td></tr>
+        <tr><td class="it" data-speak="il motivo, il pattern"><strong>il motivo / il pattern</strong></td><td>图案/花纹</td></tr>
+        <tr><td class="it" data-speak="il ricamo"><strong>il ricamo</strong></td><td>刺绣</td></tr>
+        <tr><td class="it" data-speak="la silhouette"><strong>la silhouette</strong></td><td>轮廓/廓形</td></tr>
+        <tr><td class="it" data-speak="il taglio"><strong>il taglio</strong></td><td>剪裁</td></tr>
+        <tr><td class="it" data-speak="la cucitura"><strong>la cucitura</strong></td><td>缝线/接缝</td></tr>
+        <tr><td class="it" data-speak="il modello"><strong>il modello</strong></td><td>版型/样板</td></tr>
+        <tr><td class="it" data-speak="il cartamodello"><strong>il cartamodello</strong></td><td>纸样</td></tr>
+        <tr><td class="it" data-speak="la sartoria"><strong>la sartoria</strong></td><td>裁缝/高级定制</td></tr>
+        <tr><td class="it" data-speak="la sfilata"><strong>la sfilata</strong></td><td>时装秀</td></tr>
+        <tr><td class="it" data-speak="la passerella"><strong>la passerella</strong></td><td>T台</td></tr>
+        <tr><td class="it" data-speak="il campionario"><strong>il campionario</strong></td><td>样衣/样品册</td></tr>
+        <tr><td class="it" data-speak="il prototipo"><strong>il prototipo</strong></td><td>样衣（服装）</td></tr>
+        <tr><td class="it" data-speak="la taglia"><strong>la taglia</strong></td><td>尺码</td></tr>
+        <tr><td class="it" data-speak="l'abbigliamento"><strong>l'abbigliamento</strong></td><td>服装（总称）</td></tr>
+        <tr><td class="it" data-speak="l'accessorio"><strong>l'accessorio</strong></td><td>配饰</td></tr>
+        <tr><td class="it" data-speak="la borsa"><strong>la borsa</strong></td><td>包</td></tr>
+        <tr><td class="it" data-speak="la scarpa"><strong>la scarpa</strong></td><td>鞋</td></tr>
+        <tr><td class="it" data-speak="il gioiello"><strong>il gioiello</strong></td><td>珠宝首饰</td></tr>
+        <tr><td class="it" data-speak="la tendenza, il trend"><strong>la tendenza / il trend</strong></td><td>潮流趋势</td></tr>
+        <tr><td class="it" data-speak="la stagione"><strong>la stagione</strong></td><td>季节</td></tr>
+        <tr><td class="it" data-speak="la collezione primavera estate"><strong>la collezione primavera/estate</strong></td><td>春夏系列</td></tr>
+        <tr><td class="it" data-speak="la collezione autunno inverno"><strong>la collezione autunno/inverno</strong></td><td>秋冬系列</td></tr>
+        <tr><td class="it" data-speak="il fashion styling"><strong>il fashion styling</strong></td><td>时尚造型</td></tr>
+        <tr><td class="it" data-speak="lo styling"><strong>lo styling</strong></td><td>造型</td></tr>
+        <tr><td class="it" data-speak="il fashion editoriale"><strong>il fashion editoriale</strong></td><td>时尚大片</td></tr>
+        <tr><td class="it" data-speak="lo schizzo di moda"><strong>lo schizzo di moda</strong></td><td>时装效果图</td></tr>
+        <tr><td class="it" data-speak="il figurino"><strong>il figurino</strong></td><td>时装画（人体）</td></tr>
+        <tr><td class="it" data-speak="la drappeggio"><strong>la drappeggio</strong></td><td>垂褶/立体剪裁</td></tr>
+        <tr><td class="it" data-speak="l'abbigliamento sostenibile"><strong>l'abbigliamento sostenibile</strong></td><td>可持续服装</td></tr>
+        <tr><td class="it" data-speak="l'upcycling"><strong>l'upcycling</strong></td><td>升级再造</td></tr>
+        <tr><td class="it" data-speak="il tessuto ecologico"><strong>il tessuto ecologico</strong></td><td>环保面料</td></tr>
+        <tr><td class="it" data-speak="il concept di collezione"><strong>il concept di collezione</strong></td><td>系列概念</td></tr>
+        <tr><td class="it" data-speak="il tema della collezione"><strong>il tema della collezione</strong></td><td>系列主题</td></tr>
+        <tr><td class="it" data-speak="la palette colori stagionale"><strong>la palette colori stagionale</strong></td><td>季度色彩调色板</td></tr>
+        <tr><td class="it" data-speak="il fashion show"><strong>il fashion show</strong></td><td>时装秀</td></tr>
+        <tr><td class="it" data-speak="la presentazione di moda"><strong>la presentazione di moda</strong></td><td>时装展示</td></tr>
+        <tr><td class="it" data-speak="lo shooting fotografico"><strong>lo shooting fotografico</strong></td><td>摄影拍摄</td></tr>
+        <tr><td class="it" data-speak="il book di moda"><strong>il book di moda</strong></td><td>时装作品集</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="La mia collezione si ispira all'artigianato tradizionale cinese, reinterpretato in chiave moderna.">La mia collezione si ispira all'artigianato tradizionale cinese, reinterpretato in chiave moderna.</span></p>
+    <p class="zh-text">我的系列从中国传统手工艺中汲取灵感，以现代方式重新演绎。</p>
+  </div>
+  <h4>🧵 服装工艺词汇补充</h4>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="il filo">il filo</td><td>线</td></tr>
+        <tr><td class="it" data-speak="l'ago">l'ago</td><td>针</td></tr>
+        <tr><td class="it" data-speak="la macchina da cucire">la macchina da cucire</td><td>缝纫机</td></tr>
+        <tr><td class="it" data-speak="l'orlo">l'orlo</td><td>下摆/边</td></tr>
+        <tr><td class="it" data-speak="la piega">la piega</td><td>褶</td></tr>
+        <tr><td class="it" data-speak="la pince">la pince</td><td>省道</td></tr>
+        <tr><td class="it" data-speak="il colletto">il colletto</td><td>领子</td></tr>
+        <tr><td class="it" data-speak="il polsino">il polsino</td><td>袖口</td></tr>
+        <tr><td class="it" data-speak="la manica">la manica</td><td>袖子</td></tr>
+        <tr><td class="it" data-speak="la fodera">la fodera</td><td>衬里</td></tr>
+        <tr><td class="it" data-speak="l'elastico">l'elastico</td><td>松紧带</td></tr>
+        <tr><td class="it" data-speak="il bottone">il bottone</td><td>纽扣</td></tr>
+        <tr><td class="it" data-speak="la cerniera">la cerniera</td><td>拉链</td></tr>
+        <tr><td class="it" data-speak="il nastro">il nastro</td><td>带子/织带</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 1.6 交互设计 -->
+  <h3>1.6 🟡 交互设计 / 数字媒体 <span class="it" data-speak="Design dell'Interazione, Nuovi Media">Design dell'Interazione / Nuovi Media</span></h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="l'interfaccia"><strong>l'interfaccia</strong></td><td>界面</td></tr>
+        <tr><td class="it" data-speak="l'esperienza utente"><strong>l'esperienza utente (UX)</strong></td><td>用户体验</td></tr>
+        <tr><td class="it" data-speak="l'interfaccia utente"><strong>l'interfaccia utente (UI)</strong></td><td>用户界面</td></tr>
+        <tr><td class="it" data-speak="l'app, l'applicazione"><strong>l'app / l'applicazione</strong></td><td>应用程序</td></tr>
+        <tr><td class="it" data-speak="il sito web"><strong>il sito web</strong></td><td>网站</td></tr>
+        <tr><td class="it" data-speak="la piattaforma"><strong>la piattaforma</strong></td><td>平台</td></tr>
+        <tr><td class="it" data-speak="l'utente"><strong>l'utente</strong></td><td>用户</td></tr>
+        <tr><td class="it" data-speak="il viaggio dell'utente"><strong>il viaggio dell'utente</strong></td><td>用户旅程</td></tr>
+        <tr><td class="it" data-speak="lo user flow"><strong>lo user flow</strong></td><td>用户流程</td></tr>
+        <tr><td class="it" data-speak="il wireframe"><strong>il wireframe</strong></td><td>线框图</td></tr>
+        <tr><td class="it" data-speak="il prototipo interattivo"><strong>il prototipo interattivo</strong></td><td>交互原型</td></tr>
+        <tr><td class="it" data-speak="la navigazione"><strong>la navigazione</strong></td><td>导航</td></tr>
+        <tr><td class="it" data-speak="la schermata"><strong>la schermata</strong></td><td>界面屏幕</td></tr>
+        <tr><td class="it" data-speak="il tasto, il bottone"><strong>il tasto / il bottone</strong></td><td>按钮</td></tr>
+        <tr><td class="it" data-speak="il menu"><strong>il menu</strong></td><td>菜单</td></tr>
+        <tr><td class="it" data-speak="l'icona"><strong>l'icona</strong></td><td>图标</td></tr>
+        <tr><td class="it" data-speak="la grafica digitale"><strong>la grafica digitale</strong></td><td>数字图形</td></tr>
+        <tr><td class="it" data-speak="l'animazione"><strong>l'animazione</strong></td><td>动画</td></tr>
+        <tr><td class="it" data-speak="la motion graphic"><strong>la motion graphic</strong></td><td>动态图形</td></tr>
+        <tr><td class="it" data-speak="l'interazione"><strong>l'interazione</strong></td><td>交互</td></tr>
+        <tr><td class="it" data-speak="il gesto"><strong>il gesto</strong></td><td>手势操作</td></tr>
+        <tr><td class="it" data-speak="il touch"><strong>il touch</strong></td><td>触控</td></tr>
+        <tr><td class="it" data-speak="la realtà aumentata"><strong>la realtà aumentata (AR)</strong></td><td>增强现实</td></tr>
+        <tr><td class="it" data-speak="la realtà virtuale"><strong>la realtà virtuale (VR)</strong></td><td>虚拟现实</td></tr>
+        <tr><td class="it" data-speak="l'intelligenza artificiale"><strong>l'intelligenza artificiale (IA)</strong></td><td>人工智能</td></tr>
+        <tr><td class="it" data-speak="il design thinking"><strong>il design thinking</strong></td><td>设计思维</td></tr>
+        <tr><td class="it" data-speak="la ricerca utente"><strong>la ricerca utente</strong></td><td>用户研究</td></tr>
+        <tr><td class="it" data-speak="il test di usabilità"><strong>il test di usabilità</strong></td><td>可用性测试</td></tr>
+        <tr><td class="it" data-speak="l'iterazione"><strong>l'iterazione</strong></td><td>迭代</td></tr>
+        <tr><td class="it" data-speak="il mockup"><strong>il mockup</strong></td><td>模型图</td></tr>
+        <tr><td class="it" data-speak="il design system"><strong>il design system</strong></td><td>设计系统</td></tr>
+        <tr><td class="it" data-speak="la componente"><strong>la componente</strong></td><td>组件</td></tr>
+        <tr><td class="it" data-speak="responsive design"><strong>responsive design</strong></td><td>响应式设计</td></tr>
+        <tr><td class="it" data-speak="l'accessibilità"><strong>l'accessibilità</strong></td><td>无障碍设计</td></tr>
+        <tr><td class="it" data-speak="i dati"><strong>i dati</strong></td><td>数据</td></tr>
+        <tr><td class="it" data-speak="la visualizzazione dei dati"><strong>la visualizzazione dei dati</strong></td><td>数据可视化</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Ho progettato l'interfaccia di un'app per il benessere mentale, con un focus sull'accessibilità.">Ho progettato l'interfaccia di un'app per il benessere mentale, con un focus sull'accessibilità.</span></p>
+    <p class="zh-text">我设计了一款心理健康应用的界面，重点关注无障碍体验。</p>
+  </div>
+
+  <!-- 1.7 建筑设计 -->
+  <h3>1.7 🟡 建筑设计 / 城市设计 <span class="it" data-speak="Architettura, Urbanistica">Architettura / Urbanistica</span></h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="l'architettura"><strong>l'architettura</strong></td><td>建筑</td></tr>
+        <tr><td class="it" data-speak="l'edificio"><strong>l'edificio</strong></td><td>建筑物</td></tr>
+        <tr><td class="it" data-speak="la costruzione"><strong>la costruzione</strong></td><td>建筑/施工</td></tr>
+        <tr><td class="it" data-speak="la città"><strong>la città</strong></td><td>城市</td></tr>
+        <tr><td class="it" data-speak="lo spazio urbano"><strong>lo spazio urbano</strong></td><td>城市空间</td></tr>
+        <tr><td class="it" data-speak="il paesaggio"><strong>il paesaggio</strong></td><td>景观</td></tr>
+        <tr><td class="it" data-speak="il territorio"><strong>il territorio</strong></td><td>地域/领土</td></tr>
+        <tr><td class="it" data-speak="la facciata"><strong>la facciata</strong></td><td>外立面</td></tr>
+        <tr><td class="it" data-speak="la struttura portante"><strong>la struttura portante</strong></td><td>承重结构</td></tr>
+        <tr><td class="it" data-speak="la trave"><strong>la trave</strong></td><td>梁</td></tr>
+        <tr><td class="it" data-speak="la colonna"><strong>la colonna</strong></td><td>柱</td></tr>
+        <tr><td class="it" data-speak="il muro"><strong>il muro</strong></td><td>墙壁</td></tr>
+        <tr><td class="it" data-speak="il tetto"><strong>il tetto</strong></td><td>屋顶</td></tr>
+        <tr><td class="it" data-speak="il solaio"><strong>il solaio</strong></td><td>楼板</td></tr>
+        <tr><td class="it" data-speak="la scala"><strong>la scala</strong></td><td>楼梯</td></tr>
+        <tr><td class="it" data-speak="l'ascensore"><strong>l'ascensore</strong></td><td>电梯</td></tr>
+        <tr><td class="it" data-speak="la rampa"><strong>la rampa</strong></td><td>坡道</td></tr>
+        <tr><td class="it" data-speak="il balcone"><strong>il balcone</strong></td><td>阳台</td></tr>
+        <tr><td class="it" data-speak="la terrazza"><strong>la terrazza</strong></td><td>露台</td></tr>
+        <tr><td class="it" data-speak="il cortile"><strong>il cortile</strong></td><td>庭院</td></tr>
+        <tr><td class="it" data-speak="il giardino"><strong>il giardino</strong></td><td>花园</td></tr>
+        <tr><td class="it" data-speak="il parco"><strong>il parco</strong></td><td>公园</td></tr>
+        <tr><td class="it" data-speak="la piazza"><strong>la piazza</strong></td><td>广场</td></tr>
+        <tr><td class="it" data-speak="la strada"><strong>la strada</strong></td><td>街道</td></tr>
+        <tr><td class="it" data-speak="il quartiere"><strong>il quartiere</strong></td><td>街区/社区</td></tr>
+        <tr><td class="it" data-speak="la rigenerazione urbana"><strong>la rigenerazione urbana</strong></td><td>城市更新</td></tr>
+        <tr><td class="it" data-speak="la riqualificazione"><strong>la riqualificazione</strong></td><td>改造更新</td></tr>
+        <tr><td class="it" data-speak="la sostenibilità ambientale"><strong>la sostenibilità ambientale</strong></td><td>环境可持续性</td></tr>
+        <tr><td class="it" data-speak="l'efficienza energetica"><strong>l'efficienza energetica</strong></td><td>能源效率</td></tr>
+        <tr><td class="it" data-speak="il verde"><strong>il verde</strong></td><td>绿化</td></tr>
+        <tr><td class="it" data-speak="l'impatto ambientale"><strong>l'impatto ambientale</strong></td><td>环境影响</td></tr>
+        <tr><td class="it" data-speak="la residenza"><strong>la residenza</strong></td><td>住宅</td></tr>
+        <tr><td class="it" data-speak="l'edilizia sociale"><strong>l'edilizia sociale</strong></td><td>社会住宅</td></tr>
+        <tr><td class="it" data-speak="lo spazio pubblico"><strong>lo spazio pubblico</strong></td><td>公共空间</td></tr>
+        <tr><td class="it" data-speak="l'accessibilità universale"><strong>l'accessibilità universale</strong></td><td>通用无障碍设计</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Il progetto propone la riqualificazione di un'area industriale dismessa in un parco urbano.">Il progetto propone la riqualificazione di un'area industriale dismessa in un parco urbano.</span></p>
+    <p class="zh-text">该项目提议将一个废弃工业区改造成城市公园。</p>
+  </div>
+</section>
+
+<!-- PART 2: 深度句型 -->
+<section>
+  <h2>PART 2 · 作品集介绍深度句型与段落模版 🎤</h2>
+
+  <h3>2.1 🟢 项目开场白</h3>
+  <h4>模版 A：简洁版</h4>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:55%">
+      <col style="width:45%">
+    </colgroup>
+    
+      <thead><tr><th >意语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="Il primo progetto che vi presento è..."><em>Il primo progetto che vi presento è...</em></td><td>我要介绍的第一个项目是……</td></tr>
+        <tr><td class="it" data-speak="Questo progetto si intitola..."><em>Questo progetto si intitola...</em></td><td>这个项目叫做……</td></tr>
+        <tr><td class="it" data-speak="Si tratta di un progetto di..."><em>Si tratta di un progetto di...</em></td><td>这是一个关于……的项目</td></tr>
+        <tr><td class="it" data-speak="L'ho realizzato durante..."><em>L'ho realizzato durante...</em></td><td>我是在……期间完成的</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>模版 B：完整版</h4>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Il progetto che voglio presentarvi oggi si intitola [titolo]. Si tratta di un progetto di [design] che ho sviluppato durante [periodo]. L'obiettivo principale era [obiettivo].">Il progetto che voglio presentarvi oggi si intitola "[项目名称]". Si tratta di un progetto di [设计方向] che ho sviluppato durante [时间/课程]. L'obiettivo principale era [目标].</span></p>
+    <p class="zh-text">今天我想给大家介绍的项目叫做「XXX」。这是一个我在XXX期间开发的XXX设计项目。主要目标是XXX。</p>
+  </div>
+
+  <h3>2.2 🟢 描述灵感来源</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:55%">
+      <col style="width:45%">
+    </colgroup>
+    
+      <thead><tr><th >意语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="L'ispirazione viene da..."><em>L'ispirazione viene da...</em></td><td>灵感来源于……</td></tr>
+        <tr><td class="it" data-speak="Mi sono ispirato a..."><em>Mi sono ispirato/a a...</em></td><td>我受到了……的启发</td></tr>
+        <tr><td class="it" data-speak="Ho preso spunto da..."><em>Ho preso spunto da...</em></td><td>我从……获得启发</td></tr>
+        <tr><td class="it" data-speak="Il punto di partenza è stato..."><em>Il punto di partenza è stato...</em></td><td>起点是……</td></tr>
+        <tr><td class="it" data-speak="Tutto è nato da..."><em>Tutto è nato da...</em></td><td>一切源于……</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2.3 🟡 描述设计过程</h3>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Il processo si è articolato in tre fasi principali.">Il processo si è articolato in tre fasi principali:</span></p>
+    <p style="margin-top:8px;font-size:14px;"><strong>Prima fase – Ricerca</strong>: <span class="it" data-speak="Ho raccolto dati e referenze, intervistato potenziali utenti e analizzato i competitor.">Ho raccolto dati e referenze, intervistato potenziali utenti e analizzato i competitor.</span></p>
+    <p style="font-size:14px;"><strong>Seconda fase – Sviluppo</strong>: <span class="it" data-speak="Dai primi schizzi ai bozzetti, ho esplorato diverse soluzioni formali e tecniche.">Dai primi schizzi ai bozzetti, ho esplorato diverse soluzioni formali e tecniche.</span></p>
+    <p style="font-size:14px;"><strong>Terza fase – Realizzazione</strong>: <span class="it" data-speak="Dopo varie iterazioni e test, ho realizzato il prototipo finale.">Dopo varie iterazioni e test, ho realizzato il prototipo finale.</span></p>
+    <p class="zh-text">（过程分为三个阶段：第一阶段调研、第二阶段发展、第三阶段实现。）</p>
+  </div>
+</section>
+
+<!-- PART 3: 面试模拟问答 -->
+<section>
+  <h2>PART 3 · 面试模拟问答 🎯</h2>
+  <h3>3.1 🟢 教授最爱问的10个问题</h3>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Perché hai scelto di studiare in Italia?">1. Perché hai scelto di studiare in Italia?</span></div><div class="a">为什么选择来意大利学习？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Parlami di un progetto del tuo portfolio.">2. Parlami di un progetto del tuo portfolio.</span></div><div class="a">聊聊你作品集里的一个项目。</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Qual è il tuo designer preferito?">3. Qual è il tuo designer / artista preferito?</span></div><div class="a">你最喜欢的设计师/艺术家是谁？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Quali sono i tuoi punti di forza come designer?">4. Quali sono i tuoi punti di forza come designer?</span></div><div class="a">作为设计师，你的优势是什么？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Dove ti vedi tra cinque anni?">5. Dove ti vedi tra 5 anni?</span></div><div class="a">你觉得自己五年后会在哪里？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Cosa pensi del design italiano?">6. Cosa pensi del design italiano?</span></div><div class="a">你怎么看意大利设计？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Qual è il progetto più difficile che hai realizzato?">7. Qual è il progetto più difficile che hai realizzato?</span></div><div class="a">你做过最难的项目是哪个？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Che rapporto hai con la sostenibilità?">8. Che rapporto hai con la sostenibilità?</span></div><div class="a">你跟可持续性的关系是什么？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Perché questo progetto è importante per te?">9. Perché questo progetto è importante per te?</span></div><div class="a">为什么这个项目对你很重要？</div></div>
+  <div class="question-card"><div class="q"><span class="it" data-speak="Hai qualche domanda da farmi?">10. Hai qualche domanda da farmi?</span></div><div class="a">你有什么问题想问我的吗？</div></div>
+
+  <h3>3.2 🟢 高频回答模版</h3>
+  <div class="answer-box">
+    <div class="q-label">Q1: <span class="it" data-speak="Perché hai scelto di studiare in Italia?">Perché hai scelto di studiare in Italia?</span> 🇮🇹</div>
+    <p class="a-text"><span class="it" data-speak="Ho scelto l'Italia perché è da sempre un punto di riferimento mondiale nel design. In particolare, ammiro il suo approccio innovativo. Inoltre, credo che studiare in Italia mi permetterà di sviluppare una sensibilità estetica più profonda e di confrontarmi con una cultura del design unica al mondo.">Ho scelto l'Italia perché è da sempre un punto di riferimento mondiale nel design. In particolare, ammiro [意大利品牌/设计师/学校] per il suo approccio innovativo. Inoltre, credo che studiare in Italia mi permetterà di sviluppare una sensibilità estetica più profonda e di confrontarmi con una cultura del design unica al mondo.</span></p>
+    <p class="a-zh">我选择意大利因为它一直是世界设计的风向标。我特别欣赏……的创新方法。而且，我相信在意大利学习能帮我培养更深层的美学感受力。</p>
+  </div>
+
+  <h3>3.3 🟡 不太会讲时救场句</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:48%">
+      <col style="width:25%">
+      <col style="width:27%">
+    </colgroup>
+    
+      <thead><tr><th >意语</th><th >中文</th><th>使用场景</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="Mi scusi, posso ripetere la domanda?"><em>Mi scusi, posso ripetere la domanda?</em></td><td>抱歉，能重复一下问题吗？</td><td>没听清</td></tr>
+        <tr><td class="it" data-speak="Lasciami pensare un attimo..."><em>Lasciami pensare un attimo...</em></td><td>让我想想……</td><td>需要思考</td></tr>
+        <tr><td class="it" data-speak="Forse non mi sono spiegato bene. Quello che voglio dire è..."><em>Forse non mi sono spiegato/a bene...</em></td><td>也许我没说清楚……</td><td>发现说错了</td></tr>
+        <tr><td class="it" data-speak="Questa è una bella domanda. Direi che..."><em>Questa è una bella domanda. Direi che...</em></td><td>这是个好问题。我觉得……</td><td>争取思考时间</td></tr>
+        <tr><td class="it" data-speak="Non conosco bene questo termine in italiano, ma provo a spiegarlo..."><em>Non conosco bene questo termine in italiano, ma provo a spiegarlo...</em></td><td>我不太清楚这个词的意大利语……</td><td>词汇卡壳</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PART 4: 排版展示术语 -->
+<section>
+  <h2>PART 4 · 作品集排版/展示/技术术语 📐</h2>
+  <h3>4.1 🟡 作品集排版与装帧</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="il formato">il formato</td><td>开本/尺寸</td></tr>
+        <tr><td class="it" data-speak="l'impaginazione">l'impaginazione</td><td>排版/页面布局</td></tr>
+        <tr><td class="it" data-speak="la copertina">la copertina</td><td>封面</td></tr>
+        <tr><td class="it" data-speak="la quarta di copertina">la quarta di copertina</td><td>封底</td></tr>
+        <tr><td class="it" data-speak="la pagina">la pagina</td><td>页面</td></tr>
+        <tr><td class="it" data-speak="la doppia pagina">la doppia pagina</td><td>跨页</td></tr>
+        <tr><td class="it" data-speak="il margine">il margine</td><td>边距</td></tr>
+        <tr><td class="it" data-speak="la rilegatura">la rilegatura</td><td>装订</td></tr>
+        <tr><td class="it" data-speak="la rilegatura a spirale">la rilegatura a spirale</td><td>线圈装订</td></tr>
+        <tr><td class="it" data-speak="la brossura">la brossura</td><td>平装</td></tr>
+        <tr><td class="it" data-speak="la cartonato">la cartonato</td><td>精装</td></tr>
+        <tr><td class="it" data-speak="la carta">la carta</td><td>纸张</td></tr>
+        <tr><td class="it" data-speak="la carta patinata">la carta patinata</td><td>铜版纸</td></tr>
+        <tr><td class="it" data-speak="la carta opaca">la carta opaca</td><td>哑光纸</td></tr>
+        <tr><td class="it" data-speak="la carta riciclata">la carta riciclata</td><td>再生纸</td></tr>
+        <tr><td class="it" data-speak="la grammatura">la grammatura</td><td>克重</td></tr>
+        <tr><td class="it" data-speak="la stampa">la stampa</td><td>印刷</td></tr>
+        <tr><td class="it" data-speak="la stampa digitale">la stampa digitale</td><td>数码打印</td></tr>
+        <tr><td class="it" data-speak="la stampa offset">la stampa offset</td><td>胶印</td></tr>
+        <tr><td class="it" data-speak="la goffratura">la goffratura</td><td>压凹/浮雕</td></tr>
+        <tr><td class="it" data-speak="la stampa in rilievo">la stampa in rilievo</td><td>凸版印刷</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4.3 🟢 作品集各组成部分</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="la copertina">la copertina</td><td>封面</td></tr>
+        <tr><td class="it" data-speak="l'indice">l'indice</td><td>目录</td></tr>
+        <tr><td class="it" data-speak="il curriculum">la bio / il curriculum</td><td>个人简介</td></tr>
+        <tr><td class="it" data-speak="la dichiarazione d'artista">la dichiarazione d'artista</td><td>艺术家陈述</td></tr>
+        <tr><td class="it" data-speak="il progetto principale">il progetto principale</td><td>主要项目</td></tr>
+        <tr><td class="it" data-speak="i progetti secondari">i progetti secondari</td><td>次要项目/其他作品</td></tr>
+        <tr><td class="it" data-speak="i dettagli">i dettagli</td><td>细节图</td></tr>
+        <tr><td class="it" data-speak="le didascalie">le didascalie</td><td>图片说明文字</td></tr>
+        <tr><td class="it" data-speak="i ringraziamenti">i ringraziamenti</td><td>致谢</td></tr>
+        <tr><td class="it" data-speak="i contatti">i contatti</td><td>联系方式</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PART 5: 设计评论 -->
+<section>
+  <h2>PART 5 · 设计评论与批评词汇 🗣️</h2>
+  <h3>5.1 🟢 正面评价</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:58%">
+    </colgroup>
+    
+      <thead><tr><th >意大利语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="innovativo">innovativo/a</td><td>创新的</td></tr>
+        <tr><td class="it" data-speak="originale">originale</td><td>原创的</td></tr>
+        <tr><td class="it" data-speak="creativo">creativo/a</td><td>有创意的</td></tr>
+        <tr><td class="it" data-speak="efficace">efficace</td><td>有效的</td></tr>
+        <tr><td class="it" data-speak="funzionale">funzionale</td><td>功能性的</td></tr>
+        <tr><td class="it" data-speak="intuitivo">intuitivo/a</td><td>直观的</td></tr>
+        <tr><td class="it" data-speak="elegante">elegante</td><td>优雅的</td></tr>
+        <tr><td class="it" data-speak="raffinato">raffinato/a</td><td>精致的/考究的</td></tr>
+        <tr><td class="it" data-speak="pulito">pulito/a</td><td>干净的/简洁的</td></tr>
+        <tr><td class="it" data-speak="minimale">minimale</td><td>极简的</td></tr>
+        <tr><td class="it" data-speak="essenziale">essenziale</td><td>简约本质的</td></tr>
+        <tr><td class="it" data-speak="armonioso">armonioso/a</td><td>和谐的</td></tr>
+        <tr><td class="it" data-speak="equilibrato">equilibrato/a</td><td>平衡的</td></tr>
+        <tr><td class="it" data-speak="coerente">coerente</td><td>一致的/连贯的</td></tr>
+        <tr><td class="it" data-speak="di grande impatto">di grande impatto</td><td>有冲击力的</td></tr>
+        <tr><td class="it" data-speak="sorprendente">sorprendente</td><td>令人惊喜的</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.2 🟡 建设性反馈/自评不足</h3>
+  <div class="quote-box">
+    <p class="it-text"><span class="it" data-speak="Se potessi migliorare questo progetto, dedicherei più tempo alla fase di testing con gli utenti. Il prototipo funziona bene, ma credo che un'iterazione in più avrebbe potuto renderlo ancora più efficace. Questo è un aspetto su cui voglio migliorare durante i miei studi in Italia.">Se potessi migliorare questo progetto, dedicherei più tempo alla fase di testing con gli utenti. Il prototipo funziona bene, ma credo che un'iterazione in più avrebbe potuto renderlo ancora più efficace. Questo è un aspetto su cui voglio migliorare durante i miei studi in Italia.</span></p>
+    <p class="zh-text">如果能改进这个项目，我会花更多时间做用户测试。原型运行得不错，但我认为再多一次迭代可以让它更有效。这是我想在意大利学习期间改进的方面。</p>
+  </div>
+
+  <h3>5.3 🔴 高阶：比较级与最高级</h3>
+  <div class="table-wrap">
+    <table>
+    <colgroup>
+      <col style="width:60%">
+      <col style="width:40%">
+    </colgroup>
+    
+      <thead><tr><th >意语</th><th>中文</th></tr></thead>
+      <tbody>
+        <tr><td class="it" data-speak="Questo progetto è più sperimentale del precedente."><em>Questo progetto è <strong>più</strong> sperimentale <strong>del</strong> precedente.</em></td><td>这个项目比前一个更具实验性。</td></tr>
+        <tr><td class="it" data-speak="È il progetto più ambizioso che abbia mai fatto."><em>È il progetto <strong>più</strong> ambizioso <strong>che</strong> abbia mai fatto.</em></td><td>这是我做过的最有野心的项目。</td></tr>
+        <tr><td class="it" data-speak="Volevo qualcosa di meno convenzionale."><em>Volevo qualcosa di <strong>meno</strong> convenzionale.</em></td><td>我想要不那么常规的东西。</td></tr>
+        <tr><td class="it" data-speak="Il miglior aspetto di questo progetto è..."><em>Il <strong>miglior</strong> aspetto di questo progetto è...</em></td><td>这个项目最好的方面是……</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PART 7: 30天冲刺计划 -->
+<section>
+  <h2>PART 7 · 30天冲刺计划 📅</h2>
+  <div class="table-wrap">
+    <table class="plan-table">
+    <colgroup>
+      <col style="width:18%">
+      <col style="width:64%">
+      <col style="width:18%">
+    </colgroup>
+    
+      <thead><tr><th >周次</th><th>任务</th><th >每天时间</th></tr></thead>
+      <tbody>
+        <tr><td>Week 1 🔰</td><td>背熟 PART 1 通用词汇（50个）+ 选自己方向的专有词汇（30个）</td><td>20分钟</td></tr>
+        <tr><td>Week 2 📝</td><td>用 PART 2 模版写出每个项目3-5句意语说明，用手机录自己读</td><td>20分钟</td></tr>
+        <tr><td>Week 3 🗣️</td><td>练习 PART 3 面试问答，重点练Q1+Q2，找人模拟面试</td><td>30分钟</td></tr>
+        <tr><td>Week 4 🔥</td><td>PART 6 完整5分钟介绍背下来，对着镜子练+计时</td><td>30分钟</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<div class="page-footer">
+  <p class="end-quote">意大利教授看作品集，<strong>更重要的是你的思路和热情</strong>，不是你的语法完美度。</p>
+  <p style="margin-top:12px;font-size:15px;"><strong><span class="it" data-speak="In bocca al lupo!">In bocca al lupo!</span></strong> 🐺🍀（回答要说 <em>Crepi!</em>）</p>
+</div>
+
+<script src="edge_tts_audio.js"></script>
+
+</body>
+</html>
