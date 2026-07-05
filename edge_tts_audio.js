@@ -1,6 +1,7 @@
 /**
  * edge-tts 音频播放管理器
  * 替代 Web Speech API，使用预生成的 edge-tts MP3 音频文件播放意大利语发音
+ * 支持两种映射加载方式：window.AUDIO_MAP 或 XHR 加载 audio_map.json
  */
 (function () {
   'use strict';
@@ -27,6 +28,16 @@
       if (callback) callback();
       return;
     }
+
+    // 优先从全局变量读取（通过 <script src="audio/audio_map.js"> 加载）
+    if (typeof window.AUDIO_MAP !== 'undefined') {
+      audioMap = window.AUDIO_MAP;
+      audioLoaded = true;
+      if (callback) callback();
+      return;
+    }
+
+    // 降级：XHR 加载 audio_map.json
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'audio/audio_map.json', true);
     xhr.onload = function () {
@@ -102,7 +113,6 @@
       currentAudio.currentTime = 0;
       currentAudio = null;
     }
-    // 清除所有元素的 speaking 状态
     document.querySelectorAll('.it.speaking').forEach(function (el) {
       el.classList.remove('speaking');
     });
@@ -110,10 +120,8 @@
 
   /* ---- 初始化 ---- */
   function init() {
-    // 预加载音频映射
     loadAudioMap();
 
-    // 绑定点击事件
     document.querySelectorAll('.it[data-speak]').forEach(function (el) {
       el.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -123,7 +131,6 @@
     });
   }
 
-  // 等 DOM 加载完成后初始化
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
