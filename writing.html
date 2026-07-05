@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作文素材 | 设计留学作品集·意语词汇</title>
+<style>
+  :root {
+    --bg: #f8f9fb; --surface: #fff; --surface2: #f1f3f6; --border: #e1e4e8;
+    --text: #1a1e23; --text-dim: #57606a; --text-faint: #8c959f;
+    --accent: #0e7c7b; --accent-dim: rgba(14,124,123,.08); --accent-l: #e6f4f4;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04); --shadow-md: 0 4px 12px rgba(0,0,0,.06);
+    --radius: 10px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .flag-it{display:inline-block;width:22px;height:14px;background:linear-gradient(90deg,#009246 33.33%,#fff 33.33%,#fff 66.66%,#ce2b37 66.66%);border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.1);vertical-align:middle;margin-right:6px}
+  .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:56px;gap:4px}
+  .nav .logo{font-weight:700;font-size:14px;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
+  .nav .sep{flex:1}
+  .nav a.nav-link{text-decoration:none;color:var(--text-dim);font-size:13px;padding:6px 14px;border-radius:8px;transition:all .2s;font-weight:500}
+  .nav a.nav-link:hover{color:var(--text);background:var(--surface2)}
+  .nav a.nav-link.active{background:var(--accent-l);color:var(--accent);font-weight:600}
+  .container{max-width:960px;margin:0 auto;padding:0 24px 80px}
+  .page-header{text-align:center;padding:56px 0 36px}
+  .page-header .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-l);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:5px 16px;border-radius:6px;margin-bottom:16px}
+  .page-header h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+  .page-header .meta{color:var(--text-dim);font-size:15px;line-height:1.7}
+  .page-header .meta em{color:var(--accent);font-style:normal;font-weight:600}
+  section{margin-bottom:44px}
+  section h2{font-size:20px;font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
+  section h3{font-size:17px;font-weight:600;margin:26px 0 12px;color:var(--accent);letter-spacing:-.1px}
+  section h4{font-size:15px;font-weight:600;color:var(--text-dim);margin:18px 0 8px}
+  .table-wrap{overflow-x:auto;margin:14px 0;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{background:var(--surface2);color:var(--text-dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.6px;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);line-height:1.5;vertical-align:middle}
+  td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:middle;transition:background .15s;word-break:break-word;line-height:1.5;font-size:14px}
+  tr:last-child td{border-bottom:none} tr:hover td{background:var(--accent-l)}
+  .it{cursor:pointer;transition:color .15s}
+  .it:hover{color:var(--accent)} .it.speaking{color:var(--accent);font-weight:600}
+  .toggle-content{display:none}
+  .toggle-content.open{display:block}
+  .cat-list{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .cat-item{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;transition:all .2s;font-size:13px}
+  .cat-item:hover{border-color:var(--accent);background:var(--accent-l)}
+  .cat-item.active{border-color:var(--accent);background:var(--accent-l);color:var(--accent);font-weight:600}
+  .sample-essay{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin:12px 0}
+  .sample-essay .essay-title{font-weight:600;font-size:15px;color:var(--accent);margin-bottom:8px}
+  .sample-essay .essay-it{font-size:14px;line-height:1.8;margin-bottom:8px;color:var(--text)}
+  .sample-essay .essay-zh{font-size:13px;line-height:1.8;color:var(--text-dim)}
+  .sample-essay .essay-tag{display:inline-block;background:var(--accent-l);color:var(--accent);font-size:11px;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:8px}
+  .audio-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);border-radius:8px;padding:10px 22px;font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+  .audio-toast.show{opacity:1}
+  .audio-toast .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .page-footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);color:var(--text-faint);font-size:13px;background:var(--surface)}
+  .page-footer .end-quote{font-size:15px;color:var(--text-dim);font-style:italic;margin-bottom:6px}
+  @media(max-width:768px){
+    .container{padding:0 16px 60px}
+    .nav-inner{gap:2px}
+    .nav a.nav-link{font-size:12px;padding:4px 9px}
+    table{font-size:13px} th,td{padding:8px 10px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="flag-it"></span>设计留学·意语词汇</a>
+    <span class="sep"></span>
+    <a href="basic.html" class="nav-link">基础版</a>
+    <a href="intermediate.html" class="nav-link">加强版</a>
+    <a href="flagship.html" class="nav-link">旗舰版</a>
+    <a href="interview.html" class="nav-link">面试模块</a>
+    <a href="writing.html" class="nav-link active">作文素材</a>
+  </div>
+</nav>
+
+<div class="audio-toast" id="audioToast"><span class="dot"></span>正在朗读意大利语...</div>
+
+<div class="container">
+
+<div class="page-header">
+  <div class="badge">✍️ 实战</div>
+  <h1>作文素材模块</h1>
+  <p class="meta">分类素材库 + 写作练习 + 范文示例<br>目标：<em>写作有材可依！</em></p>
+</div>
+
+<!-- 分类素材库 -->
+<section>
+  <h2>📚 分类素材库</h2>
+  <p style="color:var(--text-dim);margin-bottom:16px;">按主题分类的写作素材，点击意大利语可听发音。</p>
+  <div class="cat-list">
+    <span class="cat-item active" onclick="switchCat(this,'cat-descrizione')">📖 作品描述</span>
+    <span class="cat-item" onclick="switchCat(this,'cat-processo')">🔄 设计过程</span>
+    <span class="cat-item" onclick="switchCat(this,'cat-materials')">🧪 材质工艺</span>
+    <span class="cat-item" onclick="switchCat(this,'cat-concept')">💡 概念理念</span>
+    <span class="cat-item" onclick="switchCat(this,'cat-cultura')">🌏 文化对比</span>
+  </div>
+
+  <div id="cat-descrizione" class="toggle-content open">
+    <h4 style="color:var(--accent);font-size:15px">📖 作品描述常用词汇与句型</h4>
+    <div class="table-wrap">
+      <table>
+        <colgroup><col style="width:40%"><col style="width:60%"></colgroup>
+        <thead><tr><th>意大利语</th><th>中文</th></tr></thead>
+        <tbody>
+          <tr><td class="it" data-speak="Il progetto si intitola...">Il progetto si intitola...</td><td>这个项目叫做……</td></tr>
+          <tr><td class="it" data-speak="Si tratta di un progetto di design che ho sviluppato durante...">Si tratta di un progetto di desìgn che ho sviluppato durante...</td><td>这是一个我在……期间完成的设计项目。</td></tr>
+          <tr><td class="it" data-speak="L'obiettivo principale era...">L'obiettivo principale era...</td><td>主要目标是……</td></tr>
+          <tr><td class="it" data-speak="Il problema che ho voluto risolvere è...">Il problema che ho voluto risolvere è...</td><td>我想要解决的问题是……</td></tr>
+          <tr><td class="it" data-speak="Il progetto è pensato per l'utente finale.">Il progetto è pensato per l'utente finale.</td><td>这个项目是为最终用户设计的。</td></tr>
+          <tr><td class="it" data-speak="Il risultato finale è un prodotto funzionale ed estetico.">Il risultato finale è un prodotto funzionale ed estetico.</td><td>最终成果是一个兼具功能性与美学的产品。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="cat-processo" class="toggle-content">
+    <h4 style="color:var(--accent);font-size:15px">🔄 设计过程描述</h4>
+    <div class="table-wrap">
+      <table>
+        <colgroup><col style="width:40%"><col style="width:60%"></colgroup>
+        <thead><tr><th>意大利语</th><th>中文</th></tr></thead>
+        <tbody>
+          <tr><td class="it" data-speak="Ho iniziato con una ricerca approfondita.">Ho iniziato con una ricerca approfondita.</td><td>我从深入调研开始。</td></tr>
+          <tr><td class="it" data-speak="Dopo vari schizzi e bozzetti, ho sviluppato il concept.">Dopo vari schizzi e bozzetti, ho sviluppato il concèt.</td><td>经过多轮草图和初稿，我发展了概念。</td></tr>
+          <tr><td class="it" data-speak="Ho realizzato tre prototipi e li ho testati con gli utenti.">Ho realizzato tre prototipi e li ho testati con gli utenti.</td><td>我制作了三个原型并进行了用户测试。</td></tr>
+          <tr><td class="it" data-speak="Il processo è stato iterativo: ricerca, concept, prototipo, test e revisione.">Il processo è stato iterativo: ricerca, concèt, prototipo, test e revisione.</td><td>这是一个迭代过程：调研、概念、原型、测试和修改。</td></tr>
+          <tr><td class="it" data-speak="Ho utilizzato software CAD per la modellazione 3D.">Ho utilizzato software CAD per la modellazione 3D.</td><td>我使用了CAD软件进行3D建模。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="cat-materials" class="toggle-content">
+    <h4 style="color:var(--accent);font-size:15px">🧪 材质与工艺</h4>
+    <div class="table-wrap">
+      <table>
+        <colgroup><col style="width:40%"><col style="width:60%"></colgroup>
+        <thead><tr><th>意大利语</th><th>中文</th></tr></thead>
+        <tbody>
+          <tr><td class="it" data-speak="Ho scelto il legno perché è un materiale naturale e sostenibile.">Ho scelto il legno perché è un materiale naturale e sostenibile.</td><td>我选择了木头，因为它是天然可持续的材料。</td></tr>
+          <tr><td class="it" data-speak="La ceramica offre una superficie tattile unica.">La ceramica offre una superficie tattile unica.</td><td>陶瓷提供了独特的触感表面。</td></tr>
+          <tr><td class="it" data-speak="Ho utilizzato materiali riciclati per ridurre l'impatto ambientale.">Ho utilizzato materiali riciclati per ridurre l'impatto ambientale.</td><td>我使用了回收材料来减少环境影响。</td></tr>
+          <tr><td class="it" data-speak="La combinazione di metallo e vetro crea un contrasto interessante.">La combinazione di metallo e vetro crea un contrasto interessante.</td><td>金属和玻璃的结合创造了有趣的对比。</td></tr>
+          <tr><td class="it" data-speak="Ho sperimentato con materiali biocompositi.">Ho sperimentato con materiali biocompositi.</td><td>我尝试了生物复合材料。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="cat-concept" class="toggle-content">
+    <h4 style="color:var(--accent);font-size:15px">💡 概念与设计理念</h4>
+    <div class="table-wrap">
+      <table>
+        <colgroup><col style="width:40%"><col style="width:60%"></colgroup>
+        <thead><tr><th>意大利语</th><th>中文</th></tr></thead>
+        <tbody>
+          <tr><td class="it" data-speak="Il concept si basa sull'idea di...">Il concèt si basa sull'idea di...</td><td>这个概念基于……的想法。</td></tr>
+          <tr><td class="it" data-speak="La mia ispirazione viene dalla natura.">La mia ispirazione viene dalla natura.</td><td>我的灵感来自大自然。</td></tr>
+          <tr><td class="it" data-speak="Volevo creare un design minimalista ma funzionale.">Volevo creare un desìgn minimalista ma funzionale.</td><td>我想要创造一个极简但功能性的设计。</td></tr>
+          <tr><td class="it" data-speak="L'idea principale è unire tradizione e innovazione.">L'idea principale è unire tradizione e innovazione.</td><td>核心理念是结合传统与创新。</td></tr>
+          <tr><td class="it" data-speak="Il progetto racconta una storia attraverso i materiali e le forme.">Il progetto racconta una storia attraverso i materiali e le forme.</td><td>这个项目通过材料和形式讲述一个故事。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="cat-cultura" class="toggle-content">
+    <h4 style="color:var(--accent);font-size:15px">🌏 文化对比</h4>
+    <div class="table-wrap">
+      <table>
+        <colgroup><col style="width:40%"><col style="width:60%"></colgroup>
+        <thead><tr><th>意大利语</th><th>中文</th></tr></thead>
+        <tbody>
+          <tr><td class="it" data-speak="Il design cinese è più funzionale, mentre quello italiano è più estetico.">Il desìgn cinese è più funzionale, mentre quello italiano è più estetico.</td><td>中国设计更注重功能，而意大利设计更注重视觉。</td></tr>
+          <tr><td class="it" data-speak="La cultura cinese enfatizza l'armonia, mentre in Italia si cerca l'espressione individuale.">La cultura cinese enfatizza l'armonia, mentre in Italia si cerca l'espressione individuale.</td><td>中国文化强调和谐，而在意大利人们追求个人表达。</td></tr>
+          <tr><td class="it" data-speak="Voglio unire la tradizione artigianale cinese con l'innovazione italiana.">Voglio unire la tradizione artigianale cinese con l'innovazione italiana.</td><td>我想把中国传统工艺和意大利创新结合起来。</td></tr>
+          <tr><td class="it" data-speak="Questo progetto dialoga con entrambe le culture.">Questo progetto dialoga con entrambe le culture.</td><td>这个项目与两种文化对话。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 范文 -->
+<section>
+  <h2>📝 写作练习 &amp; 范文</h2>
+
+  <h3 style="font-size:15px;color:var(--text-dim)">📌 范文 1：作品集项目描述</h3>
+  <div class="sample-essay">
+    <span class="essay-tag">📖 作品描述</span>
+    <div class="essay-title"><span class="it" data-speak="CleanSip: una borraccia sostenibile per studenti universitari">CleanSip: una borraccia sostenibile per studenti universitari</span></div>
+    <div class="essay-it"><span class="it" data-speak="CleanSip è un progetto di product design che ho sviluppato durante il mio secondo anno di università. L'obiettivo era creare un'alternativa sostenibile alle bottiglie di plastica monouso, pensata per studenti universitari tra i 18 e i 25 anni. Ho iniziato con interviste a 30 studenti, seguite da un'analisi dei competitor. Dopo vari schizzi e modelli 3D, ho realizzato tre prototipi funzionali. Il risultato è una borraccia in acciaio inox con filtro al carbone integrato. Il design è minimalista, pulito e funzionale, con un focus sull'ergonomia e la facilità d'uso.">CleanSip è un progetto di product desìgn che ho sviluppato durante il mio secondo anno di università. L'obiettivo era creare un'alternativa sostenibile alle bottiglie di plastica monouso, pensata per studenti universitari tra i 18 e i 25 anni. Ho iniziato con interviste a 30 studenti, seguite da un'analisi dei competitor. Dopo vari schizzi e modelli 3D, ho realizzato tre prototipi funzionali. Il risultato è una borraccia in acciaio inox con filtro al carbone integrato. Il desìgn è minimalista, pulito e funzionale, con un focus sull'ergonomia e la facilità d'uso.</span></div>
+    <div class="essay-zh">CleanSip是我大二期间完成的一个产品设计项目。目标是针对18-25岁的大学生群体，创造一种可持续的一次性塑料瓶替代品。我从对30名学生的访谈开始，进行了竞品分析。经过多次草图和3D模型，我制作了三个功能原型。最终产品是一个带集成碳过滤的不锈钢水瓶。设计极简、干净、功能性强，注重人机工学和易用性。</div>
+  </div>
+
+  <h3 style="font-size:15px;color:var(--text-dim);margin-top:24px">📌 范文 2：设计理念陈述</h3>
+  <div class="sample-essay">
+    <span class="essay-tag">💡 设计理念</span>
+    <div class="essay-title"><span class="it" data-speak="La mia visione del design: un ponte tra culture">La mia visione del desìgn: un ponte tra culture</span></div>
+    <div class="essay-it"><span class="it" data-speak="Per me, il design non è solo una questione di estetica o funzionalità, ma un ponte tra culture diverse. Cresciuto in Cina e ora formato in Italia, ho imparato a vedere il design come un dialogo tra tradizione e innovazione. La mia cultura mi ha insegnato l'importanza dell'armonia e dell'equilibrio, mentre l'Italia mi ha mostrato il valore dell'espressione individuale e della creatività. Il mio obiettivo come designer è unire queste due prospettive, creando progetti che parlano a entrambe le culture.">Per me, il desìgn non è solo una questione di estetica o funzionalità, ma un ponte tra culture diverse. Cresciuto in Cina e ora formato in Italia, ho imparato a vedere il desìgn come un dialogo tra tradizione e innovazione. La mia cultura mi ha insegnato l'importanza dell'armonia e dell'equilibrio, mentre l'Italia mi ha mostrato il valore dell'espressione individuale e della creatività. Il mio obiettivo come desìgner è unire queste due prospettive, creando progetti che parlano a entrambe le culture.</span></div>
+    <div class="essay-zh">对我来说，设计不仅是美学或功能性的问题，更是不同文化之间的桥梁。我在中国长大，现在在意大利学习，我学会了将设计视为传统与创新之间的对话。我的文化教会我和谐与平衡的重要性，而意大利向我展示了个人表达和创造力的价值。我作为设计师的目标是结合这两种视角，创造出与两种文化对话的作品。</div>
+  </div>
+
+  <h3 style="font-size:15px;color:var(--text-dim);margin-top:24px">📌 范文 3：为什么选择意大利</h3>
+  <div class="sample-essay">
+    <span class="essay-tag">🎯 动机陈述</span>
+    <div class="essay-title"><span class="it" data-speak="Perché ho scelto di studiare design in Italia">Perché ho scelto di studiare desìgn in Italia</span></div>
+    <div class="essay-it"><span class="it" data-speak="Ho scelto l'Italia perché è da sempre un punto di riferimento mondiale nel design. In particolare, ammiro il suo approccio che unisce artigianato tradizionale e innovazione contemporanea. Credo che studiare in Italia mi permetterà di sviluppare una sensibilità estetica più profonda e di confrontarmi con una cultura del design unica al mondo. Inoltre, la mia formazione in Cina, combinata con l'esperienza in Italia, mi darà una prospettiva unica nel mondo del design contemporaneo.">Ho scelto l'Italia perché è da sempre un punto di riferimento mondiale nel desìgn. In particolare, ammiro il suo approccio che unisce artigianato tradizionale e innovazione contemporanea. Credo che studiare in Italia mi permetterà di sviluppare una sensibilità estetica più profonda e di confrontarmi con una cultura del desìgn unica al mondo. Inoltre, la mia formazione in Cina, combinata con l'esperienza in Italia, mi darà una prospettiva unica nel mondo del desìgn contemporaneo.</span></div>
+    <div class="essay-zh">我选择意大利，因为她一直是世界设计的风向标。我尤其欣赏她将传统手工艺与当代创新相结合的方式。我相信在意大利学习能让我培养更深厚的美学感受力，并与一种独一无二的设计文化对话。我在中国的教育背景加上意大利的经历，将赋予我在当代设计界独特的视角。</div>
+  </div>
+</section>
+
+</div>
+
+<div class="page-footer">
+  <p class="end-quote"><span class="it" data-speak="Scrivere è pensare.">Scrivere è pensare.</span></p>
+  <p>（写作即思考。）</p>
+  <p style="margin-top:12px"><a href="index.html" style="color:var(--accent);text-decoration:none;font-weight:600">← 返回首页</a></p>
+</div>
+
+<script src="edge_tts_audio.js"></script>
+<script>
+function switchCat(el, id) {
+  document.querySelectorAll('.cat-item').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.toggle-content[id^="cat-"]').forEach(c => c.classList.remove('open'));
+  document.getElementById(id).classList.add('open');
+}
+</script>
+
+</body>
+</html>

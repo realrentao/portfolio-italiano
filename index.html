@@ -21,6 +21,8 @@
     --gold-l: #fef3e2;
     --purple: #6f42c1;
     --purple-l: #f3f0ff;
+    --teal: #0e7c7b;
+    --teal-l: #e6f4f4;
     --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
     --shadow-md: 0 4px 16px rgba(0,0,0,.08);
     --shadow-lg: 0 8px 32px rgba(0,0,0,.1);
@@ -127,7 +129,8 @@
   .card.basic .card-stripe { background: var(--green); }
   .card.intermediate .card-stripe { background: var(--blue); }
   .card.flagship .card-stripe { background: var(--gold); }
-  .card.practice .card-stripe { background: var(--purple); }
+  .card.interview .card-stripe { background: var(--purple); }
+  .card.writing .card-stripe { background: var(--teal); }
 
   .card .level-tag {
     display: inline-flex; align-items: center; gap: 6px;
@@ -139,7 +142,8 @@
   .card.basic .level-tag { color: var(--green); }
   .card.intermediate .level-tag { color: var(--blue); }
   .card.flagship .level-tag { color: var(--gold); }
-  .card.practice .level-tag { color: var(--purple); }
+  .card.interview .level-tag { color: var(--purple); }
+  .card.writing .level-tag { color: var(--teal); }
 
   .card .level-dot {
     width: 8px; height: 8px; border-radius: 50%;
@@ -174,7 +178,8 @@
   .card.basic .card-features li:hover { background: var(--green-l); color: var(--green); }
   .card.intermediate .card-features li:hover { background: var(--blue-l); color: var(--blue); }
   .card.flagship .card-features li:hover { background: var(--gold-l); color: var(--gold); }
-  .card.practice .card-features li:hover { background: var(--purple-l); color: var(--purple); }
+  .card.interview .card-features li:hover { background: var(--purple-l); color: var(--purple); }
+  .card.writing .card-features li:hover { background: var(--teal-l); color: var(--teal); }
 
   .card .card-link {
     margin-top: 18px; font-size: 13px; font-weight: 600;
@@ -185,7 +190,8 @@
   .card.basic .card-link { color: var(--green); }
   .card.intermediate .card-link { color: var(--blue); }
   .card.flagship .card-link { color: var(--gold); }
-  .card.practice .card-link { color: var(--purple); }
+  .card.interview .card-link { color: var(--purple); }
+  .card.writing .card-link { color: var(--teal); }
 
   .card .card-link svg { width: 16px; height: 16px; transition: transform .2s; }
   .card:hover .card-link svg { transform: translateX(3px); }
@@ -281,21 +287,38 @@
     </span>
   </a>
 
-  <a href="practice.html" class="card practice">
+  <a href="interview.html" class="card interview">
     <div class="card-stripe"></div>
-    <div class="level-tag"><span class="level-dot"></span> Livello Pratica</div>
-    <h2>面试&作文素材</h2>
-    <div class="card-en">Interview &amp; Writing Practice</div>
-    <p class="card-desc">留学面试与作品集写作专项训练。包含12大高频面试题目+参考回答、5大分类素材库、完整范文示例，助你面试对答如流、写作有材可依。</p>
+    <div class="level-tag"><span class="level-dot"></span> 🎙️ Intervista</div>
+    <h2>面试模块</h2>
+    <div class="card-en">Interview Practice</div>
+    <p class="card-desc">意大利设计院校面试专项训练。包含12大高频面试题目、模拟练习及参考回答模板、实用救场短语，助你面试对答如流。</p>
     <ul class="card-features">
       <li>12 大面试真题</li>
       <li>参考回答模板</li>
-      <li>5 类素材库</li>
-      <li>3 篇完整范文</li>
-      <li>面试救场话术</li>
+      <li>5 组模拟练习</li>
+      <li>7 条救场话术</li>
     </ul>
     <span class="card-link">
-      进入面试素材
+      进入面试模块
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/></svg>
+    </span>
+  </a>
+
+  <a href="writing.html" class="card writing">
+    <div class="card-stripe"></div>
+    <div class="level-tag"><span class="level-dot"></span> ✍️ Scrittura</div>
+    <h2>作文素材</h2>
+    <div class="card-en">Writing Materials</div>
+    <p class="card-desc">作品集描述与动机信写作素材库。5大分类素材（作品描述/设计过程/材质工艺/概念理念/文化对比）+ 3篇完整范文，助你写作有材可依。</p>
+    <ul class="card-features">
+      <li>5 类分类素材</li>
+      <li>3 篇完整范文</li>
+      <li>核心句型模版</li>
+      <li>可点击发音</li>
+    </ul>
+    <span class="card-link">
+      进入作文素材
       <svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/></svg>
     </span>
   </a>
